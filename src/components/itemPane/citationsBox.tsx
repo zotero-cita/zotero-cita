@@ -126,6 +126,7 @@ function CitationsBox(props: CitationsBoxProps) {
 			return;
 		}
 		citation.target.item = item;
+		citation.lastModificationDate = new Date();
 
 		const newCitations = props.sourceItem.citations;
 		newCitations[index] = citation;

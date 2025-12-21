@@ -47,6 +47,21 @@ const CitationEditor = (props: CitationEditorProps) => {
 		};
 	}, [shownPIDs]);
 
+	// Close window with Esc key
+	useEffect(() => {
+		const handleKeyDown = (event: KeyboardEvent) => {
+			if (event.key === "Escape") {
+				props.onCancel();
+			}
+		};
+
+		window.addEventListener("keydown", handleKeyDown);
+
+		return () => {
+			window.removeEventListener("keydown", handleKeyDown);
+		};
+	}, [props.onCancel]);
+
 	async function onRefresh() {
 		const pid = props.item.getBestPID(Lookup.pidsSupportedForImport);
 		if (pid) {

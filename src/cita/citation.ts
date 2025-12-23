@@ -30,7 +30,7 @@ export class Citation {
 		valid: boolean;
 	}[];
 	citationSource: CitationSource;
-	creationDate: Date;
+	creationDate?: Date;
 	lastModificationDate?: Date;
 	readonly uuid: string;
 
@@ -108,8 +108,6 @@ export class Citation {
 
 		if (citationData.creationDate) {
 			this.creationDate = citationData.creationDate;
-		} else {
-			this.creationDate = new Date();
 		}
 
 		if (citationData.lastModificationDate) {

@@ -655,7 +655,12 @@ class SourceItemWrapper extends ItemWrapper {
 						newItem.fromJSON(jsonItem);
 
 						const citation = new Citation(
-							{ item: newItem, ocis: [], citationSource: "User" },
+							{
+								item: newItem,
+								ocis: [],
+								citationSource: "User",
+								creationDate: new Date(),
+							},
 							this,
 						);
 						citations.push(citation);

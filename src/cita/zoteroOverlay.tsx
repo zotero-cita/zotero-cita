@@ -415,7 +415,12 @@ class ZoteroOverlay {
 		for (const source of sources) {
 			const citations = targets.map((target) => {
 				const citation = new Citation(
-					{ item: target.item, ocis: [], citationSource: "User" },
+					{
+						item: target.item,
+						ocis: [],
+						citationSource: "User",
+						creationDate: new Date(),
+					},
 					source,
 				);
 				citation.linkToZoteroItem(target.item);
@@ -774,6 +779,7 @@ class ZoteroOverlay {
 				},
 				ocis: [],
 				citationSource: "User",
+				creationDate: new Date(),
 			},
 			this._sourceItem,
 		);

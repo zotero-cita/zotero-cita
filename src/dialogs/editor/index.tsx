@@ -155,7 +155,7 @@ window.addEventListener("load", () => {
 			sourceLabel={sourceLabel}
 			sourceType={sourceType}
 			citationSource={citation.citationSource}
-			citationCreationDate={citation.creationDate.toString()}
+			citationCreationDate={citation.creationDate?.toString() || ""}
 			citationModificationDate={
 				citation.lastModificationDate?.toString() || ""
 			}

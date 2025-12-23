@@ -53,7 +53,33 @@ function CitationsBox(props: CitationsBoxProps) {
 			}
 			return { index: index, value: value };
 		});
-		items.sort((a, b) => (a.value! > b.value! ? 1 : -1));
+		// Robust comparator: handle undefined, Date, numbers and strings cleanly.
+		items.sort((a, b) => {
+			const va = a.value;
+			const vb = b.value;
+
+			if (va === vb) return 0;
+			if (va === undefined) return 1; // undefined go last
+			if (vb === undefined) return -1;
+
+			// Dates
+			if (va instanceof Date && vb instanceof Date) {
+				return va.getTime() - vb.getTime();
+			}
+
+			// Numbers
+			if (typeof va === "number" && typeof vb === "number") {
+				return va - vb;
+			}
+
+			// Compare as strings (normalize whitespace/case)
+			const sa = String(va).trim();
+			const sb = String(vb).trim();
+			return sa.localeCompare(sb, undefined, {
+				sensitivity: "base",
+				ignorePunctuation: true,
+			});
+		});
 		return items.map((item) => item.index);
 	}
 

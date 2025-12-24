@@ -3,7 +3,7 @@ import pkg from "./package.json";
 import { copyFileSync, readdirSync, renameSync, mkdirSync, cpSync } from "fs";
 
 import fse from "fs-extra";
-import { replaceInFileSync } from "zotero-plugin-scaffold/tools";
+import { replaceInFileSync } from "replace-in-file";
 
 import tags from "language-tags";
 

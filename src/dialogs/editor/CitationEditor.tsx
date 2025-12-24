@@ -51,7 +51,9 @@ const CitationEditor = (props: CitationEditorProps) => {
 	useEffect(() => {
 		const handleKeyDown = (event: KeyboardEvent) => {
 			if (event.key === "Escape") {
-				props.onCancel();
+				if (event.target == window.document.documentElement) {
+					props.onCancel();
+				}
 			}
 		};
 

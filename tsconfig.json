@@ -1,14 +1,7 @@
 {
+	"extends": "zotero-types/entries/sandbox",
 	"compilerOptions": {
-		"experimentalDecorators": true,
-		"module": "commonjs",
-		"target": "ES2016",
-		"jsx": "react",
-		"resolveJsonModule": true,
-		"skipLibCheck": true,
-		"strict": true,
-		"removeComments": false,
-		"sourceMap": true
+		"jsx": "react"
 	},
 	"include": ["src/**/*", "typings", "node_modules/zotero-types"],
 	"exclude": ["build", "static"]

@@ -1,5 +1,5 @@
-import { ColumnOptions } from "zotero-plugin-toolkit/dist/helpers/virtualizedTable";
-import { DialogHelper } from "zotero-plugin-toolkit/dist/helpers/dialog";
+import { config } from "../package.json";
+import { ColumnOptions, DialogHelper } from "zotero-plugin-toolkit";
 import hooks from "./hooks";
 import { createZToolkit } from "./utils/ztoolkit";
 import ZoteroOverlay from "./cita/zoteroOverlay";
@@ -7,8 +7,10 @@ import ZoteroOverlay from "./cita/zoteroOverlay";
 class Addon {
 	public data: {
 		alive: boolean;
+		config: typeof config;
 		// Env type, see build.js
 		env: "development" | "production";
+		initialized?: boolean;
 		ztoolkit: ZToolkit;
 		locale?: {
 			current: any;
@@ -29,7 +31,9 @@ class Addon {
 	constructor() {
 		this.data = {
 			alive: true,
+			config,
 			env: __env__,
+			initialized: false,
 			ztoolkit: createZToolkit(),
 		};
 		this.hooks = hooks;

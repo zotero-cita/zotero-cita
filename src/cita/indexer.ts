@@ -6,7 +6,7 @@ import Bottleneck from "bottleneck";
 import ItemWrapper from "./itemWrapper";
 import PID from "./PID";
 import Matcher from "./matcher";
-import _ = require("lodash");
+import _ from "lodash";
 import Lookup, { ParsedReference } from "./zotLookup";
 
 export interface IndexedWork<R> {

@@ -648,12 +648,12 @@ export default class {
 		let qid;
 		if (qsCommands) {
 			const buttonFlags =
-				Services.prompt.BUTTON_POS_0 *
-					Services.prompt.BUTTON_TITLE_IS_STRING +
-				Services.prompt.BUTTON_POS_1 *
-					Services.prompt.BUTTON_TITLE_IS_STRING +
-				Services.prompt.BUTTON_POS_2 *
-					Services.prompt.BUTTON_TITLE_CANCEL;
+				Services.prompt.BUTTON_POS_0! *
+					Services.prompt.BUTTON_TITLE_IS_STRING! +
+				Services.prompt.BUTTON_POS_1! *
+					Services.prompt.BUTTON_TITLE_IS_STRING! +
+				Services.prompt.BUTTON_POS_2! *
+					Services.prompt.BUTTON_TITLE_CANCEL!;
 			const response = Services.prompt.confirmEx(
 				window as mozIDOMWindowProxy,
 				Wikicite.getString("wikicite.wikidata.create.confirm.title"),

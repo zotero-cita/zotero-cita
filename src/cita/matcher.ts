@@ -398,12 +398,12 @@ export function normalizeString(str: string) {
 
 function parseCreator(
 	creator:
-		| Zotero.Item.Creator
+		| _ZoteroTypes.Item.Creator
 		| {
 				lastName: string;
 				firstName: string;
 				fieldMode: number;
-				// eslint-disable-next-line no-mixed-spaces-and-tabs
+				 
 		  },
 ) {
 	const lastName = normalizeString(creator.lastName);

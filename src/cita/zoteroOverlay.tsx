@@ -16,10 +16,11 @@ import * as prefs from "./preferences";
 import { Root, createRoot } from "react-dom/client";
 import { getLocaleID } from "../utils/locale";
 import { getPrefGlobalName } from "../utils/prefs";
-import { MenuitemOptions } from "zotero-plugin-toolkit/dist/managers/menu";
+import { MenuitemOptions } from "zotero-plugin-toolkit";
 import Citation from "./citation";
 import { IndexerBase } from "./indexer";
 import PIDBoxContainer from "../containers/pidBoxContainer";
+import OCI from "../oci";
 
 const TRANSLATORS_PATH = `chrome://${config.addonRef}/content/translators`;
 const TRANSLATOR_LABELS = [
@@ -370,7 +371,7 @@ class ZoteroOverlay {
 		const io: {
 			dataIn: null;
 			dataOut: string[] | number[] | null;
-			deferred: _ZoteroTypes.DeferredPromise<void>;
+			deferred: _ZoteroTypes.Promise.DeferredPromise<void>;
 			itemTreeID: string;
 			filterLibraryIDs: number[];
 		} = {
@@ -1102,7 +1103,10 @@ class ZoteroOverlay {
 					].resolveOCI(supplier),
 				isDisabled: () => {
 					const sourceItem = this._sourceItem;
-					const citation =
+					if (typeof sourceItem == "undefined") {
+						return true;
+					}
+					const citation: Citation =
 						sourceItem?.citations[this._citationIndex!];
 					const ociSuppliers = citation?.ocis.map(
 						(oci) => oci.supplierName,
@@ -1336,7 +1340,7 @@ class ZoteroOverlay {
 		functionName: MenuFunction,
 		func: (menuName: MenuSelectionType) => void,
 		IDPrefix: string,
-	) {
+	): MenuitemOptions {
 		let label: string;
 		if (
 			functionName.includes("getCitations.") ||

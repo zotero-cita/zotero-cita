@@ -10,25 +10,25 @@ async function onStartup() {
 		Zotero.uiReadyPromise,
 	]);
 
-	// TODO: Remove this after zotero#3387 is merged
-	if (__env__ === "development") {
-		// Keep in sync with the scripts/startup.mjs
-		const loadDevToolWhen = `Plugin ${config.addonID} startup`;
-		ztoolkit.log(loadDevToolWhen);
-	}
-
 	initLocale();
-	await onMainWindowLoad(window);
+
+	await Promise.all(
+		Zotero.getMainWindows().map((win) => onMainWindowLoad(win)),
+	);
+
+	// Mark initialized as true to confirm plugin loading status
+	// outside of the plugin (e.g. scaffold testing process)
+	addon.data.initialized = true;
 }
 
-// eslint-disable-next-line @typescript-eslint/require-await
+ 
 async function onMainWindowLoad(win: Window): Promise<void> {
 	// Create ztoolkit for every window
 	addon.data.ztoolkit = createZToolkit();
 	addon.data.zoteroOverlay = new ZoteroOverlay(win);
 }
 
-// eslint-disable-next-line @typescript-eslint/require-await
+ 
 async function onMainWindowUnload(win: Window): Promise<void> {
 	addon.data.zoteroOverlay!.unload();
 	ztoolkit.unregisterAll();
@@ -40,6 +40,7 @@ function onShutdown(): void {
 	addon.data.dialog?.window?.close();
 	// Remove addon object
 	addon.data.alive = false;
+	// @ts-ignore - Plugin instance is not typed
 	delete Zotero[config.addonInstance];
 }
 

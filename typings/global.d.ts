@@ -3,8 +3,6 @@ declare const _globalThis: {
 	Zotero: _ZoteroTypes.Zotero;
 	ZoteroPane: _ZoteroTypes.ZoteroPane;
 	Zotero_Tabs: typeof Zotero_Tabs;
-	window: Window;
-	document: Document;
 	ztoolkit: ZToolkit;
 	addon: typeof addon;
 };

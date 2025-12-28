@@ -735,7 +735,9 @@ class SourceItemWrapper extends ItemWrapper {
 			});
 
 			// Make sure items have better bibtex citation keys for export (if BetterBibTeX is installed) #145
+			// @ts-expect-error - better bibtex isn't typed
 			if (Zotero.BetterBibTeX) {
+				// @ts-expect-error - better bibtex isn't typed
 				await Zotero.BetterBibTeX.ready;
 				const proposed_keys = new Set<string>();
 				for (const item of citedItems) {
@@ -745,6 +747,7 @@ class SourceItemWrapper extends ItemWrapper {
 					);
 					if (citationKeyMatch.values.length != 1) {
 						const proposal: string =
+							// @ts-expect-error - better bibtex isn't typed
 							Zotero.BetterBibTeX.KeyManager.propose(
 								item,
 								proposed_keys,

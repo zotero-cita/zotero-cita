@@ -168,9 +168,9 @@ function CitationsBoxContainer(props: {
 
 	// Sync state with Zotero overlay
 	useEffect(() => {
-		(
-			Zotero[config.addonInstance].data.zoteroOverlay as ZoteroOverlay
-		).setSourceItem(sourceItem);
+		// prettier-ignore
+		// @ts-expect-error - Plugin instance is not typed
+		( Zotero[config.addonInstance].data.zoteroOverlay as ZoteroOverlay).setSourceItem(sourceItem);
 	}, [sourceItem]);
 
 	// Keep citation count up to date
@@ -197,7 +197,7 @@ function CitationsBoxContainer(props: {
 		event: React.MouseEvent,
 		citationIndex: number,
 	) {
-		// fix: how to access this?
+		// @ts-expect-error - Plugin instance is not typed
 		Zotero[config.addonInstance].data.zoteroOverlay.setCitationIndex(
 			citationIndex,
 		);

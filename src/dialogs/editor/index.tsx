@@ -19,7 +19,7 @@ let citation: Citation;
 const retVals: { item?: Zotero.Item } = (window as any).arguments[1];
 let newItem: ItemWrapper;
 let sourceLabel: string;
-let sourceType: Zotero.Item.ItemType;
+let sourceType: _ZoteroTypes.Item.ItemType;
 let _shownPIDs: Set<PIDType>;
 let pidChangeCallback: ((pidTypes: Set<PIDType>) => void) | undefined;
 

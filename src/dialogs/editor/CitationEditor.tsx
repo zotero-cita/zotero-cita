@@ -14,7 +14,7 @@ interface CitationEditorProps {
 	item: ItemWrapper;
 	itemBox: any;
 	sourceLabel: string;
-	sourceType: Zotero.Item.ItemType;
+	sourceType: _ZoteroTypes.Item.ItemType;
 	getString: (name: string) => string;
 	onCancel: () => void;
 	onSave: () => void;

@@ -3,7 +3,7 @@ import OpenAlex from "openalex-sdk";
 import { SearchParameters } from "openalex-sdk/dist/src/types/work";
 import PID from "./PID";
 import Wikicite from "./wikicite";
-import _ = require("lodash");
+import _ from "lodash";
 import { ParsableReference } from "./indexer";
 import ItemWrapper from "./itemWrapper";
 import { WorkFilterParameters } from "openalex-sdk/dist/src/types/workFilterParameters";

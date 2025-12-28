@@ -79,6 +79,7 @@ export default class Crossref extends IndexerBase<Reference> {
 	async fetchDOI(item: ItemWrapper): Promise<PID | null> {
 		const crossrefOpenURL =
 			"https://doi.crossref.org/openurl?pid=cita@duck.com&";
+		// @ts-expect-error - OpenURL isn't typed
 		const ctx = Zotero.OpenURL.createContextObject(item, "1.0");
 
 		if (ctx) {

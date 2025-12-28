@@ -43,9 +43,9 @@ class Citation {
 				| Zotero.Item
 				| {
 						itemType?: // there are all possible itemTypes for Zotero.Item(itemType)
-						| keyof Zotero.Item.ItemTypeMapping
-							| Zotero.Item.ItemTypeMapping[keyof Zotero.Item.ItemTypeMapping];
-						// eslint-disable-next-line no-mixed-spaces-and-tabs
+							| keyof _ZoteroTypes.Item.ItemTypeMapping
+							| _ZoteroTypes.Item.ItemTypeMapping[keyof _ZoteroTypes.Item.ItemTypeMapping];
+						 
 				  };
 			ocis: string[];
 			zotero?: string;

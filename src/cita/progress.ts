@@ -23,7 +23,7 @@ const delay = 3000;
 
 export default class Progress {
 	progressWin: Zotero.ProgressWindow;
-	progress: Zotero.ItemProgress[];
+	progress: _ZoteroTypes.ItemProgress[];
 	setStyleSheet = false;
 	constructor(status?: StatusType, message?: string) {
 		// Fixme: there seems to be a bug with Zotero.ProgressWindow if
@@ -43,7 +43,7 @@ export default class Progress {
 		}
 	}
 
-	async addStyleSheetToProgressWindow(progress: Zotero.ItemProgress) {
+	async addStyleSheetToProgressWindow(progress: _ZoteroTypes.ItemProgress) {
 		// this is a hack to add custom icons into the CSS
 		// see https://github.com/zotero/zotero/pull/4047
 		await this.waitForItemProgressReady(progress);
@@ -58,7 +58,7 @@ export default class Progress {
 		progressWindow.appendChild(styleSheet);
 	}
 
-	async waitForItemProgressReady(progress: Zotero.ItemProgress) {
+	async waitForItemProgressReady(progress: _ZoteroTypes.ItemProgress) {
 		return new Promise<void>((resolve) => {
 			// @ts-ignore new version of Progress
 			if (typeof progress._image !== "undefined") {
@@ -80,7 +80,7 @@ export default class Progress {
 		});
 	}
 
-	async waitForItemProgressParentReady(progress: Zotero.ItemProgress) {
+	async waitForItemProgressParentReady(progress: _ZoteroTypes.ItemProgress) {
 		return new Promise<void>((resolve) => {
 			// @ts-ignore new version of Progress
 			if (progress._image.parentElement != null) {

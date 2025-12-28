@@ -40,6 +40,7 @@
 	},
 	"dependencies": {
 		"@react-hook/resize-observer": "^2.0.2",
+		"bottleneck": "^2.19.5",
 		"core-js": "^3.47.0",
 		"openalex-sdk": "^1.1.6",
 		"prop-types": "^15.8.1",
@@ -51,7 +52,7 @@
 		"semver-parser": "^4.1.8",
 		"wikibase-edit": "^7.0.4",
 		"wikibase-sdk": "^10.0.2",
-		"zotero-plugin-toolkit": "^4.0.14"
+		"zotero-plugin-toolkit": "^5.1.0-beta.13"
 	},
 	"devDependencies": {
 		"@types/core-js": "^2.5.8",
@@ -70,7 +71,7 @@
 		"typescript": "^5.9.3",
 		"typescript-eslint": "^8.50.1",
 		"zotero-plugin-scaffold": "^0.8.2",
-		"zotero-types": "^3.0.5"
+		"zotero-types": "^4.1.0-beta.4"
 	},
 	"prettier": {
 		"printWidth": 80,

@@ -140,12 +140,13 @@ function CitationsBox(props: CitationsBoxProps) {
 			// get this from preferences: remembered "delete remote too" choice
 			// const remember = {value: false};
 			const bttnFlags =
-				Services.prompt.BUTTON_POS_0 * Services.prompt.BUTTON_TITLE_NO +
-				Services.prompt.BUTTON_POS_1 *
-					Services.prompt.BUTTON_TITLE_CANCEL +
-				Services.prompt.BUTTON_POS_2 *
-					Services.prompt.BUTTON_TITLE_YES +
-				Services.prompt.BUTTON_POS_2_DEFAULT;
+				Services.prompt.BUTTON_POS_0! *
+					Services.prompt.BUTTON_TITLE_NO! +
+				Services.prompt.BUTTON_POS_1! *
+					Services.prompt.BUTTON_TITLE_CANCEL! +
+				Services.prompt.BUTTON_POS_2! *
+					Services.prompt.BUTTON_TITLE_YES! +
+				Services.prompt.BUTTON_POS_2_DEFAULT!;
 			const response = Services.prompt.confirmEx(
 				window as mozIDOMWindowProxy,
 				Wikicite.getString(

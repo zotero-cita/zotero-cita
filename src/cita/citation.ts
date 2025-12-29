@@ -158,9 +158,7 @@ class Citation {
 					);
 				}
 				// fetch cites work statements
-				const claims = await Wikidata.getCitesWorkClaims(
-					qid as EntityId, // EntityID is a wikidata id, starting with Q, L, P, or M
-				);
+				const claims = await Wikidata.getCitesWorkClaims(qid);
 				const pushClaims: { [qid: QID]: CitesWorkClaim[] } = {
 					[qid]: claims[qid].reduce(
 						(claimsToRemove: CitesWorkClaim[], claim) => {

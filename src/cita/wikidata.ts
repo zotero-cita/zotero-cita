@@ -1,10 +1,12 @@
 import Wikicite, { debug } from "./wikicite";
 import Progress from "./progress";
-// ignore until we find / make types for these packages
-import WBK, { Entity, EntityId, SimplifiedPropertyClaims } from "wikibase-sdk";
+import WBK, {
+	EntityId,
+	PropertyId,
+	SimplifiedPropertyClaims,
+} from "wikibase-sdk";
 // @ts-ignore - couldn't find the types for this
 import qs2wbEdit from "quickstatements-to-wikibase-edit";
-// @ts-ignore - couldn't find the types for this
 import wbEdit from "wikibase-edit";
 import ItemWrapper from "./itemWrapper";
 import { config } from "../../package.json";
@@ -24,7 +26,7 @@ const entities = {
 	work: "Q386724",
 };
 
-const properties = {
+const properties: { [name: string]: PropertyId } = {
 	author: "P50",
 	authorNameString: "P2093",
 	citesWork: "P2860",
@@ -57,15 +59,6 @@ const wdEdit = wbEdit({
 });
 
 export default class {
-	wdk: any;
-
-	constructor() {
-		this.wdk = WBK({
-			instance: WBK_INSTANCE,
-			sparqlEndpoint: WBK_SPARQL,
-		});
-	}
-
 	/**
 	 * Fetches QIDs for item wrappers provided, using reconciliation API
 	 * @param {Array|ItemWrapper} items (Array of) ItemWrapper(s)
@@ -457,159 +450,6 @@ export default class {
 	}
 
 	/**
-	 * DEPRECATED - use this.reconcile() instead
-	 * Fetches QIDs for item wrappers provided and returns item -> QID map
-	 */
-	// 	static async getQID(items: ItemWrapper | ItemWrapper[], create = false) {
-	// 		//, approximate, getCitations=true) {
-	// 		const progress = new Progress();
-	// 		// make sure an array of items was provided
-	// 		if (!Array.isArray(items)) items = [items];
-	// 		// create item -> qid map that will be returned at the end
-	// 		const qidMap = new Map(items.map((item) => [item, item.qid]));
-	// 		// one pool of identifiers to match against, across items and PID type
-	// 		let identifiers = items.reduce((identifiers, item) => {
-	// 			// Fixme: support more PIDs
-	// 			// also support multiple PIDs per item (e.g., DOI & PMID)
-	// 			// see #51
-	// 			const cleanDoi = Zotero.Utilities.cleanDOI(item.doi);
-	// 			const cleanIsbn = Zotero.Utilities.cleanISBN(item.isbn);
-	// 			if (cleanDoi) {
-	// 				// Wikidata's P356 (DOI) value is automatically transformed
-	// 				// to uppercase https://www.wikidata.org/wiki/Property_talk:P356#Documentation
-	// 				identifiers.push(cleanDoi.toUpperCase());
-	// 			} else if (cleanIsbn) {
-	// 				identifiers.push(cleanIsbn);
-	// 			}
-	// 			return identifiers;
-	// 		}, []);
-	// 		identifiers = [...new Set(identifiers)];
-	// 		if (identifiers.length) {
-	// 			// if at least one supported identifier available,
-	// 			// run the SPARQL query
-	// 			const identifierString = identifiers
-	// 				.map((identifier) => `"${identifier}"`)
-	// 				.join(" ");
-	// 			const sparql = `
-	// SELECT ?item ?itemLabel ?doi ?isbn WHERE {
-	//     VALUES ?identifier { ${identifierString} }.
-	//     ?item (wdt:P356|wdt:P212|wdt:P957) ?identifier.
-	//     OPTIONAL {
-	//         ?item wdt:P356 ?doi.
-	//     }
-	//     OPTIONAL {
-	//         ?item wdt:P212 ?isbn
-	//     }
-	//     OPTIONAL {
-	//         ?item wdt:P957 ?isbn
-	//     }
-	//     SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE]". }
-	// }
-	// `;
-	// 			const [url, body] = wdk.sparqlQuery(sparql).split("?");
-	// 			progress.newLine(
-	// 				"loading",
-	// 				Wikicite.getString(
-	// 					"wikicite.wikidata.progress.qid.fetch.loading",
-	// 				),
-	// 			);
-	// 			let results;
-	// 			try {
-	// 				// make POST request in case query is too long
-	// 				const xmlhttp = await Zotero.HTTP.request("POST", url, {
-	// 					body: body,
-	// 					headers: {
-	// 						"User-Agent": `${Wikicite.getUserAgent()} wikibase-sdk/v${wbSdkVersion || "?"}`,
-	// 					},
-	// 				});
-	// 				results = wdk.simplify.sparqlResults(xmlhttp.response);
-	// 			} catch {
-	// 				progress.updateLine(
-	// 					"error",
-	// 					Wikicite.getString(
-	// 						"wikicite.wikidata.progress.qid.fetch.error",
-	// 					),
-	// 				);
-	// 			}
-
-	// 			if (results.length) {
-	// 				progress.updateLine(
-	// 					"done",
-	// 					Wikicite.getString(
-	// 						"wikicite.wikidata.progress.qid.fetch.done",
-	// 					),
-	// 				);
-	// 				for (const item of items) {
-	// 					// matches are sparql results/entities whose doi or isbn
-	// 					// match the current item doi or isbn
-	// 					// Fixme: support other PIDs, see #51
-	// 					let matches;
-	// 					if (item.doi) {
-	// 						matches = results.filter(
-	// 							(result) => result.doi === item.doi.toUpperCase(),
-	// 						);
-	// 					} else if (item.isbn) {
-	// 						matches = results.filter(
-	// 							(result) => result.isbn === item.isbn,
-	// 						);
-	// 					}
-	// 					if (matches.length) {
-	// 						const qids = matches.map((match) => match.item.value);
-	// 						// if multiple entities found, choose the oldest one
-	// 						const qid = qids.sort()[0];
-	// 						// add matching qid to the qidMap to be returned
-	// 						qidMap.set(item, qid);
-	// 					}
-	// 				}
-	// 			} else {
-	// 				// no results from sparql query
-	// 				progress.updateLine(
-	// 					"error",
-	// 					Wikicite.getString(
-	// 						"wikicite.wikidata.progress.qid.fetch.zero",
-	// 					),
-	// 				);
-	// 			}
-	// 		} else {
-	// 			// items provided have no supported PIDs (DOI, ISBN)
-	// 			progress.newLine("error", "No valid unique identifiers provided");
-	// 		}
-	// 		// Fixme: approximate search should be available for all items for which a
-	// 		// qid could not be returned before trying to create a new entity
-	// 		if ([...qidMap.values()].some((qid) => typeof qid === "undefined")) {
-	// 			// at least one of the items provided isn't mapped to a qid yet
-	// 			Services.prompt.alert(
-	// 				null,
-	// 				"Title query unsupported",
-	// 				"QID could not be fetched for some items, and title query not yet supported",
-	// 			);
-	// 			// approximate parameter to use fields other than UIDs
-	// 			// this should either use MediaWiki API's wbsearchentities or query actions
-	// 			// see https://stackoverflow.com/questions/37170179/wikidata-api-wbsearchentities-why-are-results-not-the-same-in-python-than-in-wi
-	// 			// but as I understand one Api call would be made for each query, I would limit
-	// 			// this to single item searches (i.e. not item arrays)
-	// 			// if (items.length < 2) {}
-	// 			// https://www.wikidata.org/w/api.php?action=wbsearchentities&search=social interaction and conceptual change&format=json&language=en
-	// 			// I may have to show confirmation dialogs for user to confirm
-	// 			// but maybe this is intrusive for automatic runs (install, or new item)
-	// 			// maybe additional option too?
-	// 		}
-
-	// 		// handle offer create new one if not found
-	// 		// maybe just send them to the webpage, idk
-	// 		// issue #33
-	// 		if (create) {
-	// 			Services.prompt.alert(
-	// 				window,
-	// 				"Unsupported",
-	// 				"Creating new entities in Wikidata not yet supported",
-	// 			);
-	// 		}
-	// 		progress.close();
-	// 		return qidMap;
-	// 	}
-
-	/**
 	 * Creates a Wikidata entity for an item wrapper provided
 	 * @param {ItemWrapper} item Wrapped Zotero item
 	 * @param {Object} options
@@ -830,8 +670,8 @@ export default class {
 	 * @returns {Promise} { entityQID: {property1: value1, property2: value2} }
 	 */
 	static async getProperties(
-		sourceQIDs: EntityId | EntityId[],
-		properties: string | string[],
+		sourceQIDs: QID | QID[],
+		properties: PropertyId | PropertyId[],
 	) {
 		if (!Array.isArray(sourceQIDs)) sourceQIDs = [sourceQIDs];
 		if (!Array.isArray(properties)) properties = [properties];
@@ -842,7 +682,7 @@ export default class {
 			props: "claims",
 			format: "json",
 		});
-		const data: { [id: string]: { [id: string]: any } } = {};
+		const data: { [id: QID]: { [id: PropertyId]: any } } = {};
 		while (urls.length) {
 			const url = urls.shift() as string;
 			try {
@@ -853,7 +693,7 @@ export default class {
 				});
 				// Fixme: handle entities undefined
 				const { entities } = JSON.parse(xmlhttp.response);
-				for (const id of Object.keys(entities)) {
+				for (const id of Object.keys(entities) as QID[]) {
 					const entity = entities[id];
 					data[id] = {};
 					for (const property of properties) {
@@ -876,15 +716,16 @@ export default class {
 	 * @returns {Promise} author string map { entityQID: [author list] }
 	 */
 	static async getAuthors(entityData: {
-		[id: string]: { [id: string]: string[] };
+		[id: QID]: { [id: PropertyId]: string[] };
 	}) {
-		const authorStringMap: { [id: string]: string[] } = {};
+		const authorStringMap: { [id: QID]: string[] } = {};
 		const idsToQuery: EntityId[] = [];
-		const entityIdsOfAuthors: { [id: string]: string } = {};
-		for (const [key, value] of Object.entries(entityData)) {
+		const entityIdsOfAuthors: { [id: QID]: QID } = {};
+		for (const key of Object.keys(entityData) as QID[]) {
+			const value = entityData[key];
 			authorStringMap[key] = [];
 			if (value[properties.author].length > 0) {
-				for (const authorID of value[properties.author]) {
+				for (const authorID of value[properties.author] as QID[]) {
 					idsToQuery.push(authorID as EntityId);
 					entityIdsOfAuthors[authorID] = key;
 				}
@@ -912,7 +753,7 @@ export default class {
 				});
 				// Fixme: handle entities undefined
 				const { entities } = JSON.parse(xmlhttp.response);
-				for (const id of Object.keys(entities)) {
+				for (const id of Object.keys(entities) as QID[]) {
 					authorStringMap[entityIdsOfAuthors[id]].push(
 						entities[id].labels.en.value,
 					);
@@ -926,10 +767,10 @@ export default class {
 
 	/**
 	 * Gets "cites work" (P2860) values from Wikidata for one or more entities
-	 * @param {Array} sourceQIDs - Array of one or more entity QIDs
+	 * @param {QID | QID[]} sourceQIDs - One or more entity QIDs
 	 * @returns {Promise} Citations map { entityQID: [cites work QIDs]... }
 	 */
-	static async getCitesWorkClaims(sourceQIDs: EntityId | EntityId[]) {
+	static async getCitesWorkClaims(sourceQIDs: QID | QID[]) {
 		if (!Array.isArray(sourceQIDs)) sourceQIDs = [sourceQIDs];
 		// Fixme: alternatively, use the SPARQL endpoint to get more than 50
 		// entities per request, and to get only the claims I'm interested in
@@ -1272,42 +1113,4 @@ export class CitesWorkClaim {
 		this.qualifiers = citesWorkClaimValue.qualifiers;
 		this.remove = false;
 	}
-
-	// get intentions() {
-	//     return this.qualifiers[properties.citoIntention];
-	// }
-
-	// set intentions(intentionQualifiers) {
-	//     this.qualifiers[properties.citoIntention] = intentionQualifiers;
-	// }
-
-	// addReference() {}
-
-	// removeReference() {}
-
-	// editReference() {}
-
-	// addIntention() {}
-
-	// removeIntention() {}
 }
-
-// class Reference {
-//     // P248: 'Q5188229', //stated in; possible values would be Crossref, or OCC Q26382154
-//     // P854: 'https://api.crossref.org/works/' // reference URL, I need doi for this
-//     constructor(reference) {
-//         this.statedIn = reference[properties.statedIn];
-//         this.refUrl = reference[properties.refUrl];
-//     }
-// }
-
-// class Qualifier {
-//     constructor(qualifier) {}
-// }
-
-// class IntentionQualifier {
-//     // P3712 objective of project or action
-//     constructor(intentionQualifier) {
-//         this.intentions = [];
-//     }
-// }

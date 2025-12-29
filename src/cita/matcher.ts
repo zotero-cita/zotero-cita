@@ -403,7 +403,6 @@ function parseCreator(
 				lastName: string;
 				firstName: string;
 				fieldMode: number;
-				 
 		  },
 ) {
 	const lastName = normalizeString(creator.lastName);

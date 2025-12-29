@@ -21,14 +21,12 @@ async function onStartup() {
 	addon.data.initialized = true;
 }
 
- 
 async function onMainWindowLoad(win: Window): Promise<void> {
 	// Create ztoolkit for every window
 	addon.data.ztoolkit = createZToolkit();
 	addon.data.zoteroOverlay = new ZoteroOverlay(win);
 }
 
- 
 async function onMainWindowUnload(win: Window): Promise<void> {
 	addon.data.zoteroOverlay!.unload();
 	ztoolkit.unregisterAll();

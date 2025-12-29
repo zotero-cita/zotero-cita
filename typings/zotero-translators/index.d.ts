@@ -1304,6 +1304,7 @@ declare namespace ZoteroTranslators {
 		note: string;
 	}
 
+	// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 	interface Collection {}
 
 	interface Translator {

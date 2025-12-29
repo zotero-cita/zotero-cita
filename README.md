@@ -17,9 +17,9 @@ The plugin consists of four separate basic modules:
 This module adds citation metadata support to Zotero.
 It provides an additional Citations tab where the user can:
 
--   add, edit or remove individual citations;
--   run item-wide and citation specific actions, such as syncing citations with WikiData, parsing citations from attachments (not yet supported), etc;
--   edit source item's UUIDs, such as DOI, WikiData's QID, and [OpenCitations Corpus](https://opencitations.net/corpus) ID.
+- add, edit or remove individual citations;
+- run item-wide and citation specific actions, such as syncing citations with WikiData, parsing citations from attachments (not yet supported), etc;
+- edit source item's UUIDs, such as DOI, WikiData's QID, and [OpenCitations Corpus](https://opencitations.net/corpus) ID.
 
 Citations metadata are currently saved as a note attachment.
 
@@ -75,9 +75,9 @@ Cita is collaboratively translated at translatewiki.net. Would you like to help 
 
 Cita depends on:
 
--   maxlath's [wikibase-edit](https://github.com/maxlath/wikibase-edit) & [wikibase-sdk](https://github.com/maxlath/wikibase-sdk)
--   Tim Wölfle's [Local Citation Network](https://timwoelfle.github.io/Local-Citation-Network/)
--   [React](https://reactjs.org/)
+- maxlath's [wikibase-edit](https://github.com/maxlath/wikibase-edit) & [wikibase-sdk](https://github.com/maxlath/wikibase-sdk)
+- Tim Wölfle's [Local Citation Network](https://timwoelfle.github.io/Local-Citation-Network/)
+- [React](https://reactjs.org/)
 
 Support for importing/exporting citations from/to a file, among other contributions, were mostly implemented by Dominic Dall'Osto.
 

@@ -24,7 +24,6 @@ export function getPrefGlobalName(key: string) {
  * @param value
  */
 export function setPref(key: string, value: string | number | boolean) {
-	// eslint-disable-next-line @typescript-eslint/no-unsafe-return
 	return Zotero.Prefs.set(`${config.prefsPrefix}.${key}`, value, true);
 }
 

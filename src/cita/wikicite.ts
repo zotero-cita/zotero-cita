@@ -1,8 +1,3 @@
- 
- 
- 
- 
- 
 import Wikidata from "./wikidata";
 
 import { getString as _getString } from "../utils/locale";

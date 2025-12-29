@@ -1,8 +1,8 @@
-/* eslint-disable @typescript-eslint/restrict-template-expressions */
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-/* eslint-disable @typescript-eslint/no-unsafe-call */
-/* eslint-disable @typescript-eslint/no-unsafe-return */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+ 
+ 
+ 
+ 
+ 
 import Wikidata from "./wikidata";
 
 import { getString as _getString } from "../utils/locale";
@@ -195,6 +195,13 @@ export default {
 		return notes;
 	},
 
+	/**
+	 * Get localised string from a translation identifier.
+	 * Note: this method performs normalisation (camel case to hyphen separated, dot to underscore)
+	 * to match the expected formatting in the translation files.
+	 * @param name translation identifier string (eg. `wikicite.source-item.import.progress.done` or `source-item.import.progress.error`)
+	 * @returns localised string
+	 */
 	getString: function (name: string) {
 		// convert camelCase to hyphen-divided for translatewiki.net
 		name = name.replace(/([a-z])([A-Z])/g, "$1-$2").toLowerCase();
@@ -215,6 +222,14 @@ export default {
 		// }
 	},
 
+	/**
+	 * Get localised string from a translation identifier while inserting values into it.
+	 * Note: this method performs normalisation (camel case to hyphen separated, dot to underscore)
+	 * to match the expected formatting in the translation files.
+	 * @param name translation identifier string (eg. `wikicite.wikidata.orphaned.message` or `wikidata.ignored.message`)
+	 * @param params single value or list of values to insert in the localised string
+	 * @returns localised string
+	 */
 	formatString: function (name: string, params: unknown | unknown[]) {
 		// convert camelCase to hyphen-divided for translatewiki.net
 		name = name.replace(/([a-z])([A-Z])/g, "$1-$2").toLowerCase();

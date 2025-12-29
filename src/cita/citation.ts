@@ -161,8 +161,8 @@ class Citation {
 				const claims = await Wikidata.getCitesWorkClaims(
 					qid as EntityId, // EntityID is a wikidata id, starting with Q, L, P, or M
 				);
-				const pushClaims = {
-					qid: claims[qid].reduce(
+				const pushClaims: { [qid: QID]: CitesWorkClaim[] } = {
+					[qid]: claims[qid].reduce(
 						(claimsToRemove: CitesWorkClaim[], claim) => {
 							// claim could be a string, number of actual claim object
 							// keep those which want to be deleted

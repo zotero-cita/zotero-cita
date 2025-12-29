@@ -1019,11 +1019,19 @@ export default class {
 		return itemMap;
 	}
 
-	static async updateCitesWorkClaims(citesWorkClaims: { [id: QID]: any }) {
+	/**
+	 * Update cites work claims on wikidata
+	 * @param {{[id:QID]: CitesWorkClaim[]}} citesWorkClaims - for each item (QID) with claims to be updated - the list of claim updates
+	 * @returns {Promise[{[id:QID]: string}]} - Result for updating each item's claims
+	 */
+	static async updateCitesWorkClaims(citesWorkClaims: {
+		[id: QID]: CitesWorkClaim[];
+	}) {
 		const login = new Login();
-		const results: { [id: string]: string } = {};
-		for (const id of Object.keys(citesWorkClaims)) {
-			const actionType = getActionType(citesWorkClaims[id as QID]);
+		const results: { [id: QID]: string } = {};
+
+		for (const id of Object.keys(citesWorkClaims) as QID[]) {
+			const actionType = getActionType(citesWorkClaims[id]);
 
 			do {
 				if (!login.cancelled && (!login.anonymous || login.error)) {
@@ -1043,10 +1051,9 @@ export default class {
 					resetCookies();
 					const res = await wdEdit.entity.edit(
 						{
-							id: id as QID,
+							id: id,
 							claims: {
-								[properties.citesWork]:
-									citesWorkClaims[id as QID],
+								[properties.citesWork]: citesWorkClaims[id],
 							},
 							summary:
 								Wikicite.formatString(
@@ -1194,7 +1201,7 @@ class Login {
  * For a set of claims, return the type of action
  * (add, edit, remove or update) that will be requested.
  */
-function getActionType(claims: any[]) {
+function getActionType(claims: CitesWorkClaim[]) {
 	let actionType;
 	if (claims.some((claim) => claim.id)) {
 		if (claims.every((claim) => claim.id)) {

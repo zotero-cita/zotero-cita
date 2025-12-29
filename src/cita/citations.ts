@@ -190,7 +190,9 @@ export default class {
 			const remoteCitedQids: (QID | undefined)[] = pulledCitesWorkClaims[
 				sourceItem.qid!
 			].map((claim) =>
-				typeof claim != "string" && typeof claim != "number"
+				typeof claim != "string" &&
+				typeof claim != "number" &&
+				"value" in claim
 					? (claim.value as QID) // this type is unknown
 					: undefined,
 			);

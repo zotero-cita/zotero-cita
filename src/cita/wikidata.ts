@@ -52,7 +52,7 @@ const wdEdit = wbEdit({
 	instance: WBK_INSTANCE,
 	// maxlag may be ommited for interactive tasks where a user is waiting for the result
 	// https://www.mediawiki.org/wiki/Manual:Maxlag_parameter
-	maxlag: null,
+	maxlag: undefined,
 	// tags: ['Zotero_WikiCite']
 });
 
@@ -416,7 +416,7 @@ export default class {
 					const qid = await this.create(item, {
 						checkDuplicates: false,
 					});
-					qids.set(item, qid);
+					qids.set(item, qid as QID);
 				}
 			}
 		}
@@ -1019,11 +1019,11 @@ export default class {
 		return itemMap;
 	}
 
-	static async updateCitesWorkClaims(citesWorkClaims: { [id: string]: any }) {
+	static async updateCitesWorkClaims(citesWorkClaims: { [id: QID]: any }) {
 		const login = new Login();
 		const results: { [id: string]: string } = {};
 		for (const id of Object.keys(citesWorkClaims)) {
-			const actionType = getActionType(citesWorkClaims[id]);
+			const actionType = getActionType(citesWorkClaims[id as QID]);
 
 			do {
 				if (!login.cancelled && (!login.anonymous || login.error)) {
@@ -1043,9 +1043,10 @@ export default class {
 					resetCookies();
 					const res = await wdEdit.entity.edit(
 						{
-							id: id,
+							id: id as QID,
 							claims: {
-								[properties.citesWork]: citesWorkClaims[id],
+								[properties.citesWork]:
+									citesWorkClaims[id as QID],
 							},
 							summary:
 								Wikicite.formatString(

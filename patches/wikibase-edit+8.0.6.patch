@@ -1,0 +1,163 @@
+diff --git a/node_modules/wikibase-edit/dist/src/lib/request/fetch.js b/node_modules/wikibase-edit/dist/src/lib/request/fetch.js
+index 1a8951a..cbdc8d7
+--- a/node_modules/wikibase-edit/dist/src/lib/request/fetch.js
++++ b/node_modules/wikibase-edit/dist/src/lib/request/fetch.js
+@@ -2,16 +2,17 @@ import fetch from 'cross-fetch';
+ import { debug, debugMode } from '../debug.js';
+ const isNode = globalThis.process?.versions?.node != null;
+ let agent;
+-if (isNode) {
+-    // Using a custom agent to set keepAlive=true
+-    // https://nodejs.org/api/http.html#http_class_http_agent
+-    // https://github.com/bitinn/node-fetch#custom-agent
+-    const http = await import('node:http');
+-    const https = await import('node:https');
+-    const httpAgent = new http.Agent({ keepAlive: true });
+-    const httpsAgent = new https.Agent({ keepAlive: true });
+-    agent = ({ protocol }) => protocol === 'http:' ? httpAgent : httpsAgent;
+-}
++// this doesn't compile
++// if (isNode) {
++//     // Using a custom agent to set keepAlive=true
++//     // https://nodejs.org/api/http.html#http_class_http_agent
++//     // https://github.com/bitinn/node-fetch#custom-agent
++//     const http = await import('node:http');
++//     const https = await import('node:https');
++//     const httpAgent = new http.Agent({ keepAlive: true });
++//     const httpsAgent = new https.Agent({ keepAlive: true });
++//     agent = ({ protocol }) => protocol === 'http:' ? httpAgent : httpsAgent;
++// }
+ export async function customFetch(url, { timeout, ...options } = {}) {
+     options.agent = options.agent || agent;
+     options.headers['accept-encoding'] = 'gzip,deflate';
+@@ -38,7 +39,7 @@ export async function customFetch(url, { timeout, ...options } = {}) {
+ }
+ // Based on https://stackoverflow.com/questions/46946380/fetch-api-request-timeout#57888548
+ function fetchWithTimeout(url, options, timeoutMs = 120_000) {
+-    const controller = new AbortController();
++    const controller = new window.AbortController();
+     const promise = fetch(url, {
+         keepalive: true,
+         signal: controller.signal,
+diff --git a/node_modules/wikibase-edit/dist/src/lib/request/login.js b/node_modules/wikibase-edit/dist/src/lib/request/login.js
+index ef02dca..c7fc19d
+--- a/node_modules/wikibase-edit/dist/src/lib/request/login.js
++++ b/node_modules/wikibase-edit/dist/src/lib/request/login.js
+@@ -32,11 +32,20 @@ const getSessionCookies = async (loginUrl, config, headers, loginCookies) => {
+         headers: headersWithCookies,
+         body,
+     });
++    // need to separately get the set-cookie response headers because they're filtered out by fetch
++    // https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Set-Cookie
++    const [resIgnore, resCookies] = await fetchWithSetCookie(loginUrl, {
++        method: 'post',
++        headers: headersWithCookies,
++        withCredentials: true,
++        mode: 'cors',
++        body,
++    })
+     const resBody = await parseResponseBody(res);
+     if (resBody.login.result !== 'Success') {
+         throw newError('failed to login: invalid username/password');
+     }
+-    const resCookies = res.headers.get('set-cookie');
++    // const resCookies = res.headers.get('set-cookie');
+     if (!resCookies) {
+         throw newError('login error', res.status, { body: resBody });
+     }
+@@ -53,3 +62,95 @@ const parseLoginCookies = async (res) => {
+     return { token, cookies };
+ };
+ //# sourceMappingURL=login.js.map
++
++// from https://github.com/JakeChampion/fetch/blob/ba5cf1ed2e02ebb96fa1e60b4fd2eb04071b60e4/fetch.js#L526
++function fetchWithSetCookie(input, init) {
++  return new Promise(function(resolve, reject) {
++    var request = new Request(input, init)
++
++    if (request.signal && request.signal.aborted) {
++      return reject(new DOMException('Aborted', 'AbortError'))
++    }
++
++    var xhr = new XMLHttpRequest()
++
++    xhr.onload = function() {
++      var responseHeaders = xhr.getAllResponseHeaders();
++      // set cookie will get filtered out of response so return it manually
++      var setCookie = xhr.getResponseHeader('set-cookie');
++      var options = {
++        status: xhr.status,
++        statusText: xhr.statusText,
++        headers: parseHeaders(responseHeaders || '')
++      }
++      options.url = 'responseURL' in xhr ? xhr.responseURL : options.headers.get('X-Request-URL')
++      var body = 'response' in xhr ? xhr.response : xhr.responseText
++      setTimeout(function() {
++        resolve([new Response(body, options), setCookie])
++      }, 0)
++    }
++
++    xhr.onerror = function() {
++      setTimeout(function() {
++        reject(new TypeError('Network request failed'))
++      }, 0)
++    }
++
++    xhr.ontimeout = function() {
++      setTimeout(function() {
++        reject(new TypeError('Network request failed'))
++      }, 0)
++    }
++
++    xhr.onabort = function() {
++      setTimeout(function() {
++        reject(new DOMException('Aborted', 'AbortError'))
++      }, 0)
++    }
++
++    function fixUrl(url) {
++      try {
++        return url === '' && g.location.href ? g.location.href : url
++      } catch (e) {
++        return url
++      }
++    }
++
++    xhr.open(request.method, fixUrl(request.url), true)
++
++    // Get error - XMLHttpRequest must not be sending when setting .withCredentials or other xhr options
++    // so just send the request straight away
++    // I think this makes it fail though
++    // complete code here https://github.com/JakeChampion/fetch/blob/ba5cf1ed2e02ebb96fa1e60b4fd2eb04071b60e4/fetch.js#L526
++
++    xhr.send(typeof request._bodyInit === 'undefined' ? null : request._bodyInit)
++  })
++}
++
++function parseHeaders(rawHeaders) {
++  var headers = new Headers()
++  // Replace instances of \r\n and \n followed by at least one space or horizontal tab with a space
++  // https://tools.ietf.org/html/rfc7230#section-3.2
++  var preProcessedHeaders = rawHeaders.replace(/\r?\n[\t ]+/g, ' ')
++  // Avoiding split via regex to work around a common IE11 bug with the core-js 3.6.0 regex polyfill
++  // https://github.com/github/fetch/issues/748
++  // https://github.com/zloirock/core-js/issues/751
++  preProcessedHeaders
++    .split('\r')
++    .map(function(header) {
++      return header.indexOf('\n') === 0 ? header.substr(1, header.length) : header
++    })
++    .forEach(function(line) {
++      var parts = line.split(':')
++      var key = parts.shift().trim()
++      if (key) {
++        var value = parts.join(':').trim()
++        try {
++          headers.append(key, value)
++        } catch (error) {
++          console.warn('Response ' + error.message)
++        }
++      }
++    })
++  return headers
++}

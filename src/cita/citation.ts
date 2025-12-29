@@ -45,7 +45,6 @@ class Citation {
 						itemType?: // there are all possible itemTypes for Zotero.Item(itemType)
 							| keyof _ZoteroTypes.Item.ItemTypeMapping
 							| _ZoteroTypes.Item.ItemTypeMapping[keyof _ZoteroTypes.Item.ItemTypeMapping];
-						 
 				  };
 			ocis: string[];
 			zotero?: string;
@@ -170,6 +169,7 @@ class Citation {
 							if (
 								typeof claim != "string" &&
 								typeof claim != "number" &&
+								"value" in claim &&
 								claim.value === this.target.qid
 							) {
 								// create CitesWorkClaim objects from them

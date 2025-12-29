@@ -129,7 +129,7 @@ class ZoteroOverlay {
 	// Modifying Item Pane
 	/******************************************/
 	async addItemPaneColumns() {
-		this.qidColumnID = await Zotero.ItemTreeManager.registerColumns({
+		this.qidColumnID = Zotero.ItemTreeManager.registerColumn({
 			dataKey: ITEM_PANE_COLUMN_IDS.QID,
 			label: Wikicite.getString("wikicite.item-tree.column-label.qid"),
 			pluginID: config.addonID,
@@ -143,30 +143,29 @@ class ZoteroOverlay {
 		});
 
 		// fix: this doesn't update immediately when removing citations
-		this.numCitationsColumnID =
-			await Zotero.ItemTreeManager.registerColumns({
-				dataKey: ITEM_PANE_COLUMN_IDS.CITATIONS,
-				label: Wikicite.getString(
-					"wikicite.item-tree.column-label.citations",
-				),
-				pluginID: config.addonID,
-				dataProvider: (item: Zotero.Item, dataKey: string) => {
-					return item.isRegularItem()
-						? new SourceItemWrapper(
-								item,
-								prefs.getStorage(),
-							).citations.length.toString() || ""
-						: "";
-				},
-			});
+		this.numCitationsColumnID = Zotero.ItemTreeManager.registerColumn({
+			dataKey: ITEM_PANE_COLUMN_IDS.CITATIONS,
+			label: Wikicite.getString(
+				"wikicite.item-tree.column-label.citations",
+			),
+			pluginID: config.addonID,
+			dataProvider: (item: Zotero.Item, dataKey: string) => {
+				return item.isRegularItem()
+					? new SourceItemWrapper(
+							item,
+							prefs.getStorage(),
+						).citations.length.toString() || ""
+					: "";
+			},
+		});
 	}
 
 	removeItemPaneColumns() {
 		if (this.qidColumnID) {
-			void Zotero.ItemTreeManager.unregisterColumns(this.qidColumnID);
+			void Zotero.ItemTreeManager.unregisterColumn(this.qidColumnID);
 		}
 		if (this.numCitationsColumnID) {
-			void Zotero.ItemTreeManager.unregisterColumns(
+			void Zotero.ItemTreeManager.unregisterColumn(
 				this.numCitationsColumnID,
 			);
 		}

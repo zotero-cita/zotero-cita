@@ -47,6 +47,7 @@ export type FluentMessageId =
   | 'wikicite_editor_add'
   | 'wikicite_editor_cancel'
   | 'wikicite_editor_refresh'
+  | 'wikicite_editor_refresh_tooltip'
   | 'wikicite_editor_save'
   | 'wikicite_editor_title'
   | 'wikicite_extract_unsupported'

@@ -197,6 +197,7 @@ const CitationEditor = (props: CitationEditorProps) => {
 					onClick={() => {
 						onRefresh();
 					}}
+					title={props.getString("wikicite.editor.refresh.tooltip")}
 				>
 					{props.getString("wikicite.editor.refresh")}
 				</button>

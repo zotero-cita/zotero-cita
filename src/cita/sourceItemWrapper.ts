@@ -216,6 +216,7 @@ class SourceItemWrapper extends ItemWrapper {
 					const citation = new Citation(
 						JSON.parse(rawCitation),
 						this,
+						"load",
 					);
 					if (citation) {
 						citations.push(citation);
@@ -257,7 +258,7 @@ class SourceItemWrapper extends ItemWrapper {
 					citations.push(
 						...rawCitations.map(
 							(rawCitation: any) =>
-								new Citation(rawCitation, this),
+								new Citation(rawCitation, this, "load"),
 						),
 					);
 				} catch (error) {
@@ -659,9 +660,9 @@ class SourceItemWrapper extends ItemWrapper {
 								item: newItem,
 								ocis: [],
 								citationSource: "User",
-								creationDate: new Date(),
 							},
 							this,
+							"create",
 						);
 						citations.push(citation);
 					}
@@ -774,7 +775,11 @@ class SourceItemWrapper extends ItemWrapper {
 
 		const citations = items
 			? items.map((item) => {
-					return new Citation({ item: item, ocis: [] }, this);
+					return new Citation(
+						{ item: item, ocis: [] },
+						this,
+						"create",
+					);
 				})
 			: [];
 

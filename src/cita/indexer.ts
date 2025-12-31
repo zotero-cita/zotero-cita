@@ -556,6 +556,7 @@ export abstract class IndexerBase<Ref> {
 						citationSource: this.indexerName as CitationSource,
 					},
 					sourceItem,
+					"create",
 				);
 
 				// Add known PIDs to the citation

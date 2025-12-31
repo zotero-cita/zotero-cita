@@ -584,6 +584,7 @@ export default class {
 									citationSource: "WikiData",
 								},
 								sourceItem,
+								"create",
 							);
 							citation.autoLink(matchers[libraryID]);
 							newCitations.push(citation);

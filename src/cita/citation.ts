@@ -6,7 +6,6 @@ import SourceItemWrapper from "./sourceItemWrapper";
 import Matcher from "./matcher";
 import OCI, { OCIPIDType } from "../oci";
 import Progress from "./progress";
-import { EntityId } from "wikibase-sdk";
 
 export type CitationSource =
 	| "Crossref"
@@ -44,6 +43,8 @@ export class Citation {
 	 * @param {Date?} citationData.creationDate - When the citation was created.
 	 * @param {Date?} citationData.lastModificationDate - When the citation was last updated by the user.
 	 * @param {Zotero.Item} sourceItem - The citation's source item.
+	 * @param {"create" | "load"} citationType - Whether we're creating a new citation or loading an existing one.
+	 *                                           If creating a new one - set the creation date to the current time if undefined.
 	 */
 	constructor(
 		citationData: {
@@ -62,6 +63,7 @@ export class Citation {
 			lastModificationDate?: Date;
 		},
 		sourceItem: SourceItemWrapper,
+		citationType: "create" | "load",
 	) {
 		// Fixme: improve type checking of the citation object passed as argument
 		if (!citationData.item || !citationData.ocis) {
@@ -108,6 +110,8 @@ export class Citation {
 
 		if (citationData.creationDate) {
 			this.creationDate = citationData.creationDate;
+		} else if (citationType == "create") {
+			this.creationDate = new Date();
 		}
 
 		if (citationData.lastModificationDate) {

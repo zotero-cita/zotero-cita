@@ -419,9 +419,9 @@ class ZoteroOverlay {
 						item: target.item,
 						ocis: [],
 						citationSource: "User",
-						creationDate: new Date(),
 					},
 					source,
+					"create",
 				);
 				citation.linkToZoteroItem(target.item);
 				return citation;
@@ -779,9 +779,9 @@ class ZoteroOverlay {
 				},
 				ocis: [],
 				citationSource: "User",
-				creationDate: new Date(),
 			},
 			this._sourceItem,
+			"create",
 		);
 		const item = this.openEditor(citation);
 		if (!item) {

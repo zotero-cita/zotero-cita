@@ -17,7 +17,7 @@ import { Root, createRoot } from "react-dom/client";
 import { getLocaleID } from "../utils/locale";
 import { getPrefGlobalName } from "../utils/prefs";
 import { MenuitemOptions } from "zotero-plugin-toolkit";
-import Citation from "./citation";
+import { Citation } from "./citation";
 import { IndexerBase } from "./indexer";
 import PIDBoxContainer from "../containers/pidBoxContainer";
 import OCI from "../oci";

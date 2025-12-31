@@ -29,7 +29,7 @@ interface OCCitation {
 }
 
 export default class OpenCitations extends IndexerBase<OCCitation> {
-	indexerName = "Open Citations";
+	indexerName = "OpenCitations";
 	indexerPID: PIDType = "OMID";
 
 	limiter = new Bottleneck({

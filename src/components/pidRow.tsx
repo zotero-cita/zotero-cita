@@ -27,7 +27,8 @@ function PIDRow(props: PIDRowProps) {
 	useEffect(() => {
 		// update the value of the input to match the new PID
 		if (inputRef.current) {
-			inputRef.current.value = pidValue?.id || "";
+			// Show cleaned ID when available; show empty string for null
+			inputRef.current.value = pidValue?.cleanID ?? "";
 		}
 	}, [pidValue]);
 
@@ -79,7 +80,8 @@ function PIDRow(props: PIDRowProps) {
 						id={`pid-row-input-${props.item.key}-${props.type}`}
 						className={props.editable ? "input" : ""}
 						readOnly={!props.editable}
-						defaultValue={pidValue?.id || ""}
+						// Show cleaned ID when available; show empty string for null
+						defaultValue={pidValue?.cleanID ?? ""}
 						// when the input loses focus, update the item's PID
 						onBlur={(event) => handleCommit(event.target.value)}
 					/>,

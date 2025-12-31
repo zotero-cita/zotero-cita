@@ -42,11 +42,11 @@ declare type MenuFunction =
 	| "getIdentifiers.QID"
 	| "getIdentifiers.OpenAlex"
 	| "getIdentifiers.CorpusID"
-	| "syncWithWikidata"
 	| "getCitations.Crossref"
-	| "getCitations.Semantic Scholar"
 	| "getCitations.OpenAlex"
+	| "getCitations.Semantic Scholar"
 	| "getCitations.OpenCitations"
+	| "syncWithWikidata"
 	| "getFromAttachments"
 	| "addAsCitations"
 	| "localCitationNetwork"
@@ -757,7 +757,7 @@ class ZoteroOverlay {
 		window.openDialog(
 			`chrome://${config.addonRef}/content/citationEditor.xhtml`,
 			"",
-			"chrome,dialog=no,modal,centerscreen,resizable,width=380,height=500",
+			"chrome,dialog=no,modal,centerscreen,resizable,width=400,height=500",
 			args,
 			retVals,
 		);
@@ -1223,7 +1223,7 @@ class ZoteroOverlay {
 	): MenuitemOptions[] {
 		const options: MenuitemOptions[] = [];
 
-		// Fetching menu items
+		// "Get identifiers" menu items
 		const fetchSubmenus: MenuitemOptions[] = [];
 		const fetchPIDs: Map<
 			MenuFunction,
@@ -1255,9 +1255,9 @@ class ZoteroOverlay {
 			children: fetchSubmenus,
 		});
 
-		// Get from citations menu item
+		// "Get citations" menu item
 		const citationsSubmenus: MenuitemOptions[] = [];
-		const indexers = [Crossref, Semantic, OpenAlex, OpenCitations];
+		const indexers = [Crossref, OpenAlex, Semantic, OpenCitations];
 		for (const IndexerType of indexers) {
 			const indexer = new IndexerType();
 			const functionName =
@@ -1341,12 +1341,11 @@ class ZoteroOverlay {
 		IDPrefix: string,
 	): MenuitemOptions {
 		let label: string;
-		if (
-			functionName.includes("getCitations.") ||
-			functionName.includes("getIdentifiers.")
-		) {
+		if (functionName.includes("getCitations.")) {
 			label = functionName.split(".")[1];
-		} else label = Wikicite.getString(`wikicite.submenu.${functionName}`);
+		} else {
+			label = Wikicite.getString(`wikicite.submenu.${functionName}`);
+		}
 		const menuOptions: MenuitemOptions = {
 			tag: "menuitem",
 			id: IDPrefix + functionName,

@@ -197,6 +197,14 @@ const CitationEditor = (props: CitationEditorProps) => {
 					onClick={() => {
 						onRefresh();
 					}}
+					title={
+						props.item.getAllPIDs().length == 0
+							? props.getString(
+									"wikicite.editor.refresh.tooltip.disabled",
+								)
+							: props.getString("wikicite.editor.refresh.tooltip")
+					}
+					disabled={props.item.getAllPIDs().length == 0}
 				>
 					{props.getString("wikicite.editor.refresh")}
 				</button>

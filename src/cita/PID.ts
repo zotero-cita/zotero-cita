@@ -31,11 +31,15 @@ export default class PID {
 				case "arXiv":
 					return "https://arxiv.org/abs/" + cleanPID;
 				case "QID":
-					return "https://www.wikidata.org/wiki/" + cleanPID;
+					return "https://wikidata.org/wiki/" + cleanPID;
 				case "CorpusID":
 					return (
 						"https://api.semanticscholar.org/CorpusID:" + cleanPID
 					);
+				case "PMID":
+					return "https://pubmed.ncbi.nlm.nih.gov/" + cleanPID;
+				case "PMCID":
+					return "https://pmc.ncbi.nlm.nih.gov/articles/" + cleanPID;
 			}
 		}
 		return null;
@@ -90,6 +94,19 @@ export default class PID {
 				if (!semantic) return null;
 				return semantic;
 			}
+			case "PMID": {
+				let id = this.id.trim();
+				id = id.match(/\d+/)?.[0] ?? "";
+				if (!id.match(/^\d+$/)) return null;
+				return id;
+			}
+			case "PMCID": {
+				let id = this.id.trim();
+				id = id.match(/\d+/)?.[0] ?? "";
+				id = "PMC" + id;
+				if (!id.match(/^PMC\d+$/)) return null;
+				return id;
+			}
 			default:
 				return this.id;
 		}
@@ -143,18 +160,21 @@ export default class PID {
 		"OMID",
 		"arXiv",
 		"OpenAlex",
+		// "MAG" not showable due to deprecation
 		"CorpusID",
-		// Don't show PMID or PMCID because we can't fetch citations from them
+		"PMID",
+		"PMCID",
 	]);
 
-	static readonly alwaysShown: Set<PIDType> = new Set(["DOI", "QID"]);
+	static readonly alwaysShown: Set<PIDType> = new Set(["DOI"]);
 
 	static readonly fetchable: Set<PIDType> = new Set([
+		"DOI",
 		"QID",
 		"OMID",
 		"OpenAlex",
-		"DOI",
 		"CorpusID",
+		// TODO PMID and PMCID could probably be fetched via NCBI NIH APIs
 	]);
 
 	static isEqual(a: PID, b: PID): boolean {

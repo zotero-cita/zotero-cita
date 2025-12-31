@@ -105,7 +105,7 @@ function CitationsBox(props: CitationsBoxProps) {
 		window.openDialog(
 			`chrome://${config.addonRef}/content/citationEditor.xhtml`,
 			"",
-			"chrome,dialog=no,modal,centerscreen,resizable,width=380,height=500",
+			"chrome,dialog=no,modal,centerscreen,resizable,width=400,height=500",
 			args,
 			retVals,
 		);

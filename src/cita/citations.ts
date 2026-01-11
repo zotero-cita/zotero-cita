@@ -201,7 +201,8 @@ export default class {
 			// first iterate over local citations
 			for (const citation of sourceItem.citations) {
 				const localCitedQid = citation.target.qid;
-				const wikidataOci = citation.getOCI("wikidata");
+				const wikidataCitationStatus =
+					citation.getWikidataCitationStatus();
 				// First check if the citation has an invalid wikidata oci.
 				// These citations will be ignored (i.e., they won't be
 				// unflagged nor will they be marked as orphaned).
@@ -209,7 +210,7 @@ export default class {
 				// referred to by the oci.
 				// User must fix the inconsistency first: revert the source or
 				// target item qid change, or remove the citation.
-				if (wikidataOci && !wikidataOci.valid) {
+				if (wikidataCitationStatus && !wikidataCitationStatus.matches) {
 					// local citation has a wikidata oci, but it is invalid
 					// i.e., it corresponds to another source or target qid
 					counters.invalidOci += 1;
@@ -217,31 +218,31 @@ export default class {
 					// add the invalid oci's target qid to the array of local cited qids
 					// because we don't want to create a new local citation for this
 					// target item
-					localCitedQids.add(wikidataOci.citedId);
+					localCitedQids.add(wikidataCitationStatus.citedQID);
 					continue;
 				}
 				if (localCitedQid) {
 					localCitedQids.add(localCitedQid);
 					if (remoteCitedQids.includes(localCitedQid)) {
 						// the citation exists in Wikidata as well
-						if (wikidataOci) {
-							// the citation already has a valid up-to-date wikidata oci
+						if (wikidataCitationStatus) {
+							// the citation already has a valid up-to-date wikidata status
 							counters.syncedCitations += 1;
 						} else {
-							// the citation doesn't have a wikidata oci yet
+							// the citation doesn't have a wikidata status yet
 							localFlagCitations[itemId].push(localCitedQid);
 							counters.localFlagCitations += 1;
 							localItemsToUpdate.add(itemId);
 						}
 					} else {
 						// the citation does not exist in Wikidata
-						if (wikidataOci) {
-							// the citation has a valid Wikidata oci
+						if (wikidataCitationStatus) {
+							// the citation has a valid Wikidata status
 							// hence, it existed in Wikidata before
 							orphanedCitations[itemId].push(localCitedQid);
 							counters.orphanedCitations += 1;
 						} else {
-							// the citation doesn't have a Wikidata OCI yet
+							// the citation doesn't have a Wikidata status yet
 							if (
 								remoteAddCitations[itemId].includes(
 									localCitedQid,
@@ -469,12 +470,9 @@ export default class {
 							"qid",
 						);
 						for (const citation of citations) {
-							citation.addOCI(
-								OCI.getOci(
-									"wikidata",
-									sourceItem.qid!,
-									targetQid,
-								),
+							citation.addWikidataCitationStatus(
+								sourceItem.qid!,
+								targetQid,
 							);
 						}
 					}
@@ -572,15 +570,13 @@ export default class {
 					for (const targetQid of addCitations) {
 						const targetItem = targetItems?.get(targetQid);
 						if (targetItem) {
-							const oci = OCI.getOci(
-								"wikidata",
-								sourceItem.qid!,
-								targetQid,
-							);
 							const citation = new Citation(
 								{
 									item: targetItem,
-									ocis: [oci],
+									wikidataCitationStatus: {
+										citingQID: sourceItem.qid!,
+										citedQID: targetQid,
+									},
 									citationSource: "WikiData",
 								},
 								sourceItem,
@@ -614,12 +610,9 @@ export default class {
 						);
 						if (citations.length) {
 							for (const citation of citations) {
-								citation.addOCI(
-									OCI.getOci(
-										"wikidata",
-										sourceItem.qid!,
-										targetQid,
-									),
+								citation.addWikidataCitationStatus(
+									sourceItem.qid!,
+									targetQid,
 								);
 							}
 						} else {
@@ -639,7 +632,7 @@ export default class {
 						);
 						if (citations.length) {
 							for (const citation of citations) {
-								citation.removeOCI("wikidata");
+								citation.removeWikidataCitationStatus();
 							}
 						} else {
 							throw new Error(

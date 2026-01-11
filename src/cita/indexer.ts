@@ -552,7 +552,6 @@ export abstract class IndexerBase<Ref> {
 				const newCitation = new Citation(
 					{
 						item: parsedRef.item,
-						ocis: [],
 						citationSource: this.indexerName as CitationSource,
 					},
 					sourceItem,
@@ -572,11 +571,6 @@ export abstract class IndexerBase<Ref> {
 				// Auto-link the citation
 				if (autoLinkCitations) {
 					await newCitation.autoLink(matcher!);
-				}
-
-				// Add OCI if available
-				if (parsedRef.oci) {
-					newCitation.addOCI(parsedRef.oci);
 				}
 
 				citations.push(newCitation);

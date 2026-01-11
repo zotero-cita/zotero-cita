@@ -658,7 +658,6 @@ class SourceItemWrapper extends ItemWrapper {
 						const citation = new Citation(
 							{
 								item: newItem,
-								ocis: [],
 								citationSource: "User",
 							},
 							this,
@@ -775,11 +774,7 @@ class SourceItemWrapper extends ItemWrapper {
 
 		const citations = items
 			? items.map((item) => {
-					return new Citation(
-						{ item: item, ocis: [] },
-						this,
-						"create",
-					);
+					return new Citation({ item: item }, this, "create");
 				})
 			: [];
 

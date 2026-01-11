@@ -4,7 +4,7 @@ import Wikidata, { CitesWorkClaim } from "./wikidata";
 import ItemWrapper from "./itemWrapper";
 import SourceItemWrapper from "./sourceItemWrapper";
 import Matcher from "./matcher";
-import OCI, { OCIPIDType } from "../oci";
+import OCI from "../oci";
 import Progress from "./progress";
 
 export type CitationSource =
@@ -20,14 +20,10 @@ export type CitationSource =
 export class Citation {
 	source: SourceItemWrapper;
 	target: ItemWrapper;
-	ocis: {
-		citingId: string;
-		citedId: string;
-		idType: OCIPIDType;
-		oci: string;
-		supplierName: string;
-		valid: boolean;
-	}[];
+	wikidataCitationStatus?: {
+		citingQID: QID;
+		citedQID: QID;
+	};
 	citationSource: CitationSource;
 	creationDate?: Date;
 	lastModificationDate?: Date;
@@ -36,7 +32,9 @@ export class Citation {
 	/**
 	 * Create a citation.
 	 * @param {Zotero.Item | object} citationData.item - The citation's target item.
-	 * @param {Array} citationData.ocis - Array of OpenCitations OCIs.
+	 * @param {string} citationData.ocis - Just for backwards compatibility to load old citation files.
+	 * @param {string} citationData.wikidataCitationStatus.source - For tracking whether this citation is also present in wikidata. Source item
+	 * @param {string} citationData.wikidataCitationStatus.target - Target item for this citation in wikidata
 	 * @param {string?} citationData.zotero - The citation's target item key, if linked to an item in the library.
 	 * @param {string?} citationData.uuid - Unique indentifier for the citation.
 	 * @param {CitationSource?} citationData.citationSource - Where the citation data came from.
@@ -55,7 +53,12 @@ export class Citation {
 							| keyof _ZoteroTypes.Item.ItemTypeMapping
 							| _ZoteroTypes.Item.ItemTypeMapping[keyof _ZoteroTypes.Item.ItemTypeMapping];
 				  };
-			ocis: string[];
+			oci?: string;
+			ocis?: string;
+			wikidataCitationStatus?: {
+				citingQID: QID;
+				citedQID: QID;
+			};
 			zotero?: string;
 			uuid?: string;
 			citationSource?: CitationSource;
@@ -66,8 +69,8 @@ export class Citation {
 		citationType: "create" | "load",
 	) {
 		// Fixme: improve type checking of the citation object passed as argument
-		if (!citationData.item || !citationData.ocis) {
-			throw new Error("Missing item, OCIs, or Zotero key fields!");
+		if (!citationData.item) {
+			throw new Error("Can't create a citation without a target item");
 		}
 
 		// this.index = index;
@@ -91,8 +94,12 @@ export class Citation {
 			this.target.fromJSON(citationData.item);
 		}
 
-		this.ocis = [];
-		citationData.ocis.forEach((oci) => this.addOCI(oci));
+		if (citationData.wikidataCitationStatus) {
+			this.wikidataCitationStatus = citationData.wikidataCitationStatus;
+		} else if (citationData.ocis) {
+			// for backwards compatibility - wikidataCitation state used to be stored in ocis
+			this.loadWikidataCitationStatusFromOldOCIs(citationData.ocis);
+		}
 
 		this.target.key = citationData.zotero;
 		// if a Zotero item key is provided for the target item,
@@ -131,44 +138,31 @@ export class Citation {
 		// I may limit author types to author and editor
 	}
 
-	addOCI(oci: string) {
-		const { citingId, citedId, idType, supplier } = OCI.parseOci(oci);
+	addWikidataCitationStatus(citingQID: QID, citedQID: QID) {
+		this.wikidataCitationStatus = {
+			citingQID,
+			citedQID,
+		};
+	}
 
-		// commented out because not really needed (yet) and was causing
-		// that pids could not be cleared, because they would be refilled
-		// when addOCI was invoked from the constructor
-		// // if source or target items do not have pid of type idType,
-		// // use the one derived from the oci provided
-		// if (!this.source[idType]) this.source[idType] = citingId;
-		// if (!this.target[idType]) this.target[idType] = citedId;
-
-		// recalculate OCI and compare against OCI given
-		let newOci = "";
-		try {
-			newOci = OCI.getOci(
-				supplier,
-				this.source.getPID(idType)!.id,
-				this.target.getPID(idType)!.id,
-			);
-		} catch {
-			//
+	loadWikidataCitationStatusFromOldOCIs(ocis: string) {
+		if (ocis) {
+			for (const oci of ocis) {
+				// OCI format used to be 010{sourceQID}-010{targetQID}
+				const [sourceId, targetId] = oci.split("-");
+				if (sourceId.startsWith("010") && targetId.startsWith("010")) {
+					const citingQID = ("Q" +
+						sourceId.replace(/^010/, "")) as QID;
+					const citedQID = ("Q" +
+						targetId.replace(/^010/, "")) as QID;
+					this.wikidataCitationStatus = {
+						citingQID,
+						citedQID,
+					};
+					break; // there would only be one wikidata OCI
+				}
+			}
 		}
-		const valid = oci == newOci;
-
-		// overwrite pre-existing oci of the same supplier
-		if (this.getOCI(supplier)) {
-			debug("Overwriting OCI of supplier " + supplier);
-			this.removeOCI(supplier);
-		}
-
-		this.ocis.push({
-			citingId: citingId!,
-			citedId: citedId!,
-			idType: idType,
-			oci: oci,
-			supplierName: supplier,
-			valid: valid,
-		});
 	}
 
 	/**
@@ -176,8 +170,8 @@ export class Citation {
 	 */
 	async deleteRemotely() {
 		let success;
-		const wikidataOci = this.getOCI("wikidata");
-		if (wikidataOci && wikidataOci.valid) {
+		const getWikidataCitationStatus = this.getWikidataCitationStatus();
+		if (getWikidataCitationStatus && getWikidataCitationStatus.matches) {
 			try {
 				const qid = this.source.qid;
 				if (qid === undefined) {
@@ -230,22 +224,42 @@ export class Citation {
 		return success;
 	}
 
-	getOCI(supplierName: string) {
-		const ocis = this.ocis.filter(
-			(oci) => oci.supplierName === supplierName,
-		);
-		if (ocis.length > 1) {
-			throw new Error(
-				"Unexpected multiple OCIs for supplier " + supplierName,
-			);
+	getOCI() {
+		const sourceOMID = this.source.getPID("OMID")?.id;
+		const targetOMID = this.target.getPID("OMID")?.id;
+
+		if (sourceOMID && targetOMID) {
+			return OCI.getOci(sourceOMID, targetOMID);
 		}
-		return ocis[0];
+		return undefined;
 	}
 
-	removeOCI(supplierName: string) {
-		this.ocis = this.ocis.filter(
-			(oci) => oci.supplierName !== supplierName,
-		);
+	removeWikidataCitationStatus() {
+		this.wikidataCitationStatus = undefined;
+	}
+
+	/**
+	 * Get the saved wikidata status for this citation, so we can detect for example
+	 * whether we should try to remove this citation from wikidata when it is deleted in Cita
+	 * @returns source and target QIDs, and well as whether these match the current citation source and target QIDs
+	 */
+	getWikidataCitationStatus() {
+		if (this.wikidataCitationStatus) {
+			const sourceQID = this.source.getPID("QID")?.id;
+			const targetQID = this.target.getPID("QID")?.id;
+
+			const matches =
+				sourceQID == this.wikidataCitationStatus.citingQID &&
+				targetQID == this.wikidataCitationStatus.citedQID;
+
+			return {
+				citingQID: this.wikidataCitationStatus.citingQID,
+				citedQID: this.wikidataCitationStatus.citedQID,
+				matches: matches,
+			};
+		} else {
+			return undefined;
+		}
 	}
 
 	/**
@@ -254,7 +268,7 @@ export class Citation {
 	toJSON() {
 		return {
 			item: this.target.toJSON(),
-			ocis: this.ocis.map((oci) => oci.oci),
+			wikidataCitationStatus: this.wikidataCitationStatus,
 			zotero: this.target.key,
 			citationSource: this.citationSource,
 			creationDate: this.creationDate,
@@ -276,22 +290,17 @@ export class Citation {
 
 	wikidataSync(index: number) {
 		const syncable = this.source.qid && this.target.qid;
-		const oci = this.getOCI("wikidata");
-		if (oci) {
-			if (oci.valid) {
-				this.resolveOCI("wikidata");
-			} else {
-				// oci is invalid, i.e., citing or cited id do not match with
-				// local source or target id
+		const wikidataCitationStatus = this.getWikidataCitationStatus();
+		if (wikidataCitationStatus) {
+			if (!wikidataCitationStatus.matches) {
+				// wikidata citation doesn't match, i.e., citing or cited id
+				// do not match with local source or target id
 				Services.prompt.alert(
 					window as mozIDOMWindowProxy,
 					Wikicite.getString("wikicite.oci.mismatch.title"),
 					Wikicite.formatString("wikicite.oci.mismatch.message", [
-						oci.supplierName.charAt(0).toUpperCase() +
-							oci.supplierName.slice(1),
-						oci.idType.toUpperCase(),
-						oci.citingId,
-						oci.citedId,
+						wikidataCitationStatus.citingQID,
+						wikidataCitationStatus.citedQID,
 					]),
 				);
 			}
@@ -439,8 +448,8 @@ export class Citation {
 		if (autosave) this.source.saveCitations();
 	}
 
-	resolveOCI(supplierName: string) {
-		const oci = this.getOCI(supplierName);
-		OCI.resolve(oci.oci);
+	resolveOCI() {
+		const oci = this.getOCI()!;
+		OCI.resolve(oci);
 	}
 }

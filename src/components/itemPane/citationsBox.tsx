@@ -136,7 +136,7 @@ function CitationsBox(props: CitationsBoxProps) {
 	async function handleCitationDelete(index: number) {
 		let sync = false;
 		const citation = citations[index];
-		if (citation.getOCI("wikidata")) {
+		if (citation.getWikidataCitationStatus()) {
 			// Fixme: offer to remember user choice
 			// get this from preferences: remembered "delete remote too" choice
 			// const remember = {value: false};

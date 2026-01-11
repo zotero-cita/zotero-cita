@@ -12,11 +12,11 @@ interface WikidataButtonProps {
 function WikidataButton(props: WikidataButtonProps) {
 	const citation = props.citation;
 	const syncable = citation.source.qid && citation.target.qid;
-	const oci = citation.getOCI("wikidata");
+	const wikidataCitationStatus = citation.getWikidataCitationStatus();
 	let title;
 	let imgSrc = `chrome://${config.addonRef}/content/skin/default/wikidata-`;
-	if (oci) {
-		if (oci.valid) {
+	if (wikidataCitationStatus) {
+		if (wikidataCitationStatus.matches) {
 			title = Wikicite.getString("wikicite.citation-menu.oci");
 			imgSrc += "tick";
 		} else {

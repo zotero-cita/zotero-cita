@@ -417,7 +417,6 @@ class ZoteroOverlay {
 				const citation = new Citation(
 					{
 						item: target.item,
-						ocis: [],
 						citationSource: "User",
 					},
 					source,
@@ -781,7 +780,6 @@ class ZoteroOverlay {
 				item: {
 					itemType: "journalArticle", // Fixme: maybe replace with a const
 				},
-				ocis: [],
 				citationSource: "User",
 			},
 			this._sourceItem,
@@ -1068,45 +1066,18 @@ class ZoteroOverlay {
 			}
 		});
 
-		// Fixme: but OCI has two more suppliers: Dryad and CROCI
-		// Maybe I should have all of them, and show only the available ones
-		// for any one citation?
-		const ociSupplierItems: Array<MenuitemOptions> = [
-			"crossref",
-			"occ",
-			"wikidata",
-		].map((supplier) => {
-			return {
-				tag: "menuitem",
-				id: "citation-menu-oci-" + supplier,
-				label: Wikicite.getString(
-					"wikicite.citation-menu.oci." + supplier,
-				),
-				commandListener: () =>
-					this._sourceItem!.citations[
-						this._citationIndex!
-					].resolveOCI(supplier),
-				isDisabled: () => {
-					const sourceItem = this._sourceItem;
-					if (typeof sourceItem == "undefined") {
-						return true;
-					}
-					const citation: Citation =
-						sourceItem?.citations[this._citationIndex!];
-					const ociSuppliers = citation?.ocis.map(
-						(oci) => oci.supplierName,
-					);
-					return !ociSuppliers?.includes(supplier);
-				},
-			};
-		});
-
 		ztoolkit.Menu.register(citationMenu, {
-			tag: "menu",
+			tag: "menuitem",
 			id: "citation-menu-oci-submenu",
 			label: Wikicite.getString("wikicite.citation-menu.oci"),
-			popupId: "citation-menu-oci-submenu-popup",
-			children: ociSupplierItems,
+			commandListener: () => {
+				this._sourceItem!.citations[this._citationIndex!].resolveOCI();
+			},
+			isDisabled: () => {
+				const oci =
+					this._sourceItem?.citations[this._citationIndex!].getOCI();
+				return typeof oci == "undefined";
+			},
 		});
 
 		mainWindow.appendChild(citationMenu);

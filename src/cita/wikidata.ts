@@ -416,6 +416,25 @@ export default class {
 		return qids;
 	}
 
+	// based on Zotero.Utilities.extractIdentifiers
+	static extractQIDsFromText(text: string) {
+		const foundIDs = new Set(); // keep track of identifiers to avoid duplicates
+		const identifiers: { [idenifier: string]: string }[] = [];
+
+		// Look for QIDs
+		const ids = text.split(/[\s\u00A0]+/); // whitespace + non-breaking space
+		let qid;
+		for (const id of ids) {
+			if ((qid = this.cleanQID(id)) && !foundIDs.has(qid)) {
+				identifiers.push({
+					extra: `qid: ${qid}`,
+				});
+				foundIDs.add(qid);
+			}
+		}
+		return identifiers;
+	}
+
 	static cleanQID(qid: string) {
 		qid = qid.toUpperCase().trim();
 		if (qid[0] !== "Q") qid = "Q" + qid;

@@ -20,7 +20,8 @@ import { MenuitemOptions } from "zotero-plugin-toolkit";
 import { Citation } from "./citation";
 import { IndexerBase } from "./indexers/indexer";
 import PIDBoxContainer from "../containers/pidBoxContainer";
-import OCI from "../oci";
+import { patch, unpatch } from "../utils/patcher";
+import wikicite from "./wikicite";
 
 const TRANSLATORS_PATH = `chrome://${config.addonRef}/content/translators`;
 const TRANSLATOR_LABELS = [
@@ -74,6 +75,8 @@ class ZoteroOverlay {
 		this.addPreferenceUpdateObservers();
 
 		this.installTranslators();
+
+		this.patchEnableAddingItemByQID();
 	}
 
 	unload() {
@@ -84,6 +87,8 @@ class ZoteroOverlay {
 		this.removePreferenceUpdateObservers();
 
 		this.uninstallTranslators();
+
+		this.unpatchEnableAddingItemByQID();
 	}
 
 	/******************************************/
@@ -235,6 +240,48 @@ class ZoteroOverlay {
 		} catch (err) {
 			ztoolkit.log(`Failed to remove translator ${label}`, err as Error);
 		}
+	}
+
+	private patchEnableAddingItemByQID() {
+		patch(
+			Zotero.Utilities,
+			"extractIdentifiers",
+			// eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
+			(original: Function) =>
+				function Zotero_Utilities_extractIdentifiers(text: string) {
+					const identifiers = Wikidata.extractQIDsFromText(text);
+
+					if (!identifiers.length) {
+						return original(text);
+					} else {
+						return identifiers;
+					}
+				},
+		);
+		// Zotero.Translate.Search.prototype.setIdentifier
+		patch(
+			Zotero.Translate.Search.prototype,
+			"setIdentifier",
+			// eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
+			(original: Function) =>
+				function Zotero_Translate_Search_prototype_setIdentifier(
+					this: any,
+					identifier: {
+						[type: string]: string;
+					},
+				) {
+					if (identifier.extra) {
+						this.setSearch([identifier]);
+					} else {
+						original(text);
+					}
+				},
+		);
+	}
+
+	private unpatchEnableAddingItemByQID() {
+		unpatch(Zotero.Utilities, "extractIdentifiers");
+		unpatch(Zotero.Translate.Search.prototype, "setIdentifier");
 	}
 
 	/******************************************/

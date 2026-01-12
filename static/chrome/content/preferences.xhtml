@@ -15,6 +15,7 @@
 			</label>
 			<radiogroup preference="__prefsPrefix__.storage">
 				<!-- Note: need to manually make these .labels in the fluent during build -->
+				<!-- see zotero-plugin.config.ts -->
 				<radio
 					value="note"
 					data-l10n-id="zotero-wikicite-wikicite_prefs_citation-storage-note"
@@ -47,8 +48,20 @@
 		<groupbox>
 			<label>
 				<html:h2
-					data-l10n-id="zotero-wikicite-wikicite_prefs_semantic-api"
+					data-l10n-id="zotero-wikicite-wikicite_prefs_show-citation-numbers"
 				></html:h2>
+			</label>
+			<checkbox
+				preference="__prefsPrefix__.showCitationNumbers"
+				data-l10n-id="zotero-wikicite-wikicite_prefs_show-citation-numbers_label"
+			/>
+		</groupbox>
+		<groupbox>
+			<label>
+				<html:h2
+					data-l10n-id=" zotero-wikicite-wikicite_prefs_semantic-api"
+				>
+				</html:h2>
 				<html:p
 					data-l10n-id="zotero-wikicite-wikicite_prefs_semantic-api-desc"
 				></html:p>

@@ -207,6 +207,8 @@ export type FluentMessageId =
   | 'wikicite_prefs_semantic-api-desc'
   | 'wikicite_prefs_semantic-api-label'
   | 'wikicite_prefs_semantic-api-request'
+  | 'wikicite_prefs_show-citation-numbers'
+  | 'wikicite_prefs_show-citation-numbers_label'
   | 'wikicite_prefs_title'
   | 'wikicite_source-item_add-identifier_progress_done'
   | 'wikicite_source-item_add-identifier_progress_error'

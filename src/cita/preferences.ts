@@ -43,6 +43,14 @@ export function initialiseLineCount() {
 	initialiseDefaultPref(LINECOUNT_PREF_KEY, 10);
 }
 
+export const SHOW_CITATION_NUMBERS_PREF_KEY = "showCitationNumbers";
+export function getShowCitationNumbers() {
+	return getPref(SHOW_CITATION_NUMBERS_PREF_KEY) as boolean;
+}
+export function initialiseShowCitationNumbers() {
+	initialiseDefaultPref(SHOW_CITATION_NUMBERS_PREF_KEY, false);
+}
+
 // Functions
 export async function migrateStorageLocation(
 	from: StorageType,

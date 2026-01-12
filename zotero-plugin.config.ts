@@ -120,6 +120,12 @@ export default defineConfig({
 					from: /wikicite_(citations|pid)-pane_label\s*=/g,
 					to: "$&\n    .label =",
 				});
+				// add .label tag for show citation numbers label
+				replaceInFileSync({
+					files: localePath + "/**/*.ftl",
+					from: /wikicite_prefs_show-citation-numbers_label\s*=/g,
+					to: "$&\n    .label =",
+				});
 				// add .tooltiptext tags for citation pane buttons
 				replaceInFileSync({
 					files: localePath + "/**/*.ftl",

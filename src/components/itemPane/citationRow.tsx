@@ -10,6 +10,7 @@ import useResizeObserver from "@react-hook/resize-observer";
 import { useInView } from "react-intersection-observer";
 import { debounce } from "lodash";
 import Wikicite from "../../cita/wikicite";
+import * as prefs from "../../cita/preferences";
 
 interface CitationRowProps {
 	citation: Citation;
@@ -231,6 +232,10 @@ function CitationRow(props: CitationRowProps) {
 				role="button"
 				onClick={() => handleCitationEdit(index)}
 			>
+				{/* IF sorting by index and the pref to show citation numbers is selected, show them. */}
+				{sortBy == "ordinal" && prefs.getShowCitationNumbers() && (
+					<span>{index + 1 + "."}</span>
+				)}
 				<span
 					className="icon icon-css icon-item-type"
 					data-item-type={item.itemType}

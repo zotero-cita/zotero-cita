@@ -99,6 +99,7 @@ class ZoteroOverlay {
 		prefs.initialiseSortBy();
 		prefs.initialiseSemanticAPIKey();
 		prefs.initialiseLineCount();
+		prefs.initialiseShowCitationNumbers();
 	}
 
 	addPreferenceUpdateObservers() {

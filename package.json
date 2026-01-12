@@ -28,7 +28,9 @@
 	},
 	"author": "Diego de la Hera (https://diegodlh.conversodromo.com.ar/)",
 	"contributors": [
-		"Dominic Dall'Osto"
+		"Dominic Dall'Osto",
+		"Tim Woelfle",
+		"Jonas Zaugg"
 	],
 	"license": "GPL-3.0-or-later",
 	"bugs": {

@@ -82,7 +82,7 @@ Cita depends on:
 
 ## License
 
-Copyright (C) 2022 Diego de la Hera, Dominic Dall'Osto, and contributors.
+Copyright (C) 2022 Diego de la Hera, Dominic Dall'Osto, Tim Woelfle, Jonas Zaugg, and contributors.
 
 This work is released under the terms of [GPL-3.0](https://www.gnu.org/licenses/gpl-3.0.html) or any later version.
 

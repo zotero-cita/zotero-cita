@@ -1,9 +1,8 @@
 {
 	"author": {
-		"message": "Diego de la Hera, Dominic Dall'Osto, Tim Woelfle, and others",
+		"message": "Diego de la Hera, Dominic Dall'Osto, Tim Woelfle, Jonas Zaugg, and others",
 		"description": "Author of the extension"
 	},
-
 	"description": {
 		"message": "Citations metadata support for Zotero",
 		"description": "Description of the extension"

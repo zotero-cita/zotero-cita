@@ -76,7 +76,7 @@ class ZoteroOverlay {
 
 		this.installTranslators();
 
-		this.patchEnableAddingItemByQID();
+		this.patchEnableAddingItemByIdenfitiferWithQID();
 	}
 
 	unload() {
@@ -88,7 +88,7 @@ class ZoteroOverlay {
 
 		this.uninstallTranslators();
 
-		this.unpatchEnableAddingItemByQID();
+		this.unpatchEnableAddingItemByIdentifierWithQID();
 	}
 
 	/******************************************/
@@ -242,7 +242,10 @@ class ZoteroOverlay {
 		}
 	}
 
-	private patchEnableAddingItemByQID() {
+	private patchEnableAddingItemByIdenfitiferWithQID() {
+		// see #236
+		// try to extract QIDs from the textbox
+		// if none are found, try to extract other identifiers as normal
 		patch(
 			Zotero.Utilities,
 			"extractIdentifiers",
@@ -258,7 +261,8 @@ class ZoteroOverlay {
 					}
 				},
 		);
-		// Zotero.Translate.Search.prototype.setIdentifier
+		// we need to pass the QIDs to the translator
+		// by default they aren't recognised and an error is raised
 		patch(
 			Zotero.Translate.Search.prototype,
 			"setIdentifier",
@@ -270,6 +274,8 @@ class ZoteroOverlay {
 						[type: string]: string;
 					},
 				) {
+					// QIDs are stored as {extra: "qid: Q...."}
+					// see Wikidata.getItems
 					if (identifier.extra) {
 						this.setSearch([identifier]);
 					} else {
@@ -279,7 +285,7 @@ class ZoteroOverlay {
 		);
 	}
 
-	private unpatchEnableAddingItemByQID() {
+	private unpatchEnableAddingItemByIdentifierWithQID() {
 		unpatch(Zotero.Utilities, "extractIdentifiers");
 		unpatch(Zotero.Translate.Search.prototype, "setIdentifier");
 	}
@@ -1096,7 +1102,7 @@ class ZoteroOverlay {
 							sourceItem?.citations[this._citationIndex!];
 						const targetItem = citation?.target;
 						return !!targetItem?.qid;
-					}
+					},
 				},
 				// Export to file
 				{

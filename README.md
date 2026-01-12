@@ -1,42 +1,40 @@
-# Cita: a Wikidata addon for Zotero
+# Cita: a Wikidata addon for Zotero citations metadata
 
 [![Using Zotero Plugin Template](https://img.shields.io/badge/Using-Zotero%20Plugin%20Template-blue?style=flat-square&logo=github)](https://github.com/windingwind/zotero-plugin-template)
 
-A [Zotero](http://www.zotero.org/) plugin adding support for sorting citation data for your Zotero items, featuring:
+A [Zotero](http://www.zotero.org/) plugin adding support for citations metadata for your Zotero items, featuring:
 
-- citation syncing (back and forth) with [WikiData](https://www.wikidata.org/)
-- getting citation list data from sources including CrossRef, Semantic Scholar, and OpenAlex
-- local citation network visualization
+- getting citations metadata from sources including [Wikidata](https://www.Wikidata.org/), [Crossref](https://crossref.org), [Semantic Scholar](https://www.semanticscholar.org/), and [OpenAlex](https://openalex.org/)
+- citation syncing (back and forth) with Wikidata
+- local citation network and co-authorship network visualization
 
-Initial development of this plugin was supported by a [grant](https://meta.wikimedia.org/wiki/Wikicite/grant/WikiCite_addon_for_Zotero_with_citation_graph_support)
-from the Wikimedia Foundation.
+Initial development of this plugin was supported by a [grant](https://meta.wikimedia.org/wiki/Wikicite/grant/WikiCite_addon_for_Zotero_with_citation_graph_support) from the Wikimedia Foundation.
 
-![example screenshot](https://github.com/user-attachments/assets/de98c563-daf1-48f3-9529-49bd8adc2f59)
+<img alt="Zotero Cita Item Pane Citations" src="https://github.com/user-attachments/assets/69161ff4-c14d-4d82-b419-06aa0bbec18b" style="width: 330px;" />
+<img alt="Zotero Cita Local Citation Network" src="https://github.com/user-attachments/assets/7511d586-6492-4934-9010-94e3acac87a4" style="width: 330px; float: right;" />
+<img alt="Zotero Cita Co-Authorship Network" src="https://github.com/user-attachments/assets/e820d814-2645-4165-9cef-645f5be289ef" style="width: 330px; float: right;" />
 
 ## Description
 
 The plugin consists of three separate basic modules:
 
-### Citation metadata support
+### Citations metadata support
 
-This module adds citation metadata support to Zotero.
-It provides an additional Citations tab where the user can:
+This module adds citations metadata support to Zotero. It provides an additional Citations tab where the user can:
 
 - add, edit or remove individual citations
-- run item-wide and citation specific actions, such as syncing citations with WikiData or getting citation lists from sources including CrossRef, Semantic Scholar, and OpenAlex
-- search for and store source item's identifiers, including DOI, WikiData's QID, PMID, Semantic Scholar CorpusId, and OpenAlex Key
+- run item-wide and citation specific actions, such as syncing citations with Wikidata or getting citation lists from sources including Crossref, Semantic Scholar, and OpenAlex
+- search for and store source item's identifiers, including DOI, Wikidata's QID, PubMed ID (PMID), Semantic Scholar CorpusId, and OpenAlex Key
 
 Citations metadata are currently saved as a note attachment.
 
-### WikiData communication
+### Wikidata communication
 
-This module provides back and forth citation syncing with WikiData, using property
-[P2860](https://www.wikidata.org/wiki/Property:P2860) "cites work". This can be used to manually edit and improve WikiData's citation data.
+This module provides back and forth citation syncing with Wikidata, using property [P2860](https://www.Wikidata.org/wiki/Property:P2860) "cites work". This can be used to manually edit and improve Wikidata's citation data.
 
 ### Local Citation Network visualization
 
-This module allows visualizing how items in a local library connect to each other through citations,
-using Tim Wölfle's [Local Citation Network](https://timwoelfle.github.io/Local-Citation-Network/).
+This module allows visualizing how items in a local library connect to each other through citations and co-authorships. Full networks can be downloaded as JSON, shared, and reopened by everyone using [Local Citation Network](https://LocalCitationNetwork.github.io/) - [see example](https://LocalCitationNetwork.github.io/?fromJSON=Zotero-Cita-Crossref-Example-Proteomics.json).
 
 ## Installation
 
@@ -46,7 +44,7 @@ Download the [latest XPI](https://github.com/zotero-cita/zotero-cita/releases/la
 
 ## Quickstart guide
 
-A quickstart guide for an older version of Cita is available at [Wikidata's Cita page](https://www.wikidata.org/wiki/Wikidata:Zotero/Cita). The interface will be slightly different but the same steps apply for newer Cita versions.
+A quickstart guide for an older version of Cita is available at [Wikidata's Cita page](https://www.Wikidata.org/wiki/Wikidata:Zotero/Cita). The interface will be slightly different but the same steps apply for newer Cita versions.
 
 ## Translation
 
@@ -77,7 +75,7 @@ Cita is collaboratively translated at translatewiki.net. Would you like to help 
 Cita depends on:
 
 - maxlath's [wikibase-edit](https://github.com/maxlath/wikibase-edit) & [wikibase-sdk](https://github.com/maxlath/wikibase-sdk)
-- Tim Wölfle's [Local Citation Network](https://timwoelfle.github.io/Local-Citation-Network/)
+- Tim Woelfle's [Local Citation Network](https://LocalCitationNetwork.github.io/)
 - [React](https://reactjs.org/)
 
 ## License

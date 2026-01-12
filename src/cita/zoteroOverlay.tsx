@@ -1021,6 +1021,7 @@ class ZoteroOverlay {
 					),
 					commandListener: () =>
 						this._sourceItem!.syncWithWikidata(this._citationIndex),
+					// Both source and citation must have QIDs
 					isDisabled: () => {
 						const sourceItem = this._sourceItem;
 						const citation =
@@ -1029,17 +1030,26 @@ class ZoteroOverlay {
 						return !sourceItem?.qid || !targetItem?.qid;
 					},
 				},
-				// Fetch QIDs for citations
+				// Fetch QIDs for single citation
 				{
 					tag: "menuitem",
 					id: "citation-menu-fetch-qid",
 					label: Wikicite.getString(
 						"wikicite.citation-menu.fetch-qid",
 					),
-					commandListener: () =>
+					commandListener: () => {
 						this._sourceItem!.fetchCitationQIDs(
 							this._citationIndex,
-						),
+						);
+					},
+					// If citation already has QID this operation would fail
+					isDisabled: () => {
+						const sourceItem = this._sourceItem;
+						const citation =
+							sourceItem?.citations[this._citationIndex!];
+						const targetItem = citation?.target;
+						return !!targetItem?.qid;
+					}
 				},
 				// Export to file
 				{

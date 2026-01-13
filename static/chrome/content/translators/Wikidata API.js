@@ -170,10 +170,6 @@ function processJSON(json) {
 	const trans = Zotero.loadTranslator('import');
 	trans.setString(JSON.stringify(json));
 	trans.setTranslator('3599d5a3-75c7-4fd5-b8e7-4976ce464e55');  // Wikidata JSON
-	// trans.setTranslator(new Zotero.Translator({
-	// 	code: Zotero.File.getContentsFromURL('chrome://cita/content/translators/Wikidata JSON.js'),
-	// 	...JSON.parse(Zotero.File.getContentsFromURL('chrome://cita/content/translators/Wikidata JSON.json'))
-	// }))
 	trans.setHandler('itemDone', function (obj, item) {
 		item.libraryCatalog = "Wikidata API";
 		item.complete();

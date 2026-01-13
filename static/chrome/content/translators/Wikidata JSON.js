@@ -9,7 +9,7 @@
 	"inRepository": true,
 	"translatorType": 1,
 	"cacheCode": true,
-	"lastUpdated": "2026-01-13 00:25:00"
+	"lastUpdated": "2026-01-14 00:15:00"
 }
 
 
@@ -392,6 +392,13 @@ function parseLabels(data, lang) {
 	const entities = JSON.parse(data).entities;
 	for (const entity of Object.values(entities)) {
 		labels[entity.id] = entity.labels[lang] ? entity.labels[lang].value : entity.id;
+		// if the entity is "Q1": {"redirects": {"from": "Q1...", "to": "Q2..."}, "id": "Q2..."}
+		// that means we searched for Q1 but got redirected to Q2.
+		// Store the label as the result of Q1 otherwise we'll go into an infinite loop
+		// trying to get the label for Q1 but storing the label for Q2.
+		if ("redirects" in entity) {
+			labels[entity.redirects.from] = labels[entity.id];
+		}
 	}
 	return labels;
 }

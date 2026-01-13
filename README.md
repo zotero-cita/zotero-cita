@@ -1,8 +1,8 @@
-# Cita: a Wikidata addon for Zotero citations metadata
+# Cita: Citations metadata in Zotero
 
 [![Using Zotero Plugin Template](https://img.shields.io/badge/Using-Zotero%20Plugin%20Template-blue?style=flat-square&logo=github)](https://github.com/windingwind/zotero-plugin-template)
 
-A [Zotero](http://www.zotero.org/) plugin adding support for citations metadata for your Zotero items, featuring:
+Cita is a [Zotero](http://www.zotero.org/) plugin adding support for citations metadata for your Zotero items, featuring:
 
 - getting citations metadata from sources including [Wikidata](https://www.Wikidata.org/), [Crossref](https://crossref.org), [Semantic Scholar](https://www.semanticscholar.org/), and [OpenAlex](https://openalex.org/)
 - citation syncing (back and forth) with Wikidata
@@ -10,9 +10,11 @@ A [Zotero](http://www.zotero.org/) plugin adding support for citations metadata 
 
 Initial development of this plugin was supported by a [grant](https://meta.wikimedia.org/wiki/Wikicite/grant/WikiCite_addon_for_Zotero_with_citation_graph_support) from the Wikimedia Foundation.
 
-<img alt="Zotero Cita Item Pane Citations" src="https://github.com/user-attachments/assets/69161ff4-c14d-4d82-b419-06aa0bbec18b" style="width: 330px;" />
-<img alt="Zotero Cita Local Citation Network" src="https://github.com/user-attachments/assets/7511d586-6492-4934-9010-94e3acac87a4" style="width: 330px; float: right;" />
-<img alt="Zotero Cita Co-Authorship Network" src="https://github.com/user-attachments/assets/e820d814-2645-4165-9cef-645f5be289ef" style="width: 330px; float: right;" />
+<img alt="Zotero Cita Item Pane Citations Dark" src="https://github.com/user-attachments/assets/de98c563-daf1-48f3-9529-49bd8adc2f59" style="width: 50%;" />
+<img alt="Zotero Cita Item Pane Citations Light" src="https://github.com/user-attachments/assets/69161ff4-c14d-4d82-b419-06aa0bbec18b" style="width: 50%; float: right;" />
+
+<img alt="Zotero Cita Local Citation Network" src="https://github.com/user-attachments/assets/7511d586-6492-4934-9010-94e3acac87a4" style="width: 50%; " />
+<img alt="Zotero Cita Co-Authorship Network" src="https://github.com/user-attachments/assets/e820d814-2645-4165-9cef-645f5be289ef" style="width: 50%; float: right;" />
 
 ## Description
 
@@ -40,7 +42,7 @@ This module allows visualizing how items in a local library connect to each othe
 
 Download the [latest XPI](https://github.com/zotero-cita/zotero-cita/releases/latest) and [install](https://www.zotero.org/support/plugins) it in Zotero.
 
-> **Note:** Cita v1.0.0 and later versions require Zotero 7 or later. The last version supporting Zotero 6 was [v0.5.5](https://github.com/zotero-cita/zotero-cita/releases/tag/v0.5.5)
+> **Note:** Cita v1.0.0 and later require at least Zotero 7. The last version of Cita supporting Zotero 6 was [v0.5.5](https://github.com/zotero-cita/zotero-cita/releases/tag/v0.5.5)
 
 ## Quickstart guide
 

@@ -10,11 +10,11 @@ Cita is a [Zotero](http://www.zotero.org/) plugin adding support for citations m
 
 Initial development of this plugin was supported by a [grant](https://meta.wikimedia.org/wiki/Wikicite/grant/WikiCite_addon_for_Zotero_with_citation_graph_support) from the Wikimedia Foundation.
 
-<img alt="Zotero Cita Item Pane Citations Dark" src="https://github.com/user-attachments/assets/de98c563-daf1-48f3-9529-49bd8adc2f59" style="width: 50%;" />
-<img alt="Zotero Cita Item Pane Citations Light" src="https://github.com/user-attachments/assets/69161ff4-c14d-4d82-b419-06aa0bbec18b" style="width: 50%; float: right;" />
+<img alt="Zotero Cita Item Pane Citations Dark" src="https://github.com/user-attachments/assets/de98c563-daf1-48f3-9529-49bd8adc2f59" style="width: 49%;" />
+<img alt="Zotero Cita Item Pane Citations Light" src="https://github.com/user-attachments/assets/69161ff4-c14d-4d82-b419-06aa0bbec18b" style="width: 49%; float: right;" />
 
-<img alt="Zotero Cita Local Citation Network" src="https://github.com/user-attachments/assets/7511d586-6492-4934-9010-94e3acac87a4" style="width: 50%; " />
-<img alt="Zotero Cita Co-Authorship Network" src="https://github.com/user-attachments/assets/e820d814-2645-4165-9cef-645f5be289ef" style="width: 50%; float: right;" />
+<img alt="Zotero Cita Local Citation Network" src="https://github.com/user-attachments/assets/7511d586-6492-4934-9010-94e3acac87a4" style="width: 49%; " />
+<img alt="Zotero Cita Co-Authorship Network" src="https://github.com/user-attachments/assets/e820d814-2645-4165-9cef-645f5be289ef" style="width: 49%; float: right;" />
 
 ## Description
 

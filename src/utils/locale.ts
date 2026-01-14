@@ -162,6 +162,8 @@ function _getString(
 		}
 		return pattern.attributes[branch] || localStringWithPrefix;
 	} else {
+		// newlines get returned as \\n, so replace them with proper newlines
+		pattern.value = pattern.value.replaceAll("\\n", "\n");
 		return pattern.value || localStringWithPrefix;
 	}
 }

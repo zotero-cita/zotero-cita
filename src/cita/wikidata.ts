@@ -401,7 +401,7 @@ export default class {
 				),
 				Wikicite.formatString(
 					"wikicite.wikidata.reconcile.unavailable.message",
-					unavailable.map((item) => item.title).join("\n"),
+					unavailable.map((item) => "• " + item.title).join("\n"),
 				),
 			);
 			if (result) {

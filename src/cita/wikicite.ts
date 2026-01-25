@@ -73,11 +73,11 @@ export default {
 	},
 
 	/**
-	 * Set field value in extra field item.
-	 * It sets: therefore, if already exists, replaces
+	 * Set field value in item's extra field.
+	 * If the field already exists it replaces the existing value
 	 * @param {Zotero.Item} item - A Zotero item.
-	 * @param {string} fieldName - The name of the extra field that wants to be set.
-	 * @param {String[]} values - An array of values for the field that wants to be set.
+	 * @param {string} fieldName - The name of the extra field to be set.
+	 * @param {String[]} values - An array of values for the field to be set.
 	 */
 	setExtraField: function (
 		item: Zotero.Item,
@@ -91,6 +91,16 @@ export default {
 				newExtra += `\n${fieldName}: ${value.trim()}`;
 			}
 		}
+		item.setField("extra", newExtra);
+	},
+
+	/**
+	 * Clear field in item's extra field.
+	 * @param {Zotero.Item} item - A Zotero item.
+	 * @param {string} fieldName - The name of the extra field that to be cleared.
+	 */
+	clearExtraField: function (item: Zotero.Item, fieldName: string) {
+		const { newExtra } = this.getExtraField(item, fieldName);
 		item.setField("extra", newExtra);
 	},
 

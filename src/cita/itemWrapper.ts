@@ -249,13 +249,20 @@ export default class ItemWrapper {
 				_pid = this.item.getField(type);
 				break;
 			case "DOI":
+			case "PMID":
+			case "PMCID": {
 				if (this.isValidField(type)) {
 					_pid = this.item.getField(type);
-				} else {
-					// Also get DOI for unsupported types
-					_pid = Wikicite.getExtraField(this.item, type).values[0];
+					if (_pid) {
+						break;
+					}
 				}
+				// If this field isn't supported by the current version of Zotero, or the current item type,
+				// or it is supported, but an old version of the plugin wrote to the extra field
+				// then get it from the extra field instead
+				_pid = Wikicite.getExtraField(this.item, type).values[0];
 				break;
+			}
 			case "arXiv": {
 				const field = this.item.getField("archiveID");
 				if (field && field.startsWith("arXiv:")) {
@@ -308,16 +315,16 @@ export default class ItemWrapper {
 
 	setPID(type: PIDType, value: string, save = true) {
 		switch (type) {
+			// these are proper item fields in some or all versions of Zotero
+			// if so, we save the PID there, not in the extra field
 			case "ISBN":
-				if (this.isValidField(type)) {
-					this.item.setField(type, value);
-				} else {
-					throw new Error("ISBN not supported for this item type");
-				}
-				break;
 			case "DOI":
+			case "PMID":
+			case "PMCID":
 				if (this.isValidField(type)) {
 					this.item.setField(type, value);
+					// clear this from the extra field if an older version saved it there
+					Wikicite.clearExtraField(this.item, type);
 				} else {
 					Wikicite.setExtraField(this.item, type, [value]);
 				}

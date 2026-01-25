@@ -341,11 +341,42 @@ function updateItems(items, claims, labels={}) {
 					delete item.subtitle;
 				}
 				if (item.creatorsArray) {
+					// filter out possible duplicates (values with the same seriesOrdinal, one of which is an authorNameString)
+					// https://www.wikidata.org/wiki/Property:P2093
+					const ordinalToAuthorMap = new Map();
+					for (const author of item.creatorsArray) {
+						const ordinal = author.seriesOrdinal | "0";
+						if (ordinalToAuthorMap.has(ordinal)) {
+							ordinalToAuthorMap.set(ordinal, ordinalToAuthorMap.get(ordinal).concat([author]));
+						}
+						else {
+							ordinalToAuthorMap.set(ordinal, [author]);
+						}
+					}
+					for (const [seriesOrdinal, authors] of ordinalToAuthorMap) {
+						if (seriesOrdinal == "0") {
+							continue	
+						}
+						if (authors.length > 1) {
+							const authorFromAuthorNameString = authors.filter(author => author.property == "P2093");
+							if (authorFromAuthorNameString.length > 1) {
+								console.error(`Getting item ${id} from wikidata - found wikidata bug - multiple author name strings with the same series ordinal: ${authorFromAuthorNameString}.`);
+							}
+							else if (authorFromAuthorNameString.length == 0) {
+								console.error(`Getting item ${id} from wikidata - found multiple author claims with the same series ordinal: ${authorFromAuthorNameString}. Keeping them all just in case.`);
+							}
+							else {
+								item.creatorsArray.splice(item.creatorsArray.indexOf(authorFromAuthorNameString[0]), 1);
+							}
+						}
+					}
+
 					item.creatorsArray.sort((a, b) => (
 						a.seriesOrdinal - b.seriesOrdinal
 					));
-					for (const aut of item.creatorsArray) {
-						item.creators.push(ZU.cleanAuthor(aut.value, aut.func));
+
+					for (const author of item.creatorsArray) {
+						item.creators.push(ZU.cleanAuthor(author.value, author.func));
 					}
 					delete item.creatorsArray;
 				}
@@ -414,7 +445,7 @@ function updateItem(item, claim, value) {
 		var func = creatorMapping[property] || 'contributor';
 		if (!item.creatorsArray) item.creatorsArray = [];
 		item.creatorsArray.push(
-			{value, func, seriesOrdinal}
+			{value, func, property, seriesOrdinal}
 		);
 	} else if (zprop === 'DOI') {
 		const rank = claim.rank;

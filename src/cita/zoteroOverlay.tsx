@@ -280,7 +280,8 @@ class ZoteroOverlay {
 					if (identifier.extra) {
 						this.setSearch([identifier]);
 					} else {
-						original(text);
+						// needs to know `this` because it calls `this.setSearch()`
+						original.call(this, identifier);
 					}
 				},
 		);

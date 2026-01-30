@@ -47,12 +47,12 @@ export class Citation {
 	constructor(
 		citationData: {
 			item:
-				| Zotero.Item
-				| {
-						itemType?: // there are all possible itemTypes for Zotero.Item(itemType)
-							| keyof _ZoteroTypes.Item.ItemTypeMapping
-							| _ZoteroTypes.Item.ItemTypeMapping[keyof _ZoteroTypes.Item.ItemTypeMapping];
-				  };
+			| Zotero.Item
+			| {
+				itemType?: // there are all possible itemTypes for Zotero.Item(itemType)
+				| keyof _ZoteroTypes.Item.ItemTypeMapping
+				| _ZoteroTypes.Item.ItemTypeMapping[keyof _ZoteroTypes.Item.ItemTypeMapping];
+			};
 			oci?: string;
 			ocis?: string;
 			wikidataCitationStatus?: {
@@ -439,7 +439,9 @@ export class Citation {
 			this.source.item.libraryID,
 			this.target.key!,
 		) as Zotero.Item;
-		if (!otherLinks) {
+		// If linkedItem exists (i.e. has not been deleted from Zotero) and no other citations link to it:
+		// Remove source's relation to linkedItem and linkedItem's relation to source item
+		if (linkedItem && !otherLinks) {
 			this.source.newRelations =
 				(await this.source.item.removeRelatedItem(linkedItem)) ||
 				this.source.newRelations;
@@ -450,6 +452,7 @@ export class Citation {
 			}
 		}
 		this.target.key = undefined;
+		// TODO: Currently this part remains in the "Citations" Note's JSON - should it be removed as well? "relations": { "dc:relation": [ "http://zotero.org/users/.../items/..." ] }
 		if (autosave) this.source.saveCitations();
 	}
 

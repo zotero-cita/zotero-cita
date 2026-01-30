@@ -13,12 +13,16 @@ function ZoteroButton(props: { citation: Citation }) {
 	function goToLinkedItem() {
 		if (key) {
 			const libraryID = props.citation.source.item.libraryID;
-			const item = Zotero.Items.getByLibraryAndKey(
+			const linkedItem = Zotero.Items.getByLibraryAndKey(
 				libraryID,
 				key,
 			) as Zotero.Item;
-
-			ZoteroPane.selectItem(item.id);
+			// If linkedItem exists (i.e. has not been deleted from Zotero), otherwise unlink
+			if (linkedItem) {
+				ZoteroPane.selectItem(linkedItem.id);
+			} else {
+				props.citation.unlinkFromZoteroItem();
+			}
 		}
 	}
 

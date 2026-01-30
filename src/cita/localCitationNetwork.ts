@@ -113,10 +113,17 @@ export default class LCN {
 						// selected (i.e., it is not an input item),
 						// add the linked-to item to the item map.
 
-						const linkedToItem = Zotero.Items.getByLibraryAndKey(
+						const linkedItem = Zotero.Items.getByLibraryAndKey(
 							this.libraryID,
 							citation.target.key,
 						) as Zotero.Item;
+						// If linkedItem doesn't exist (i.e. has probably been deleted from Zotero):
+						// Unlink and process this citation again in loop
+						if (!linkedItem) {
+							citation.unlinkFromZoteroItem();
+							i--;
+							continue;
+						}
 						// Non-linked citation target items are not part of the
 						// LCN "input items" set.
 						// Citations of these non-linked citation target items
@@ -129,7 +136,7 @@ export default class LCN {
 						// without citations.
 						this.itemMap.set(
 							citation.target.key,
-							parseWrappedItem(new ItemWrapper(linkedToItem)),
+							parseWrappedItem(new ItemWrapper(linkedItem)),
 						);
 					}
 				} else {
@@ -242,7 +249,7 @@ export default class LCN {
 
 		window.openDialog(
 			`chrome://${config.addonRef}/content/Local-Citation-Network/index.html?listOfKeys=` +
-				this.inputKeys.join(","),
+			this.inputKeys.join(","),
 			"",
 			windowFeatures.join(","),
 			{

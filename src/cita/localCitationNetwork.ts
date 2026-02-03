@@ -47,7 +47,7 @@ export default class LCN {
 		this.items = items;
 		this.itemMap = new Map(); // itemKey/tmpItemKey -> ItemWrapper
 
-		// keys of the Zotero items treated as LCN "input items"
+		// keys of the Zotero items treated as LCN "Seed Articles"
 		this.inputKeys = items.map((item) => item.key);
 		this.libraryID = items[0].libraryID; // all items will belong to same library
 
@@ -110,7 +110,7 @@ export default class LCN {
 					// if citation's target item is linked to a Zotero item...
 					if (!this.inputKeys.includes(citation.target.key)) {
 						// ... and the linked-to Zotero item has not been
-						// selected (i.e., it is not an input item),
+						// selected (i.e., it is not a seed article),
 						// add the linked-to item to the item map.
 
 						const linkedItem = Zotero.Items.getByLibraryAndKey(
@@ -125,11 +125,11 @@ export default class LCN {
 							continue;
 						}
 						// Non-linked citation target items are not part of the
-						// LCN "input items" set.
+						// LCN "Seed Articles" set.
 						// Citations of these non-linked citation target items
 						// are unknown.
 						// This citation's target item is linked to a Zotero item
-						// which is not part of the LCN "input items" set either.
+						// which is not part of the LCN "Seed Articles" set either.
 						// For consistency, citations of this Zotero item should be
 						// unknown as well.
 						// Therefore, wrapping it in a regular ItemWrapper,

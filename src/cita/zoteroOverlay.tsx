@@ -253,7 +253,10 @@ class ZoteroOverlay {
 			// eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
 			(original: Function) =>
 				function Zotero_Utilities_extractIdentifiers(text: string) {
-					const identifiers = Wikidata.extractQIDsFromText(text);
+					const identifiers = Wikidata.extractQIDsFromText(
+						text,
+						true,
+					);
 
 					if (!identifiers.length) {
 						return original(text);

@@ -417,15 +417,15 @@ export default class {
 	}
 
 	// based on Zotero.Utilities.extractIdentifiers
-	static extractQIDsFromText(text: string) {
-		const foundIDs = new Set(); // keep track of identifiers to avoid duplicates
+	static extractQIDsFromText(text: string, strict: boolean = false) {
+		const foundIDs: Set<QID> = new Set(); // keep track of identifiers to avoid duplicates
 		const identifiers: { [idenifier: string]: string }[] = [];
 
 		// Look for QIDs
 		const ids = text.split(/[\s\u00A0]+/); // whitespace + non-breaking space
 		let qid;
 		for (const id of ids) {
-			if ((qid = this.cleanQID(id)) && !foundIDs.has(qid)) {
+			if ((qid = this.cleanQID(id, strict)) && !foundIDs.has(qid)) {
 				identifiers.push({
 					extra: `qid: ${qid}`,
 				});
@@ -435,11 +435,22 @@ export default class {
 		return identifiers;
 	}
 
-	static cleanQID(qid: string) {
+	/** Convert string to QID. If this fails, return empty string
+	 *
+	 * @param qid string to convert to QID
+	 * @param strict whether to require that the QID begins with a Q
+	 * @returns QID or empty string
+	 */
+	static cleanQID(qid: string, strict: boolean = false): QID | "" {
 		qid = qid.toUpperCase().trim();
-		if (qid[0] !== "Q") qid = "Q" + qid;
-		if (!qid.match(/^Q\d+$/)) qid = "";
-		return qid;
+		if (!strict) {
+			if (qid[0] !== "Q") qid = "Q" + qid;
+		}
+		if (qid.match(/^Q\d+$/)) {
+			return qid as QID;
+		} else {
+			return "";
+		}
 	}
 
 	static cleanOMID(omid: string) {

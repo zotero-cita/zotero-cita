@@ -249,7 +249,7 @@ export default class LCN {
 
 		window.openDialog(
 			`chrome://${config.addonRef}/content/Local-Citation-Network/index.html?listOfKeys=` +
-			this.inputKeys.join(","),
+				this.inputKeys.join(","),
 			"",
 			windowFeatures.join(","),
 			{

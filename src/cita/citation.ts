@@ -47,12 +47,12 @@ export class Citation {
 	constructor(
 		citationData: {
 			item:
-			| Zotero.Item
-			| {
-				itemType?: // there are all possible itemTypes for Zotero.Item(itemType)
-				| keyof _ZoteroTypes.Item.ItemTypeMapping
-				| _ZoteroTypes.Item.ItemTypeMapping[keyof _ZoteroTypes.Item.ItemTypeMapping];
-			};
+				| Zotero.Item
+				| {
+						itemType?: // there are all possible itemTypes for Zotero.Item(itemType)
+							| keyof _ZoteroTypes.Item.ItemTypeMapping
+							| _ZoteroTypes.Item.ItemTypeMapping[keyof _ZoteroTypes.Item.ItemTypeMapping];
+				  };
 			oci?: string;
 			ocis?: string;
 			wikidataCitationStatus?: {

@@ -1,0 +1,2073 @@
+diff --git a/node_modules/wikibase-edit/README.md b/node_modules/wikibase-edit/README.md
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/config/local.d.ts b/node_modules/wikibase-edit/dist/config/local.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/config/local.d.ts.map b/node_modules/wikibase-edit/dist/config/local.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/config/local.js b/node_modules/wikibase-edit/dist/config/local.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/config/local.js.map b/node_modules/wikibase-edit/dist/config/local.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/assets/metadata.d.ts b/node_modules/wikibase-edit/dist/src/assets/metadata.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/assets/metadata.d.ts.map b/node_modules/wikibase-edit/dist/src/assets/metadata.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/assets/metadata.js b/node_modules/wikibase-edit/dist/src/assets/metadata.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/assets/metadata.js.map b/node_modules/wikibase-edit/dist/src/assets/metadata.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/alias/action.d.ts b/node_modules/wikibase-edit/dist/src/lib/alias/action.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/alias/action.d.ts.map b/node_modules/wikibase-edit/dist/src/lib/alias/action.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/alias/action.js b/node_modules/wikibase-edit/dist/src/lib/alias/action.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/alias/action.js.map b/node_modules/wikibase-edit/dist/src/lib/alias/action.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/alias/add.d.ts b/node_modules/wikibase-edit/dist/src/lib/alias/add.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/alias/add.d.ts.map b/node_modules/wikibase-edit/dist/src/lib/alias/add.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/alias/add.js b/node_modules/wikibase-edit/dist/src/lib/alias/add.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/alias/add.js.map b/node_modules/wikibase-edit/dist/src/lib/alias/add.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/alias/remove.d.ts b/node_modules/wikibase-edit/dist/src/lib/alias/remove.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/alias/remove.d.ts.map b/node_modules/wikibase-edit/dist/src/lib/alias/remove.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/alias/remove.js b/node_modules/wikibase-edit/dist/src/lib/alias/remove.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/alias/remove.js.map b/node_modules/wikibase-edit/dist/src/lib/alias/remove.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/alias/set.d.ts b/node_modules/wikibase-edit/dist/src/lib/alias/set.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/alias/set.d.ts.map b/node_modules/wikibase-edit/dist/src/lib/alias/set.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/alias/set.js b/node_modules/wikibase-edit/dist/src/lib/alias/set.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/alias/set.js.map b/node_modules/wikibase-edit/dist/src/lib/alias/set.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/badge/add.d.ts b/node_modules/wikibase-edit/dist/src/lib/badge/add.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/badge/add.d.ts.map b/node_modules/wikibase-edit/dist/src/lib/badge/add.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/badge/add.js b/node_modules/wikibase-edit/dist/src/lib/badge/add.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/badge/add.js.map b/node_modules/wikibase-edit/dist/src/lib/badge/add.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/badge/remove.d.ts b/node_modules/wikibase-edit/dist/src/lib/badge/remove.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/badge/remove.d.ts.map b/node_modules/wikibase-edit/dist/src/lib/badge/remove.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/badge/remove.js b/node_modules/wikibase-edit/dist/src/lib/badge/remove.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/badge/remove.js.map b/node_modules/wikibase-edit/dist/src/lib/badge/remove.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/bundle_wrapper.d.ts b/node_modules/wikibase-edit/dist/src/lib/bundle_wrapper.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/bundle_wrapper.d.ts.map b/node_modules/wikibase-edit/dist/src/lib/bundle_wrapper.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/bundle_wrapper.js b/node_modules/wikibase-edit/dist/src/lib/bundle_wrapper.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/bundle_wrapper.js.map b/node_modules/wikibase-edit/dist/src/lib/bundle_wrapper.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/claim/builders.d.ts b/node_modules/wikibase-edit/dist/src/lib/claim/builders.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/claim/builders.d.ts.map b/node_modules/wikibase-edit/dist/src/lib/claim/builders.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/claim/builders.js b/node_modules/wikibase-edit/dist/src/lib/claim/builders.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/claim/builders.js.map b/node_modules/wikibase-edit/dist/src/lib/claim/builders.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/claim/claim_parsers.d.ts b/node_modules/wikibase-edit/dist/src/lib/claim/claim_parsers.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/claim/claim_parsers.d.ts.map b/node_modules/wikibase-edit/dist/src/lib/claim/claim_parsers.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/claim/claim_parsers.js b/node_modules/wikibase-edit/dist/src/lib/claim/claim_parsers.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/claim/claim_parsers.js.map b/node_modules/wikibase-edit/dist/src/lib/claim/claim_parsers.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/claim/create.d.ts b/node_modules/wikibase-edit/dist/src/lib/claim/create.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/claim/create.d.ts.map b/node_modules/wikibase-edit/dist/src/lib/claim/create.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/claim/create.js b/node_modules/wikibase-edit/dist/src/lib/claim/create.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/claim/create.js.map b/node_modules/wikibase-edit/dist/src/lib/claim/create.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/claim/find_snak.d.ts b/node_modules/wikibase-edit/dist/src/lib/claim/find_snak.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/claim/find_snak.d.ts.map b/node_modules/wikibase-edit/dist/src/lib/claim/find_snak.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/claim/find_snak.js b/node_modules/wikibase-edit/dist/src/lib/claim/find_snak.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/claim/find_snak.js.map b/node_modules/wikibase-edit/dist/src/lib/claim/find_snak.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/claim/format_claim_value.d.ts b/node_modules/wikibase-edit/dist/src/lib/claim/format_claim_value.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/claim/format_claim_value.d.ts.map b/node_modules/wikibase-edit/dist/src/lib/claim/format_claim_value.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/claim/format_claim_value.js b/node_modules/wikibase-edit/dist/src/lib/claim/format_claim_value.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/claim/format_claim_value.js.map b/node_modules/wikibase-edit/dist/src/lib/claim/format_claim_value.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/claim/get_time_object.d.ts b/node_modules/wikibase-edit/dist/src/lib/claim/get_time_object.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/claim/get_time_object.d.ts.map b/node_modules/wikibase-edit/dist/src/lib/claim/get_time_object.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/claim/get_time_object.js b/node_modules/wikibase-edit/dist/src/lib/claim/get_time_object.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/claim/get_time_object.js.map b/node_modules/wikibase-edit/dist/src/lib/claim/get_time_object.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/claim/helpers.d.ts b/node_modules/wikibase-edit/dist/src/lib/claim/helpers.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/claim/helpers.d.ts.map b/node_modules/wikibase-edit/dist/src/lib/claim/helpers.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/claim/helpers.js b/node_modules/wikibase-edit/dist/src/lib/claim/helpers.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/claim/helpers.js.map b/node_modules/wikibase-edit/dist/src/lib/claim/helpers.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/claim/is_matching_claim.d.ts b/node_modules/wikibase-edit/dist/src/lib/claim/is_matching_claim.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/claim/is_matching_claim.d.ts.map b/node_modules/wikibase-edit/dist/src/lib/claim/is_matching_claim.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/claim/is_matching_claim.js b/node_modules/wikibase-edit/dist/src/lib/claim/is_matching_claim.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/claim/is_matching_claim.js.map b/node_modules/wikibase-edit/dist/src/lib/claim/is_matching_claim.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/claim/is_matching_snak.d.ts b/node_modules/wikibase-edit/dist/src/lib/claim/is_matching_snak.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/claim/is_matching_snak.d.ts.map b/node_modules/wikibase-edit/dist/src/lib/claim/is_matching_snak.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/claim/is_matching_snak.js b/node_modules/wikibase-edit/dist/src/lib/claim/is_matching_snak.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/claim/is_matching_snak.js.map b/node_modules/wikibase-edit/dist/src/lib/claim/is_matching_snak.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/claim/move.d.ts b/node_modules/wikibase-edit/dist/src/lib/claim/move.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/claim/move.d.ts.map b/node_modules/wikibase-edit/dist/src/lib/claim/move.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/claim/move.js b/node_modules/wikibase-edit/dist/src/lib/claim/move.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/claim/move.js.map b/node_modules/wikibase-edit/dist/src/lib/claim/move.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/claim/move_commons.d.ts b/node_modules/wikibase-edit/dist/src/lib/claim/move_commons.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/claim/move_commons.d.ts.map b/node_modules/wikibase-edit/dist/src/lib/claim/move_commons.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/claim/move_commons.js b/node_modules/wikibase-edit/dist/src/lib/claim/move_commons.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/claim/move_commons.js.map b/node_modules/wikibase-edit/dist/src/lib/claim/move_commons.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/claim/parse_calendar.d.ts b/node_modules/wikibase-edit/dist/src/lib/claim/parse_calendar.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/claim/parse_calendar.d.ts.map b/node_modules/wikibase-edit/dist/src/lib/claim/parse_calendar.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/claim/parse_calendar.js b/node_modules/wikibase-edit/dist/src/lib/claim/parse_calendar.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/claim/parse_calendar.js.map b/node_modules/wikibase-edit/dist/src/lib/claim/parse_calendar.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/claim/quantity.d.ts b/node_modules/wikibase-edit/dist/src/lib/claim/quantity.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/claim/quantity.d.ts.map b/node_modules/wikibase-edit/dist/src/lib/claim/quantity.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/claim/quantity.js b/node_modules/wikibase-edit/dist/src/lib/claim/quantity.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/claim/quantity.js.map b/node_modules/wikibase-edit/dist/src/lib/claim/quantity.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/claim/remove.d.ts b/node_modules/wikibase-edit/dist/src/lib/claim/remove.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/claim/remove.d.ts.map b/node_modules/wikibase-edit/dist/src/lib/claim/remove.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/claim/remove.js b/node_modules/wikibase-edit/dist/src/lib/claim/remove.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/claim/remove.js.map b/node_modules/wikibase-edit/dist/src/lib/claim/remove.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/claim/set.d.ts b/node_modules/wikibase-edit/dist/src/lib/claim/set.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/claim/set.d.ts.map b/node_modules/wikibase-edit/dist/src/lib/claim/set.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/claim/set.js b/node_modules/wikibase-edit/dist/src/lib/claim/set.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/claim/set.js.map b/node_modules/wikibase-edit/dist/src/lib/claim/set.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/claim/snak.d.ts b/node_modules/wikibase-edit/dist/src/lib/claim/snak.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/claim/snak.d.ts.map b/node_modules/wikibase-edit/dist/src/lib/claim/snak.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/claim/snak.js b/node_modules/wikibase-edit/dist/src/lib/claim/snak.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/claim/snak.js.map b/node_modules/wikibase-edit/dist/src/lib/claim/snak.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/claim/special_snaktype.d.ts b/node_modules/wikibase-edit/dist/src/lib/claim/special_snaktype.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/claim/special_snaktype.d.ts.map b/node_modules/wikibase-edit/dist/src/lib/claim/special_snaktype.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/claim/special_snaktype.js b/node_modules/wikibase-edit/dist/src/lib/claim/special_snaktype.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/claim/special_snaktype.js.map b/node_modules/wikibase-edit/dist/src/lib/claim/special_snaktype.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/claim/update.d.ts b/node_modules/wikibase-edit/dist/src/lib/claim/update.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/claim/update.d.ts.map b/node_modules/wikibase-edit/dist/src/lib/claim/update.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/claim/update.js b/node_modules/wikibase-edit/dist/src/lib/claim/update.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/claim/update.js.map b/node_modules/wikibase-edit/dist/src/lib/claim/update.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/datatype_tests.d.ts b/node_modules/wikibase-edit/dist/src/lib/datatype_tests.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/datatype_tests.d.ts.map b/node_modules/wikibase-edit/dist/src/lib/datatype_tests.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/datatype_tests.js b/node_modules/wikibase-edit/dist/src/lib/datatype_tests.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/datatype_tests.js.map b/node_modules/wikibase-edit/dist/src/lib/datatype_tests.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/debug.d.ts b/node_modules/wikibase-edit/dist/src/lib/debug.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/debug.d.ts.map b/node_modules/wikibase-edit/dist/src/lib/debug.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/debug.js b/node_modules/wikibase-edit/dist/src/lib/debug.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/debug.js.map b/node_modules/wikibase-edit/dist/src/lib/debug.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/description/set.d.ts b/node_modules/wikibase-edit/dist/src/lib/description/set.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/description/set.d.ts.map b/node_modules/wikibase-edit/dist/src/lib/description/set.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/description/set.js b/node_modules/wikibase-edit/dist/src/lib/description/set.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/description/set.js.map b/node_modules/wikibase-edit/dist/src/lib/description/set.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/entity/build_claim.d.ts b/node_modules/wikibase-edit/dist/src/lib/entity/build_claim.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/entity/build_claim.d.ts.map b/node_modules/wikibase-edit/dist/src/lib/entity/build_claim.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/entity/build_claim.js b/node_modules/wikibase-edit/dist/src/lib/entity/build_claim.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/entity/build_claim.js.map b/node_modules/wikibase-edit/dist/src/lib/entity/build_claim.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/entity/create.d.ts b/node_modules/wikibase-edit/dist/src/lib/entity/create.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/entity/create.d.ts.map b/node_modules/wikibase-edit/dist/src/lib/entity/create.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/entity/create.js b/node_modules/wikibase-edit/dist/src/lib/entity/create.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/entity/create.js.map b/node_modules/wikibase-edit/dist/src/lib/entity/create.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/entity/delete.d.ts b/node_modules/wikibase-edit/dist/src/lib/entity/delete.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/entity/delete.d.ts.map b/node_modules/wikibase-edit/dist/src/lib/entity/delete.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/entity/delete.js b/node_modules/wikibase-edit/dist/src/lib/entity/delete.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/entity/delete.js.map b/node_modules/wikibase-edit/dist/src/lib/entity/delete.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/entity/edit.d.ts b/node_modules/wikibase-edit/dist/src/lib/entity/edit.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/entity/edit.d.ts.map b/node_modules/wikibase-edit/dist/src/lib/entity/edit.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/entity/edit.js b/node_modules/wikibase-edit/dist/src/lib/entity/edit.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/entity/edit.js.map b/node_modules/wikibase-edit/dist/src/lib/entity/edit.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/entity/format.d.ts b/node_modules/wikibase-edit/dist/src/lib/entity/format.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/entity/format.d.ts.map b/node_modules/wikibase-edit/dist/src/lib/entity/format.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/entity/format.js b/node_modules/wikibase-edit/dist/src/lib/entity/format.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/entity/format.js.map b/node_modules/wikibase-edit/dist/src/lib/entity/format.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/entity/id_alias.d.ts b/node_modules/wikibase-edit/dist/src/lib/entity/id_alias.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/entity/id_alias.d.ts.map b/node_modules/wikibase-edit/dist/src/lib/entity/id_alias.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/entity/id_alias.js b/node_modules/wikibase-edit/dist/src/lib/entity/id_alias.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/entity/id_alias.js.map b/node_modules/wikibase-edit/dist/src/lib/entity/id_alias.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/entity/merge.d.ts b/node_modules/wikibase-edit/dist/src/lib/entity/merge.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/entity/merge.d.ts.map b/node_modules/wikibase-edit/dist/src/lib/entity/merge.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/entity/merge.js b/node_modules/wikibase-edit/dist/src/lib/entity/merge.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/entity/merge.js.map b/node_modules/wikibase-edit/dist/src/lib/entity/merge.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/entity/reconcile_claim.d.ts b/node_modules/wikibase-edit/dist/src/lib/entity/reconcile_claim.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/entity/reconcile_claim.d.ts.map b/node_modules/wikibase-edit/dist/src/lib/entity/reconcile_claim.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/entity/reconcile_claim.js b/node_modules/wikibase-edit/dist/src/lib/entity/reconcile_claim.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/entity/reconcile_claim.js.map b/node_modules/wikibase-edit/dist/src/lib/entity/reconcile_claim.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/entity/validate_reconciliation_object.d.ts b/node_modules/wikibase-edit/dist/src/lib/entity/validate_reconciliation_object.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/entity/validate_reconciliation_object.d.ts.map b/node_modules/wikibase-edit/dist/src/lib/entity/validate_reconciliation_object.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/entity/validate_reconciliation_object.js b/node_modules/wikibase-edit/dist/src/lib/entity/validate_reconciliation_object.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/entity/validate_reconciliation_object.js.map b/node_modules/wikibase-edit/dist/src/lib/entity/validate_reconciliation_object.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/error.d.ts b/node_modules/wikibase-edit/dist/src/lib/error.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/error.d.ts.map b/node_modules/wikibase-edit/dist/src/lib/error.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/error.js b/node_modules/wikibase-edit/dist/src/lib/error.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/error.js.map b/node_modules/wikibase-edit/dist/src/lib/error.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/get_entity.d.ts b/node_modules/wikibase-edit/dist/src/lib/get_entity.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/get_entity.d.ts.map b/node_modules/wikibase-edit/dist/src/lib/get_entity.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/get_entity.js b/node_modules/wikibase-edit/dist/src/lib/get_entity.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/get_entity.js.map b/node_modules/wikibase-edit/dist/src/lib/get_entity.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/get_instance_wikibase_sdk.d.ts b/node_modules/wikibase-edit/dist/src/lib/get_instance_wikibase_sdk.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/get_instance_wikibase_sdk.d.ts.map b/node_modules/wikibase-edit/dist/src/lib/get_instance_wikibase_sdk.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/get_instance_wikibase_sdk.js b/node_modules/wikibase-edit/dist/src/lib/get_instance_wikibase_sdk.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/get_instance_wikibase_sdk.js.map b/node_modules/wikibase-edit/dist/src/lib/get_instance_wikibase_sdk.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/index.d.ts b/node_modules/wikibase-edit/dist/src/lib/index.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/index.d.ts.map b/node_modules/wikibase-edit/dist/src/lib/index.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/index.js b/node_modules/wikibase-edit/dist/src/lib/index.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/index.js.map b/node_modules/wikibase-edit/dist/src/lib/index.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/issues.d.ts b/node_modules/wikibase-edit/dist/src/lib/issues.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/issues.d.ts.map b/node_modules/wikibase-edit/dist/src/lib/issues.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/issues.js b/node_modules/wikibase-edit/dist/src/lib/issues.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/issues.js.map b/node_modules/wikibase-edit/dist/src/lib/issues.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/label/set.d.ts b/node_modules/wikibase-edit/dist/src/lib/label/set.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/label/set.d.ts.map b/node_modules/wikibase-edit/dist/src/lib/label/set.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/label/set.js b/node_modules/wikibase-edit/dist/src/lib/label/set.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/label/set.js.map b/node_modules/wikibase-edit/dist/src/lib/label/set.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/label_or_description/set.d.ts b/node_modules/wikibase-edit/dist/src/lib/label_or_description/set.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/label_or_description/set.d.ts.map b/node_modules/wikibase-edit/dist/src/lib/label_or_description/set.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/label_or_description/set.js b/node_modules/wikibase-edit/dist/src/lib/label_or_description/set.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/label_or_description/set.js.map b/node_modules/wikibase-edit/dist/src/lib/label_or_description/set.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/parse_instance.d.ts b/node_modules/wikibase-edit/dist/src/lib/parse_instance.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/parse_instance.d.ts.map b/node_modules/wikibase-edit/dist/src/lib/parse_instance.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/parse_instance.js b/node_modules/wikibase-edit/dist/src/lib/parse_instance.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/parse_instance.js.map b/node_modules/wikibase-edit/dist/src/lib/parse_instance.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/properties/datatypes_to_builder_datatypes.d.ts b/node_modules/wikibase-edit/dist/src/lib/properties/datatypes_to_builder_datatypes.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/properties/datatypes_to_builder_datatypes.d.ts.map b/node_modules/wikibase-edit/dist/src/lib/properties/datatypes_to_builder_datatypes.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/properties/datatypes_to_builder_datatypes.js b/node_modules/wikibase-edit/dist/src/lib/properties/datatypes_to_builder_datatypes.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/properties/datatypes_to_builder_datatypes.js.map b/node_modules/wikibase-edit/dist/src/lib/properties/datatypes_to_builder_datatypes.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/properties/fetch_properties_datatypes.d.ts b/node_modules/wikibase-edit/dist/src/lib/properties/fetch_properties_datatypes.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/properties/fetch_properties_datatypes.d.ts.map b/node_modules/wikibase-edit/dist/src/lib/properties/fetch_properties_datatypes.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/properties/fetch_properties_datatypes.js b/node_modules/wikibase-edit/dist/src/lib/properties/fetch_properties_datatypes.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/properties/fetch_properties_datatypes.js.map b/node_modules/wikibase-edit/dist/src/lib/properties/fetch_properties_datatypes.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/properties/fetch_used_properties_datatypes.d.ts b/node_modules/wikibase-edit/dist/src/lib/properties/fetch_used_properties_datatypes.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/properties/fetch_used_properties_datatypes.d.ts.map b/node_modules/wikibase-edit/dist/src/lib/properties/fetch_used_properties_datatypes.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/properties/fetch_used_properties_datatypes.js b/node_modules/wikibase-edit/dist/src/lib/properties/fetch_used_properties_datatypes.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/properties/fetch_used_properties_datatypes.js.map b/node_modules/wikibase-edit/dist/src/lib/properties/fetch_used_properties_datatypes.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/properties/find_snaks_properties.d.ts b/node_modules/wikibase-edit/dist/src/lib/properties/find_snaks_properties.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/properties/find_snaks_properties.d.ts.map b/node_modules/wikibase-edit/dist/src/lib/properties/find_snaks_properties.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/properties/find_snaks_properties.js b/node_modules/wikibase-edit/dist/src/lib/properties/find_snaks_properties.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/properties/find_snaks_properties.js.map b/node_modules/wikibase-edit/dist/src/lib/properties/find_snaks_properties.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/qualifier/move.d.ts b/node_modules/wikibase-edit/dist/src/lib/qualifier/move.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/qualifier/move.d.ts.map b/node_modules/wikibase-edit/dist/src/lib/qualifier/move.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/qualifier/move.js b/node_modules/wikibase-edit/dist/src/lib/qualifier/move.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/qualifier/move.js.map b/node_modules/wikibase-edit/dist/src/lib/qualifier/move.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/qualifier/remove.d.ts b/node_modules/wikibase-edit/dist/src/lib/qualifier/remove.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/qualifier/remove.d.ts.map b/node_modules/wikibase-edit/dist/src/lib/qualifier/remove.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/qualifier/remove.js b/node_modules/wikibase-edit/dist/src/lib/qualifier/remove.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/qualifier/remove.js.map b/node_modules/wikibase-edit/dist/src/lib/qualifier/remove.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/qualifier/set.d.ts b/node_modules/wikibase-edit/dist/src/lib/qualifier/set.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/qualifier/set.d.ts.map b/node_modules/wikibase-edit/dist/src/lib/qualifier/set.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/qualifier/set.js b/node_modules/wikibase-edit/dist/src/lib/qualifier/set.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/qualifier/set.js.map b/node_modules/wikibase-edit/dist/src/lib/qualifier/set.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/qualifier/update.d.ts b/node_modules/wikibase-edit/dist/src/lib/qualifier/update.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/qualifier/update.d.ts.map b/node_modules/wikibase-edit/dist/src/lib/qualifier/update.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/qualifier/update.js b/node_modules/wikibase-edit/dist/src/lib/qualifier/update.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/qualifier/update.js.map b/node_modules/wikibase-edit/dist/src/lib/qualifier/update.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/reference/remove.d.ts b/node_modules/wikibase-edit/dist/src/lib/reference/remove.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/reference/remove.d.ts.map b/node_modules/wikibase-edit/dist/src/lib/reference/remove.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/reference/remove.js b/node_modules/wikibase-edit/dist/src/lib/reference/remove.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/reference/remove.js.map b/node_modules/wikibase-edit/dist/src/lib/reference/remove.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/reference/set.d.ts b/node_modules/wikibase-edit/dist/src/lib/reference/set.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/reference/set.d.ts.map b/node_modules/wikibase-edit/dist/src/lib/reference/set.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/reference/set.js b/node_modules/wikibase-edit/dist/src/lib/reference/set.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/reference/set.js.map b/node_modules/wikibase-edit/dist/src/lib/reference/set.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/request/check_known_issues.d.ts b/node_modules/wikibase-edit/dist/src/lib/request/check_known_issues.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/request/check_known_issues.d.ts.map b/node_modules/wikibase-edit/dist/src/lib/request/check_known_issues.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/request/check_known_issues.js b/node_modules/wikibase-edit/dist/src/lib/request/check_known_issues.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/request/check_known_issues.js.map b/node_modules/wikibase-edit/dist/src/lib/request/check_known_issues.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/request/fetch.d.ts b/node_modules/wikibase-edit/dist/src/lib/request/fetch.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/request/fetch.d.ts.map b/node_modules/wikibase-edit/dist/src/lib/request/fetch.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/request/fetch.js b/node_modules/wikibase-edit/dist/src/lib/request/fetch.js
+old mode 100644
+new mode 100755
+index c11f2e6..351847a
+--- a/node_modules/wikibase-edit/dist/src/lib/request/fetch.js
++++ b/node_modules/wikibase-edit/dist/src/lib/request/fetch.js
+@@ -26,9 +26,9 @@ export async function customFetch(url, { timeout, ...options } = {}) {
+ }
+ // Based on https://stackoverflow.com/questions/46946380/fetch-api-request-timeout#57888548
+ function fetchWithTimeout(url, options, timeoutMs = 120_000) {
+-    const controller = new AbortController();
++    const controller = new window.AbortController();
+     const promise = fetch(url, {
+-        keepalive: true,
++        keepalive: false,
+         signal: controller.signal,
+         credentials: 'include',
+         mode: 'cors',
+diff --git a/node_modules/wikibase-edit/dist/src/lib/request/fetch.js.map b/node_modules/wikibase-edit/dist/src/lib/request/fetch.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/request/get_auth_data.d.ts b/node_modules/wikibase-edit/dist/src/lib/request/get_auth_data.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/request/get_auth_data.d.ts.map b/node_modules/wikibase-edit/dist/src/lib/request/get_auth_data.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/request/get_auth_data.js b/node_modules/wikibase-edit/dist/src/lib/request/get_auth_data.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/request/get_auth_data.js.map b/node_modules/wikibase-edit/dist/src/lib/request/get_auth_data.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/request/get_final_token.d.ts b/node_modules/wikibase-edit/dist/src/lib/request/get_final_token.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/request/get_final_token.d.ts.map b/node_modules/wikibase-edit/dist/src/lib/request/get_final_token.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/request/get_final_token.js b/node_modules/wikibase-edit/dist/src/lib/request/get_final_token.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/request/get_final_token.js.map b/node_modules/wikibase-edit/dist/src/lib/request/get_final_token.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/request/get_json.d.ts b/node_modules/wikibase-edit/dist/src/lib/request/get_json.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/request/get_json.d.ts.map b/node_modules/wikibase-edit/dist/src/lib/request/get_json.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/request/get_json.js b/node_modules/wikibase-edit/dist/src/lib/request/get_json.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/request/get_json.js.map b/node_modules/wikibase-edit/dist/src/lib/request/get_json.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/request/get_token.d.ts b/node_modules/wikibase-edit/dist/src/lib/request/get_token.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/request/get_token.d.ts.map b/node_modules/wikibase-edit/dist/src/lib/request/get_token.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/request/get_token.js b/node_modules/wikibase-edit/dist/src/lib/request/get_token.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/request/get_token.js.map b/node_modules/wikibase-edit/dist/src/lib/request/get_token.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/request/initialize_config_auth.d.ts b/node_modules/wikibase-edit/dist/src/lib/request/initialize_config_auth.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/request/initialize_config_auth.d.ts.map b/node_modules/wikibase-edit/dist/src/lib/request/initialize_config_auth.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/request/initialize_config_auth.js b/node_modules/wikibase-edit/dist/src/lib/request/initialize_config_auth.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/request/initialize_config_auth.js.map b/node_modules/wikibase-edit/dist/src/lib/request/initialize_config_auth.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/request/login.d.ts b/node_modules/wikibase-edit/dist/src/lib/request/login.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/request/login.d.ts.map b/node_modules/wikibase-edit/dist/src/lib/request/login.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/request/login.js b/node_modules/wikibase-edit/dist/src/lib/request/login.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/request/login.js.map b/node_modules/wikibase-edit/dist/src/lib/request/login.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/request/oauth.d.ts b/node_modules/wikibase-edit/dist/src/lib/request/oauth.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/request/oauth.d.ts.map b/node_modules/wikibase-edit/dist/src/lib/request/oauth.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/request/oauth.js b/node_modules/wikibase-edit/dist/src/lib/request/oauth.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/request/oauth.js.map b/node_modules/wikibase-edit/dist/src/lib/request/oauth.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/request/oauth2.d.ts b/node_modules/wikibase-edit/dist/src/lib/request/oauth2.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/request/oauth2.d.ts.map b/node_modules/wikibase-edit/dist/src/lib/request/oauth2.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/request/oauth2.js b/node_modules/wikibase-edit/dist/src/lib/request/oauth2.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/request/oauth2.js.map b/node_modules/wikibase-edit/dist/src/lib/request/oauth2.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/request/parse_response_body.d.ts b/node_modules/wikibase-edit/dist/src/lib/request/parse_response_body.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/request/parse_response_body.d.ts.map b/node_modules/wikibase-edit/dist/src/lib/request/parse_response_body.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/request/parse_response_body.js b/node_modules/wikibase-edit/dist/src/lib/request/parse_response_body.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/request/parse_response_body.js.map b/node_modules/wikibase-edit/dist/src/lib/request/parse_response_body.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/request/parse_session_cookies.d.ts b/node_modules/wikibase-edit/dist/src/lib/request/parse_session_cookies.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/request/parse_session_cookies.d.ts.map b/node_modules/wikibase-edit/dist/src/lib/request/parse_session_cookies.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/request/parse_session_cookies.js b/node_modules/wikibase-edit/dist/src/lib/request/parse_session_cookies.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/request/parse_session_cookies.js.map b/node_modules/wikibase-edit/dist/src/lib/request/parse_session_cookies.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/request/post.d.ts b/node_modules/wikibase-edit/dist/src/lib/request/post.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/request/post.d.ts.map b/node_modules/wikibase-edit/dist/src/lib/request/post.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/request/post.js b/node_modules/wikibase-edit/dist/src/lib/request/post.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/request/post.js.map b/node_modules/wikibase-edit/dist/src/lib/request/post.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/request/request.d.ts b/node_modules/wikibase-edit/dist/src/lib/request/request.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/request/request.d.ts.map b/node_modules/wikibase-edit/dist/src/lib/request/request.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/request/request.js b/node_modules/wikibase-edit/dist/src/lib/request/request.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/request/request.js.map b/node_modules/wikibase-edit/dist/src/lib/request/request.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/request_wrapper.d.ts b/node_modules/wikibase-edit/dist/src/lib/request_wrapper.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/request_wrapper.d.ts.map b/node_modules/wikibase-edit/dist/src/lib/request_wrapper.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/request_wrapper.js b/node_modules/wikibase-edit/dist/src/lib/request_wrapper.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/request_wrapper.js.map b/node_modules/wikibase-edit/dist/src/lib/request_wrapper.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/resolve_title.d.ts b/node_modules/wikibase-edit/dist/src/lib/resolve_title.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/resolve_title.d.ts.map b/node_modules/wikibase-edit/dist/src/lib/resolve_title.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/resolve_title.js b/node_modules/wikibase-edit/dist/src/lib/resolve_title.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/resolve_title.js.map b/node_modules/wikibase-edit/dist/src/lib/resolve_title.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/sitelink/set.d.ts b/node_modules/wikibase-edit/dist/src/lib/sitelink/set.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/sitelink/set.d.ts.map b/node_modules/wikibase-edit/dist/src/lib/sitelink/set.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/sitelink/set.js b/node_modules/wikibase-edit/dist/src/lib/sitelink/set.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/sitelink/set.js.map b/node_modules/wikibase-edit/dist/src/lib/sitelink/set.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/types/common.d.ts b/node_modules/wikibase-edit/dist/src/lib/types/common.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/types/common.d.ts.map b/node_modules/wikibase-edit/dist/src/lib/types/common.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/types/common.js b/node_modules/wikibase-edit/dist/src/lib/types/common.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/types/common.js.map b/node_modules/wikibase-edit/dist/src/lib/types/common.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/types/config.d.ts b/node_modules/wikibase-edit/dist/src/lib/types/config.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/types/config.d.ts.map b/node_modules/wikibase-edit/dist/src/lib/types/config.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/types/config.js b/node_modules/wikibase-edit/dist/src/lib/types/config.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/types/config.js.map b/node_modules/wikibase-edit/dist/src/lib/types/config.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/types/edit_entity.d.ts b/node_modules/wikibase-edit/dist/src/lib/types/edit_entity.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/types/edit_entity.d.ts.map b/node_modules/wikibase-edit/dist/src/lib/types/edit_entity.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/types/edit_entity.js b/node_modules/wikibase-edit/dist/src/lib/types/edit_entity.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/types/edit_entity.js.map b/node_modules/wikibase-edit/dist/src/lib/types/edit_entity.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/types/snaks.d.ts b/node_modules/wikibase-edit/dist/src/lib/types/snaks.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/types/snaks.d.ts.map b/node_modules/wikibase-edit/dist/src/lib/types/snaks.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/types/snaks.js b/node_modules/wikibase-edit/dist/src/lib/types/snaks.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/types/snaks.js.map b/node_modules/wikibase-edit/dist/src/lib/types/snaks.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/utils.d.ts b/node_modules/wikibase-edit/dist/src/lib/utils.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/utils.d.ts.map b/node_modules/wikibase-edit/dist/src/lib/utils.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/utils.js b/node_modules/wikibase-edit/dist/src/lib/utils.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/utils.js.map b/node_modules/wikibase-edit/dist/src/lib/utils.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/validate.d.ts b/node_modules/wikibase-edit/dist/src/lib/validate.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/validate.d.ts.map b/node_modules/wikibase-edit/dist/src/lib/validate.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/validate.js b/node_modules/wikibase-edit/dist/src/lib/validate.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/validate.js.map b/node_modules/wikibase-edit/dist/src/lib/validate.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/validate_and_enrich_config.d.ts b/node_modules/wikibase-edit/dist/src/lib/validate_and_enrich_config.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/validate_and_enrich_config.d.ts.map b/node_modules/wikibase-edit/dist/src/lib/validate_and_enrich_config.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/validate_and_enrich_config.js b/node_modules/wikibase-edit/dist/src/lib/validate_and_enrich_config.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/validate_and_enrich_config.js.map b/node_modules/wikibase-edit/dist/src/lib/validate_and_enrich_config.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/validate_parameters.d.ts b/node_modules/wikibase-edit/dist/src/lib/validate_parameters.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/validate_parameters.d.ts.map b/node_modules/wikibase-edit/dist/src/lib/validate_parameters.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/validate_parameters.js b/node_modules/wikibase-edit/dist/src/lib/validate_parameters.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/src/lib/validate_parameters.js.map b/node_modules/wikibase-edit/dist/src/lib/validate_parameters.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/alias/add.d.ts b/node_modules/wikibase-edit/dist/tests/integration/alias/add.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/alias/add.d.ts.map b/node_modules/wikibase-edit/dist/tests/integration/alias/add.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/alias/add.js b/node_modules/wikibase-edit/dist/tests/integration/alias/add.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/alias/add.js.map b/node_modules/wikibase-edit/dist/tests/integration/alias/add.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/alias/remove.d.ts b/node_modules/wikibase-edit/dist/tests/integration/alias/remove.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/alias/remove.d.ts.map b/node_modules/wikibase-edit/dist/tests/integration/alias/remove.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/alias/remove.js b/node_modules/wikibase-edit/dist/tests/integration/alias/remove.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/alias/remove.js.map b/node_modules/wikibase-edit/dist/tests/integration/alias/remove.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/alias/set.d.ts b/node_modules/wikibase-edit/dist/tests/integration/alias/set.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/alias/set.d.ts.map b/node_modules/wikibase-edit/dist/tests/integration/alias/set.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/alias/set.js b/node_modules/wikibase-edit/dist/tests/integration/alias/set.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/alias/set.js.map b/node_modules/wikibase-edit/dist/tests/integration/alias/set.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/anonymous_edit.d.ts b/node_modules/wikibase-edit/dist/tests/integration/anonymous_edit.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/anonymous_edit.d.ts.map b/node_modules/wikibase-edit/dist/tests/integration/anonymous_edit.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/anonymous_edit.js b/node_modules/wikibase-edit/dist/tests/integration/anonymous_edit.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/anonymous_edit.js.map b/node_modules/wikibase-edit/dist/tests/integration/anonymous_edit.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/badge/add.d.ts b/node_modules/wikibase-edit/dist/tests/integration/badge/add.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/badge/add.d.ts.map b/node_modules/wikibase-edit/dist/tests/integration/badge/add.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/badge/add.js b/node_modules/wikibase-edit/dist/tests/integration/badge/add.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/badge/add.js.map b/node_modules/wikibase-edit/dist/tests/integration/badge/add.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/badge/remove.d.ts b/node_modules/wikibase-edit/dist/tests/integration/badge/remove.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/badge/remove.d.ts.map b/node_modules/wikibase-edit/dist/tests/integration/badge/remove.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/badge/remove.js b/node_modules/wikibase-edit/dist/tests/integration/badge/remove.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/badge/remove.js.map b/node_modules/wikibase-edit/dist/tests/integration/badge/remove.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/baserevid.d.ts b/node_modules/wikibase-edit/dist/tests/integration/baserevid.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/baserevid.d.ts.map b/node_modules/wikibase-edit/dist/tests/integration/baserevid.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/baserevid.js b/node_modules/wikibase-edit/dist/tests/integration/baserevid.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/baserevid.js.map b/node_modules/wikibase-edit/dist/tests/integration/baserevid.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/claim/create.d.ts b/node_modules/wikibase-edit/dist/tests/integration/claim/create.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/claim/create.d.ts.map b/node_modules/wikibase-edit/dist/tests/integration/claim/create.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/claim/create.js b/node_modules/wikibase-edit/dist/tests/integration/claim/create.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/claim/create.js.map b/node_modules/wikibase-edit/dist/tests/integration/claim/create.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/claim/move_claim.d.ts b/node_modules/wikibase-edit/dist/tests/integration/claim/move_claim.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/claim/move_claim.d.ts.map b/node_modules/wikibase-edit/dist/tests/integration/claim/move_claim.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/claim/move_claim.js b/node_modules/wikibase-edit/dist/tests/integration/claim/move_claim.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/claim/move_claim.js.map b/node_modules/wikibase-edit/dist/tests/integration/claim/move_claim.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/claim/move_property_claims.d.ts b/node_modules/wikibase-edit/dist/tests/integration/claim/move_property_claims.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/claim/move_property_claims.d.ts.map b/node_modules/wikibase-edit/dist/tests/integration/claim/move_property_claims.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/claim/move_property_claims.js b/node_modules/wikibase-edit/dist/tests/integration/claim/move_property_claims.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/claim/move_property_claims.js.map b/node_modules/wikibase-edit/dist/tests/integration/claim/move_property_claims.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/claim/reconciliation.d.ts b/node_modules/wikibase-edit/dist/tests/integration/claim/reconciliation.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/claim/reconciliation.d.ts.map b/node_modules/wikibase-edit/dist/tests/integration/claim/reconciliation.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/claim/reconciliation.js b/node_modules/wikibase-edit/dist/tests/integration/claim/reconciliation.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/claim/reconciliation.js.map b/node_modules/wikibase-edit/dist/tests/integration/claim/reconciliation.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/claim/reconciliation_matching.d.ts b/node_modules/wikibase-edit/dist/tests/integration/claim/reconciliation_matching.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/claim/reconciliation_matching.d.ts.map b/node_modules/wikibase-edit/dist/tests/integration/claim/reconciliation_matching.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/claim/reconciliation_matching.js b/node_modules/wikibase-edit/dist/tests/integration/claim/reconciliation_matching.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/claim/reconciliation_matching.js.map b/node_modules/wikibase-edit/dist/tests/integration/claim/reconciliation_matching.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/claim/reconciliation_merge_mode.d.ts b/node_modules/wikibase-edit/dist/tests/integration/claim/reconciliation_merge_mode.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/claim/reconciliation_merge_mode.d.ts.map b/node_modules/wikibase-edit/dist/tests/integration/claim/reconciliation_merge_mode.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/claim/reconciliation_merge_mode.js b/node_modules/wikibase-edit/dist/tests/integration/claim/reconciliation_merge_mode.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/claim/reconciliation_merge_mode.js.map b/node_modules/wikibase-edit/dist/tests/integration/claim/reconciliation_merge_mode.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/claim/reconciliation_per_datatypes.d.ts b/node_modules/wikibase-edit/dist/tests/integration/claim/reconciliation_per_datatypes.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/claim/reconciliation_per_datatypes.d.ts.map b/node_modules/wikibase-edit/dist/tests/integration/claim/reconciliation_per_datatypes.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/claim/reconciliation_per_datatypes.js b/node_modules/wikibase-edit/dist/tests/integration/claim/reconciliation_per_datatypes.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/claim/reconciliation_per_datatypes.js.map b/node_modules/wikibase-edit/dist/tests/integration/claim/reconciliation_per_datatypes.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/claim/reconciliation_remove.d.ts b/node_modules/wikibase-edit/dist/tests/integration/claim/reconciliation_remove.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/claim/reconciliation_remove.d.ts.map b/node_modules/wikibase-edit/dist/tests/integration/claim/reconciliation_remove.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/claim/reconciliation_remove.js b/node_modules/wikibase-edit/dist/tests/integration/claim/reconciliation_remove.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/claim/reconciliation_remove.js.map b/node_modules/wikibase-edit/dist/tests/integration/claim/reconciliation_remove.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/claim/reconciliation_skip_on_any_value.d.ts b/node_modules/wikibase-edit/dist/tests/integration/claim/reconciliation_skip_on_any_value.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/claim/reconciliation_skip_on_any_value.d.ts.map b/node_modules/wikibase-edit/dist/tests/integration/claim/reconciliation_skip_on_any_value.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/claim/reconciliation_skip_on_any_value.js b/node_modules/wikibase-edit/dist/tests/integration/claim/reconciliation_skip_on_any_value.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/claim/reconciliation_skip_on_any_value.js.map b/node_modules/wikibase-edit/dist/tests/integration/claim/reconciliation_skip_on_any_value.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/claim/reconciliation_skip_on_value_match_mode.d.ts b/node_modules/wikibase-edit/dist/tests/integration/claim/reconciliation_skip_on_value_match_mode.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/claim/reconciliation_skip_on_value_match_mode.d.ts.map b/node_modules/wikibase-edit/dist/tests/integration/claim/reconciliation_skip_on_value_match_mode.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/claim/reconciliation_skip_on_value_match_mode.js b/node_modules/wikibase-edit/dist/tests/integration/claim/reconciliation_skip_on_value_match_mode.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/claim/reconciliation_skip_on_value_match_mode.js.map b/node_modules/wikibase-edit/dist/tests/integration/claim/reconciliation_skip_on_value_match_mode.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/claim/remove.d.ts b/node_modules/wikibase-edit/dist/tests/integration/claim/remove.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/claim/remove.d.ts.map b/node_modules/wikibase-edit/dist/tests/integration/claim/remove.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/claim/remove.js b/node_modules/wikibase-edit/dist/tests/integration/claim/remove.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/claim/remove.js.map b/node_modules/wikibase-edit/dist/tests/integration/claim/remove.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/claim/set.d.ts b/node_modules/wikibase-edit/dist/tests/integration/claim/set.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/claim/set.d.ts.map b/node_modules/wikibase-edit/dist/tests/integration/claim/set.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/claim/set.js b/node_modules/wikibase-edit/dist/tests/integration/claim/set.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/claim/set.js.map b/node_modules/wikibase-edit/dist/tests/integration/claim/set.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/claim/update.d.ts b/node_modules/wikibase-edit/dist/tests/integration/claim/update.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/claim/update.d.ts.map b/node_modules/wikibase-edit/dist/tests/integration/claim/update.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/claim/update.js b/node_modules/wikibase-edit/dist/tests/integration/claim/update.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/claim/update.js.map b/node_modules/wikibase-edit/dist/tests/integration/claim/update.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/credentials.d.ts b/node_modules/wikibase-edit/dist/tests/integration/credentials.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/credentials.d.ts.map b/node_modules/wikibase-edit/dist/tests/integration/credentials.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/credentials.js b/node_modules/wikibase-edit/dist/tests/integration/credentials.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/credentials.js.map b/node_modules/wikibase-edit/dist/tests/integration/credentials.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/description/set.d.ts b/node_modules/wikibase-edit/dist/tests/integration/description/set.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/description/set.d.ts.map b/node_modules/wikibase-edit/dist/tests/integration/description/set.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/description/set.js b/node_modules/wikibase-edit/dist/tests/integration/description/set.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/description/set.js.map b/node_modules/wikibase-edit/dist/tests/integration/description/set.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/dry.d.ts b/node_modules/wikibase-edit/dist/tests/integration/dry.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/dry.d.ts.map b/node_modules/wikibase-edit/dist/tests/integration/dry.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/dry.js b/node_modules/wikibase-edit/dist/tests/integration/dry.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/dry.js.map b/node_modules/wikibase-edit/dist/tests/integration/dry.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/entity/create.d.ts b/node_modules/wikibase-edit/dist/tests/integration/entity/create.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/entity/create.d.ts.map b/node_modules/wikibase-edit/dist/tests/integration/entity/create.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/entity/create.js b/node_modules/wikibase-edit/dist/tests/integration/entity/create.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/entity/create.js.map b/node_modules/wikibase-edit/dist/tests/integration/entity/create.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/entity/delete.d.ts b/node_modules/wikibase-edit/dist/tests/integration/entity/delete.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/entity/delete.d.ts.map b/node_modules/wikibase-edit/dist/tests/integration/entity/delete.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/entity/delete.js b/node_modules/wikibase-edit/dist/tests/integration/entity/delete.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/entity/delete.js.map b/node_modules/wikibase-edit/dist/tests/integration/entity/delete.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/entity/edit.d.ts b/node_modules/wikibase-edit/dist/tests/integration/entity/edit.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/entity/edit.d.ts.map b/node_modules/wikibase-edit/dist/tests/integration/entity/edit.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/entity/edit.js b/node_modules/wikibase-edit/dist/tests/integration/entity/edit.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/entity/edit.js.map b/node_modules/wikibase-edit/dist/tests/integration/entity/edit.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/entity/merge.d.ts b/node_modules/wikibase-edit/dist/tests/integration/entity/merge.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/entity/merge.d.ts.map b/node_modules/wikibase-edit/dist/tests/integration/entity/merge.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/entity/merge.js b/node_modules/wikibase-edit/dist/tests/integration/entity/merge.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/entity/merge.js.map b/node_modules/wikibase-edit/dist/tests/integration/entity/merge.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/fetch_properties_datatypes.d.ts b/node_modules/wikibase-edit/dist/tests/integration/fetch_properties_datatypes.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/fetch_properties_datatypes.d.ts.map b/node_modules/wikibase-edit/dist/tests/integration/fetch_properties_datatypes.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/fetch_properties_datatypes.js b/node_modules/wikibase-edit/dist/tests/integration/fetch_properties_datatypes.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/fetch_properties_datatypes.js.map b/node_modules/wikibase-edit/dist/tests/integration/fetch_properties_datatypes.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/get_auth_data.d.ts b/node_modules/wikibase-edit/dist/tests/integration/get_auth_data.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/get_auth_data.d.ts.map b/node_modules/wikibase-edit/dist/tests/integration/get_auth_data.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/get_auth_data.js b/node_modules/wikibase-edit/dist/tests/integration/get_auth_data.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/get_auth_data.js.map b/node_modules/wikibase-edit/dist/tests/integration/get_auth_data.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/get_token.d.ts b/node_modules/wikibase-edit/dist/tests/integration/get_token.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/get_token.d.ts.map b/node_modules/wikibase-edit/dist/tests/integration/get_token.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/get_token.js b/node_modules/wikibase-edit/dist/tests/integration/get_token.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/get_token.js.map b/node_modules/wikibase-edit/dist/tests/integration/get_token.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/label/set.d.ts b/node_modules/wikibase-edit/dist/tests/integration/label/set.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/label/set.d.ts.map b/node_modules/wikibase-edit/dist/tests/integration/label/set.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/label/set.js b/node_modules/wikibase-edit/dist/tests/integration/label/set.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/label/set.js.map b/node_modules/wikibase-edit/dist/tests/integration/label/set.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/maxlag.d.ts b/node_modules/wikibase-edit/dist/tests/integration/maxlag.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/maxlag.d.ts.map b/node_modules/wikibase-edit/dist/tests/integration/maxlag.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/maxlag.js b/node_modules/wikibase-edit/dist/tests/integration/maxlag.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/maxlag.js.map b/node_modules/wikibase-edit/dist/tests/integration/maxlag.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/multi_users.d.ts b/node_modules/wikibase-edit/dist/tests/integration/multi_users.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/multi_users.d.ts.map b/node_modules/wikibase-edit/dist/tests/integration/multi_users.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/multi_users.js b/node_modules/wikibase-edit/dist/tests/integration/multi_users.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/multi_users.js.map b/node_modules/wikibase-edit/dist/tests/integration/multi_users.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/qualifier/move.d.ts b/node_modules/wikibase-edit/dist/tests/integration/qualifier/move.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/qualifier/move.d.ts.map b/node_modules/wikibase-edit/dist/tests/integration/qualifier/move.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/qualifier/move.js b/node_modules/wikibase-edit/dist/tests/integration/qualifier/move.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/qualifier/move.js.map b/node_modules/wikibase-edit/dist/tests/integration/qualifier/move.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/qualifier/remove.d.ts b/node_modules/wikibase-edit/dist/tests/integration/qualifier/remove.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/qualifier/remove.d.ts.map b/node_modules/wikibase-edit/dist/tests/integration/qualifier/remove.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/qualifier/remove.js b/node_modules/wikibase-edit/dist/tests/integration/qualifier/remove.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/qualifier/remove.js.map b/node_modules/wikibase-edit/dist/tests/integration/qualifier/remove.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/qualifier/set.d.ts b/node_modules/wikibase-edit/dist/tests/integration/qualifier/set.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/qualifier/set.d.ts.map b/node_modules/wikibase-edit/dist/tests/integration/qualifier/set.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/qualifier/set.js b/node_modules/wikibase-edit/dist/tests/integration/qualifier/set.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/qualifier/set.js.map b/node_modules/wikibase-edit/dist/tests/integration/qualifier/set.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/qualifier/update.d.ts b/node_modules/wikibase-edit/dist/tests/integration/qualifier/update.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/qualifier/update.d.ts.map b/node_modules/wikibase-edit/dist/tests/integration/qualifier/update.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/qualifier/update.js b/node_modules/wikibase-edit/dist/tests/integration/qualifier/update.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/qualifier/update.js.map b/node_modules/wikibase-edit/dist/tests/integration/qualifier/update.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/reference/remove.d.ts b/node_modules/wikibase-edit/dist/tests/integration/reference/remove.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/reference/remove.d.ts.map b/node_modules/wikibase-edit/dist/tests/integration/reference/remove.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/reference/remove.js b/node_modules/wikibase-edit/dist/tests/integration/reference/remove.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/reference/remove.js.map b/node_modules/wikibase-edit/dist/tests/integration/reference/remove.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/reference/set.d.ts b/node_modules/wikibase-edit/dist/tests/integration/reference/set.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/reference/set.d.ts.map b/node_modules/wikibase-edit/dist/tests/integration/reference/set.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/reference/set.js b/node_modules/wikibase-edit/dist/tests/integration/reference/set.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/reference/set.js.map b/node_modules/wikibase-edit/dist/tests/integration/reference/set.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/sitelink/set.d.ts b/node_modules/wikibase-edit/dist/tests/integration/sitelink/set.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/sitelink/set.d.ts.map b/node_modules/wikibase-edit/dist/tests/integration/sitelink/set.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/sitelink/set.js b/node_modules/wikibase-edit/dist/tests/integration/sitelink/set.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/sitelink/set.js.map b/node_modules/wikibase-edit/dist/tests/integration/sitelink/set.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/summary.d.ts b/node_modules/wikibase-edit/dist/tests/integration/summary.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/summary.d.ts.map b/node_modules/wikibase-edit/dist/tests/integration/summary.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/summary.js b/node_modules/wikibase-edit/dist/tests/integration/summary.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/summary.js.map b/node_modules/wikibase-edit/dist/tests/integration/summary.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/tags.d.ts b/node_modules/wikibase-edit/dist/tests/integration/tags.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/tags.d.ts.map b/node_modules/wikibase-edit/dist/tests/integration/tags.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/tags.js b/node_modules/wikibase-edit/dist/tests/integration/tags.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/tags.js.map b/node_modules/wikibase-edit/dist/tests/integration/tags.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/token_expiration.d.ts b/node_modules/wikibase-edit/dist/tests/integration/token_expiration.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/token_expiration.d.ts.map b/node_modules/wikibase-edit/dist/tests/integration/token_expiration.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/token_expiration.js b/node_modules/wikibase-edit/dist/tests/integration/token_expiration.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/token_expiration.js.map b/node_modules/wikibase-edit/dist/tests/integration/token_expiration.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/utils/get_property.d.ts b/node_modules/wikibase-edit/dist/tests/integration/utils/get_property.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/utils/get_property.d.ts.map b/node_modules/wikibase-edit/dist/tests/integration/utils/get_property.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/utils/get_property.js b/node_modules/wikibase-edit/dist/tests/integration/utils/get_property.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/utils/get_property.js.map b/node_modules/wikibase-edit/dist/tests/integration/utils/get_property.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/utils/sandbox_entities.d.ts b/node_modules/wikibase-edit/dist/tests/integration/utils/sandbox_entities.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/utils/sandbox_entities.d.ts.map b/node_modules/wikibase-edit/dist/tests/integration/utils/sandbox_entities.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/utils/sandbox_entities.js b/node_modules/wikibase-edit/dist/tests/integration/utils/sandbox_entities.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/utils/sandbox_entities.js.map b/node_modules/wikibase-edit/dist/tests/integration/utils/sandbox_entities.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/utils/sandbox_snaks.d.ts b/node_modules/wikibase-edit/dist/tests/integration/utils/sandbox_snaks.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/utils/sandbox_snaks.d.ts.map b/node_modules/wikibase-edit/dist/tests/integration/utils/sandbox_snaks.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/utils/sandbox_snaks.js b/node_modules/wikibase-edit/dist/tests/integration/utils/sandbox_snaks.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/utils/sandbox_snaks.js.map b/node_modules/wikibase-edit/dist/tests/integration/utils/sandbox_snaks.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/utils/utils.d.ts b/node_modules/wikibase-edit/dist/tests/integration/utils/utils.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/utils/utils.d.ts.map b/node_modules/wikibase-edit/dist/tests/integration/utils/utils.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/utils/utils.js b/node_modules/wikibase-edit/dist/tests/integration/utils/utils.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/utils/utils.js.map b/node_modules/wikibase-edit/dist/tests/integration/utils/utils.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/utils/wait_for_instance.d.ts b/node_modules/wikibase-edit/dist/tests/integration/utils/wait_for_instance.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/utils/wait_for_instance.d.ts.map b/node_modules/wikibase-edit/dist/tests/integration/utils/wait_for_instance.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/utils/wait_for_instance.js b/node_modules/wikibase-edit/dist/tests/integration/utils/wait_for_instance.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/integration/utils/wait_for_instance.js.map b/node_modules/wikibase-edit/dist/tests/integration/utils/wait_for_instance.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/unit/alias/add.d.ts b/node_modules/wikibase-edit/dist/tests/unit/alias/add.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/unit/alias/add.d.ts.map b/node_modules/wikibase-edit/dist/tests/unit/alias/add.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/unit/alias/add.js b/node_modules/wikibase-edit/dist/tests/unit/alias/add.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/unit/alias/add.js.map b/node_modules/wikibase-edit/dist/tests/unit/alias/add.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/unit/alias/remove.d.ts b/node_modules/wikibase-edit/dist/tests/unit/alias/remove.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/unit/alias/remove.d.ts.map b/node_modules/wikibase-edit/dist/tests/unit/alias/remove.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/unit/alias/remove.js b/node_modules/wikibase-edit/dist/tests/unit/alias/remove.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/unit/alias/remove.js.map b/node_modules/wikibase-edit/dist/tests/unit/alias/remove.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/unit/alias/set.d.ts b/node_modules/wikibase-edit/dist/tests/unit/alias/set.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/unit/alias/set.d.ts.map b/node_modules/wikibase-edit/dist/tests/unit/alias/set.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/unit/alias/set.js b/node_modules/wikibase-edit/dist/tests/unit/alias/set.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/unit/alias/set.js.map b/node_modules/wikibase-edit/dist/tests/unit/alias/set.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/unit/claim/remove.d.ts b/node_modules/wikibase-edit/dist/tests/unit/claim/remove.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/unit/claim/remove.d.ts.map b/node_modules/wikibase-edit/dist/tests/unit/claim/remove.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/unit/claim/remove.js b/node_modules/wikibase-edit/dist/tests/unit/claim/remove.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/unit/claim/remove.js.map b/node_modules/wikibase-edit/dist/tests/unit/claim/remove.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/unit/claim/set.d.ts b/node_modules/wikibase-edit/dist/tests/unit/claim/set.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/unit/claim/set.d.ts.map b/node_modules/wikibase-edit/dist/tests/unit/claim/set.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/unit/claim/set.js b/node_modules/wikibase-edit/dist/tests/unit/claim/set.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/unit/claim/set.js.map b/node_modules/wikibase-edit/dist/tests/unit/claim/set.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/unit/claim/time.d.ts b/node_modules/wikibase-edit/dist/tests/unit/claim/time.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/unit/claim/time.d.ts.map b/node_modules/wikibase-edit/dist/tests/unit/claim/time.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/unit/claim/time.js b/node_modules/wikibase-edit/dist/tests/unit/claim/time.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/unit/claim/time.js.map b/node_modules/wikibase-edit/dist/tests/unit/claim/time.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/unit/description/set.d.ts b/node_modules/wikibase-edit/dist/tests/unit/description/set.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/unit/description/set.d.ts.map b/node_modules/wikibase-edit/dist/tests/unit/description/set.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/unit/description/set.js b/node_modules/wikibase-edit/dist/tests/unit/description/set.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/unit/description/set.js.map b/node_modules/wikibase-edit/dist/tests/unit/description/set.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/unit/entity/create.d.ts b/node_modules/wikibase-edit/dist/tests/unit/entity/create.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/unit/entity/create.d.ts.map b/node_modules/wikibase-edit/dist/tests/unit/entity/create.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/unit/entity/create.js b/node_modules/wikibase-edit/dist/tests/unit/entity/create.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/unit/entity/create.js.map b/node_modules/wikibase-edit/dist/tests/unit/entity/create.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/unit/entity/delete.d.ts b/node_modules/wikibase-edit/dist/tests/unit/entity/delete.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/unit/entity/delete.d.ts.map b/node_modules/wikibase-edit/dist/tests/unit/entity/delete.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/unit/entity/delete.js b/node_modules/wikibase-edit/dist/tests/unit/entity/delete.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/unit/entity/delete.js.map b/node_modules/wikibase-edit/dist/tests/unit/entity/delete.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/unit/entity/edit.d.ts b/node_modules/wikibase-edit/dist/tests/unit/entity/edit.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/unit/entity/edit.d.ts.map b/node_modules/wikibase-edit/dist/tests/unit/entity/edit.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/unit/entity/edit.js b/node_modules/wikibase-edit/dist/tests/unit/entity/edit.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/unit/entity/edit.js.map b/node_modules/wikibase-edit/dist/tests/unit/entity/edit.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/unit/entity/merge.d.ts b/node_modules/wikibase-edit/dist/tests/unit/entity/merge.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/unit/entity/merge.d.ts.map b/node_modules/wikibase-edit/dist/tests/unit/entity/merge.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/unit/entity/merge.js b/node_modules/wikibase-edit/dist/tests/unit/entity/merge.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/unit/entity/merge.js.map b/node_modules/wikibase-edit/dist/tests/unit/entity/merge.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/unit/general.d.ts b/node_modules/wikibase-edit/dist/tests/unit/general.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/unit/general.d.ts.map b/node_modules/wikibase-edit/dist/tests/unit/general.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/unit/general.js b/node_modules/wikibase-edit/dist/tests/unit/general.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/unit/general.js.map b/node_modules/wikibase-edit/dist/tests/unit/general.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/unit/label/set.d.ts b/node_modules/wikibase-edit/dist/tests/unit/label/set.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/unit/label/set.d.ts.map b/node_modules/wikibase-edit/dist/tests/unit/label/set.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/unit/label/set.js b/node_modules/wikibase-edit/dist/tests/unit/label/set.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/unit/label/set.js.map b/node_modules/wikibase-edit/dist/tests/unit/label/set.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/unit/parse_instance.d.ts b/node_modules/wikibase-edit/dist/tests/unit/parse_instance.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/unit/parse_instance.d.ts.map b/node_modules/wikibase-edit/dist/tests/unit/parse_instance.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/unit/parse_instance.js b/node_modules/wikibase-edit/dist/tests/unit/parse_instance.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/unit/parse_instance.js.map b/node_modules/wikibase-edit/dist/tests/unit/parse_instance.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/unit/qualifier/remove.d.ts b/node_modules/wikibase-edit/dist/tests/unit/qualifier/remove.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/unit/qualifier/remove.d.ts.map b/node_modules/wikibase-edit/dist/tests/unit/qualifier/remove.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/unit/qualifier/remove.js b/node_modules/wikibase-edit/dist/tests/unit/qualifier/remove.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/unit/qualifier/remove.js.map b/node_modules/wikibase-edit/dist/tests/unit/qualifier/remove.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/unit/qualifier/set.d.ts b/node_modules/wikibase-edit/dist/tests/unit/qualifier/set.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/unit/qualifier/set.d.ts.map b/node_modules/wikibase-edit/dist/tests/unit/qualifier/set.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/unit/qualifier/set.js b/node_modules/wikibase-edit/dist/tests/unit/qualifier/set.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/unit/qualifier/set.js.map b/node_modules/wikibase-edit/dist/tests/unit/qualifier/set.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/unit/reference/remove.d.ts b/node_modules/wikibase-edit/dist/tests/unit/reference/remove.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/unit/reference/remove.d.ts.map b/node_modules/wikibase-edit/dist/tests/unit/reference/remove.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/unit/reference/remove.js b/node_modules/wikibase-edit/dist/tests/unit/reference/remove.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/unit/reference/remove.js.map b/node_modules/wikibase-edit/dist/tests/unit/reference/remove.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/unit/reference/set.d.ts b/node_modules/wikibase-edit/dist/tests/unit/reference/set.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/unit/reference/set.d.ts.map b/node_modules/wikibase-edit/dist/tests/unit/reference/set.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/unit/reference/set.js b/node_modules/wikibase-edit/dist/tests/unit/reference/set.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/unit/reference/set.js.map b/node_modules/wikibase-edit/dist/tests/unit/reference/set.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/unit/request.d.ts b/node_modules/wikibase-edit/dist/tests/unit/request.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/unit/request.d.ts.map b/node_modules/wikibase-edit/dist/tests/unit/request.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/unit/request.js b/node_modules/wikibase-edit/dist/tests/unit/request.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/unit/request.js.map b/node_modules/wikibase-edit/dist/tests/unit/request.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/unit/sitelink/set.d.ts b/node_modules/wikibase-edit/dist/tests/unit/sitelink/set.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/unit/sitelink/set.d.ts.map b/node_modules/wikibase-edit/dist/tests/unit/sitelink/set.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/unit/sitelink/set.js b/node_modules/wikibase-edit/dist/tests/unit/sitelink/set.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/unit/sitelink/set.js.map b/node_modules/wikibase-edit/dist/tests/unit/sitelink/set.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/unit/utils.d.ts b/node_modules/wikibase-edit/dist/tests/unit/utils.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/unit/utils.d.ts.map b/node_modules/wikibase-edit/dist/tests/unit/utils.d.ts.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/unit/utils.js b/node_modules/wikibase-edit/dist/tests/unit/utils.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tests/unit/utils.js.map b/node_modules/wikibase-edit/dist/tests/unit/utils.js.map
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/dist/tsconfig.tsbuildinfo b/node_modules/wikibase-edit/dist/tsconfig.tsbuildinfo
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/src/assets/metadata.ts b/node_modules/wikibase-edit/src/assets/metadata.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/src/lib/alias/action.ts b/node_modules/wikibase-edit/src/lib/alias/action.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/src/lib/alias/add.ts b/node_modules/wikibase-edit/src/lib/alias/add.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/src/lib/alias/remove.ts b/node_modules/wikibase-edit/src/lib/alias/remove.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/src/lib/alias/set.ts b/node_modules/wikibase-edit/src/lib/alias/set.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/src/lib/badge/add.ts b/node_modules/wikibase-edit/src/lib/badge/add.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/src/lib/badge/remove.ts b/node_modules/wikibase-edit/src/lib/badge/remove.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/src/lib/bundle_wrapper.ts b/node_modules/wikibase-edit/src/lib/bundle_wrapper.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/src/lib/claim/builders.ts b/node_modules/wikibase-edit/src/lib/claim/builders.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/src/lib/claim/claim_parsers.ts b/node_modules/wikibase-edit/src/lib/claim/claim_parsers.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/src/lib/claim/create.ts b/node_modules/wikibase-edit/src/lib/claim/create.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/src/lib/claim/find_snak.ts b/node_modules/wikibase-edit/src/lib/claim/find_snak.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/src/lib/claim/format_claim_value.ts b/node_modules/wikibase-edit/src/lib/claim/format_claim_value.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/src/lib/claim/get_time_object.ts b/node_modules/wikibase-edit/src/lib/claim/get_time_object.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/src/lib/claim/helpers.ts b/node_modules/wikibase-edit/src/lib/claim/helpers.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/src/lib/claim/is_matching_claim.ts b/node_modules/wikibase-edit/src/lib/claim/is_matching_claim.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/src/lib/claim/is_matching_snak.ts b/node_modules/wikibase-edit/src/lib/claim/is_matching_snak.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/src/lib/claim/move.ts b/node_modules/wikibase-edit/src/lib/claim/move.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/src/lib/claim/move_commons.ts b/node_modules/wikibase-edit/src/lib/claim/move_commons.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/src/lib/claim/parse_calendar.ts b/node_modules/wikibase-edit/src/lib/claim/parse_calendar.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/src/lib/claim/quantity.ts b/node_modules/wikibase-edit/src/lib/claim/quantity.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/src/lib/claim/remove.ts b/node_modules/wikibase-edit/src/lib/claim/remove.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/src/lib/claim/set.ts b/node_modules/wikibase-edit/src/lib/claim/set.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/src/lib/claim/snak.ts b/node_modules/wikibase-edit/src/lib/claim/snak.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/src/lib/claim/special_snaktype.ts b/node_modules/wikibase-edit/src/lib/claim/special_snaktype.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/src/lib/claim/update.ts b/node_modules/wikibase-edit/src/lib/claim/update.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/src/lib/datatype_tests.ts b/node_modules/wikibase-edit/src/lib/datatype_tests.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/src/lib/debug.ts b/node_modules/wikibase-edit/src/lib/debug.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/src/lib/description/set.ts b/node_modules/wikibase-edit/src/lib/description/set.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/src/lib/entity/build_claim.ts b/node_modules/wikibase-edit/src/lib/entity/build_claim.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/src/lib/entity/create.ts b/node_modules/wikibase-edit/src/lib/entity/create.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/src/lib/entity/delete.ts b/node_modules/wikibase-edit/src/lib/entity/delete.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/src/lib/entity/edit.ts b/node_modules/wikibase-edit/src/lib/entity/edit.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/src/lib/entity/format.ts b/node_modules/wikibase-edit/src/lib/entity/format.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/src/lib/entity/id_alias.ts b/node_modules/wikibase-edit/src/lib/entity/id_alias.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/src/lib/entity/merge.ts b/node_modules/wikibase-edit/src/lib/entity/merge.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/src/lib/entity/reconcile_claim.ts b/node_modules/wikibase-edit/src/lib/entity/reconcile_claim.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/src/lib/entity/validate_reconciliation_object.ts b/node_modules/wikibase-edit/src/lib/entity/validate_reconciliation_object.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/src/lib/error.ts b/node_modules/wikibase-edit/src/lib/error.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/src/lib/get_entity.ts b/node_modules/wikibase-edit/src/lib/get_entity.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/src/lib/get_instance_wikibase_sdk.ts b/node_modules/wikibase-edit/src/lib/get_instance_wikibase_sdk.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/src/lib/index.ts b/node_modules/wikibase-edit/src/lib/index.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/src/lib/issues.ts b/node_modules/wikibase-edit/src/lib/issues.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/src/lib/label/set.ts b/node_modules/wikibase-edit/src/lib/label/set.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/src/lib/label_or_description/set.ts b/node_modules/wikibase-edit/src/lib/label_or_description/set.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/src/lib/parse_instance.ts b/node_modules/wikibase-edit/src/lib/parse_instance.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/src/lib/properties/datatypes_to_builder_datatypes.ts b/node_modules/wikibase-edit/src/lib/properties/datatypes_to_builder_datatypes.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/src/lib/properties/fetch_properties_datatypes.ts b/node_modules/wikibase-edit/src/lib/properties/fetch_properties_datatypes.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/src/lib/properties/fetch_used_properties_datatypes.ts b/node_modules/wikibase-edit/src/lib/properties/fetch_used_properties_datatypes.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/src/lib/properties/find_snaks_properties.ts b/node_modules/wikibase-edit/src/lib/properties/find_snaks_properties.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/src/lib/qualifier/move.ts b/node_modules/wikibase-edit/src/lib/qualifier/move.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/src/lib/qualifier/remove.ts b/node_modules/wikibase-edit/src/lib/qualifier/remove.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/src/lib/qualifier/set.ts b/node_modules/wikibase-edit/src/lib/qualifier/set.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/src/lib/qualifier/update.ts b/node_modules/wikibase-edit/src/lib/qualifier/update.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/src/lib/reference/remove.ts b/node_modules/wikibase-edit/src/lib/reference/remove.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/src/lib/reference/set.ts b/node_modules/wikibase-edit/src/lib/reference/set.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/src/lib/request/check_known_issues.ts b/node_modules/wikibase-edit/src/lib/request/check_known_issues.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/src/lib/request/fetch.ts b/node_modules/wikibase-edit/src/lib/request/fetch.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/src/lib/request/get_auth_data.ts b/node_modules/wikibase-edit/src/lib/request/get_auth_data.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/src/lib/request/get_final_token.ts b/node_modules/wikibase-edit/src/lib/request/get_final_token.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/src/lib/request/get_json.ts b/node_modules/wikibase-edit/src/lib/request/get_json.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/src/lib/request/get_token.ts b/node_modules/wikibase-edit/src/lib/request/get_token.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/src/lib/request/initialize_config_auth.ts b/node_modules/wikibase-edit/src/lib/request/initialize_config_auth.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/src/lib/request/login.ts b/node_modules/wikibase-edit/src/lib/request/login.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/src/lib/request/oauth.ts b/node_modules/wikibase-edit/src/lib/request/oauth.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/src/lib/request/parse_response_body.ts b/node_modules/wikibase-edit/src/lib/request/parse_response_body.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/src/lib/request/parse_session_cookies.ts b/node_modules/wikibase-edit/src/lib/request/parse_session_cookies.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/src/lib/request/post.ts b/node_modules/wikibase-edit/src/lib/request/post.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/src/lib/request/request.ts b/node_modules/wikibase-edit/src/lib/request/request.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/src/lib/request_wrapper.ts b/node_modules/wikibase-edit/src/lib/request_wrapper.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/src/lib/resolve_title.ts b/node_modules/wikibase-edit/src/lib/resolve_title.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/src/lib/sitelink/set.ts b/node_modules/wikibase-edit/src/lib/sitelink/set.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/src/lib/types/common.ts b/node_modules/wikibase-edit/src/lib/types/common.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/src/lib/types/config.ts b/node_modules/wikibase-edit/src/lib/types/config.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/src/lib/types/edit_entity.ts b/node_modules/wikibase-edit/src/lib/types/edit_entity.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/src/lib/types/snaks.ts b/node_modules/wikibase-edit/src/lib/types/snaks.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/src/lib/utils.ts b/node_modules/wikibase-edit/src/lib/utils.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/src/lib/validate.ts b/node_modules/wikibase-edit/src/lib/validate.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/src/lib/validate_and_enrich_config.ts b/node_modules/wikibase-edit/src/lib/validate_and_enrich_config.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/wikibase-edit/src/lib/validate_parameters.ts b/node_modules/wikibase-edit/src/lib/validate_parameters.ts
+old mode 100644
+new mode 100755

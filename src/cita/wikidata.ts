@@ -962,8 +962,7 @@ class Login {
 	cancelled: any;
 	anonymous: any;
 	error: string;
-	username: any;
-	password: any;
+	accessToken: string = "";
 	save?: boolean;
 	constructor() {
 		this.error = "";
@@ -972,7 +971,7 @@ class Login {
 	get credentials() {
 		let credentials;
 		if (!this.anonymous) {
-			credentials = { username: this.username, password: this.password };
+			credentials = { oauth2: { accessToken: this.accessToken } };
 		}
 		return credentials;
 	}
@@ -1022,35 +1021,27 @@ class Login {
 		}
 		promptText +=
 			Wikicite.getString("wikicite.wikidata.login.message.main") + "\n\n";
-		promptText +=
-			Wikicite.formatString(
-				"wikicite.wikidata.login.message.create-account",
-				"https://www.wikidata.org/w/index.php?title=Special:CreateAccount",
-			) + "\n\n";
 		promptText += Wikicite.formatString(
-			"wikicite.wikidata.login.message.bot-pass",
-			"https://www.mediawiki.org/wiki/Special:BotPasswords",
+			"wikicite.wikidata.login.message.create-account",
+			"https://meta.wikimedia.org/wiki/Special:OAuthConsumerRegistration/propose?wpownerOnly=1",
 		);
 
-		const username = { value: this.username };
-		const password = { value: "" };
+		const accessToken = { value: "" };
 		const save = { value: false };
 		let loginPrompt;
 		do {
-			loginPrompt = Services.prompt.promptUsernameAndPassword(
+			loginPrompt = Services.prompt.promptPassword(
 				window as mozIDOMWindowProxy,
 				Wikicite.getString("wikicite.wikidata.login.title"),
 				promptText,
-				username,
-				password,
+				accessToken,
 			);
 			// if user entered username and clicked OK but forgot password
 			// display prompt again
-		} while (loginPrompt && username.value && !password.value);
+		} while (loginPrompt && !accessToken.value);
 		if (loginPrompt) {
-			this.username = username.value;
-			this.password = password.value;
-			this.anonymous = !this.username && !this.password;
+			this.accessToken = accessToken.value;
+			this.anonymous = !this.accessToken;
 			this.save = save.value;
 		} else {
 			// user cancelled login

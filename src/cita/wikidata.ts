@@ -7,7 +7,7 @@ import WBK, {
 } from "wikibase-sdk";
 // @ts-ignore - couldn't find the types for this
 import qs2wbEdit from "quickstatements-to-wikibase-edit";
-import wbEdit from "wikibase-edit";
+import wbEdit, { RequestConfig } from "wikibase-edit";
 import ItemWrapper from "./itemWrapper";
 import { config } from "../../package.json";
 
@@ -57,6 +57,12 @@ const wdEdit = wbEdit({
 	maxlag: 20,
 	// tags: ['Zotero_WikiCite']
 });
+
+const enum ResponseType {
+	WIKIDATA,
+	QUICK_STATEMENTS,
+	CANCEL,
+}
 
 export default class {
 	/**
@@ -479,6 +485,72 @@ export default class {
 		return openAlex;
 	}
 
+	static async zoteroItemToQuickstatements(
+		item: ItemWrapper,
+	): Promise<string | undefined> {
+		await Zotero.Schema.schemaUpdatePromise;
+		const translation = new Zotero.Translate.Export();
+		if (item.item.libraryID) {
+			translation.setItems([item.item]);
+		} else {
+			// export translation expects the item to have a libraryID
+			// target (i.e., cited) items in the CitationEditor do not have one
+			// create temporary item
+			const tmpItem = new Zotero.Item();
+			tmpItem.fromJSON(item.item.toJSON());
+			tmpItem.libraryID = 1;
+			translation.setItems([tmpItem]);
+		}
+		translation.setTranslator("51e5355d-9974-484f-80b9-f84d2b55782e"); // QuickStatements translator
+		await translation.translate();
+		const qsCommands = translation.string;
+
+		return qsCommands;
+	}
+
+	static useWikidataOrQuickstatements(
+		titleText: string,
+		bodyText: string,
+		wikidataButtonText: string,
+	): ResponseType {
+		const buttonFlags =
+			Services.prompt.BUTTON_POS_0! *
+				Services.prompt.BUTTON_TITLE_IS_STRING! +
+			Services.prompt.BUTTON_POS_1! *
+				Services.prompt.BUTTON_TITLE_IS_STRING! +
+			Services.prompt.BUTTON_POS_2! *
+				Services.prompt.BUTTON_TITLE_CANCEL!;
+		const response = Services.prompt.confirmEx(
+			window as mozIDOMWindowProxy,
+			titleText,
+			bodyText,
+			buttonFlags,
+			wikidataButtonText,
+			Wikicite.getString("wikicite.wikidata.create.confirm.button.qs"),
+			"",
+			"",
+			{ value: false },
+		);
+		return response;
+	}
+
+	static copyQuickstatementsCommand(quickstatementsCommand: string) {
+		let copied = false;
+		// copy commands to clipboard
+		try {
+			Zotero.Utilities.Internal.copyTextToClipboard(
+				quickstatementsCommand,
+			);
+			copied = true;
+		} catch {
+			throw new Error("Copy to clipboard failed!");
+		}
+		// launch QuickStatements
+		if (copied) {
+			Zotero.launchURL("https://quickstatements.toolforge.org/#/batch");
+		}
+	}
+
 	/**
 	 * Creates a Wikidata entity for an item wrapper provided
 	 * @param {ItemWrapper} item Wrapped Zotero item
@@ -499,51 +571,24 @@ export default class {
 		if (!item.title) {
 			throw Error("Cannot create an entity for an item without a title");
 		}
-		await Zotero.Schema.schemaUpdatePromise;
-		const translation = new Zotero.Translate.Export();
-		if (item.item.libraryID) {
-			translation.setItems([item.item]);
-		} else {
-			// export translation expects the item to have a libraryID
-			// target (i.e., cited) items in the CitationEditor do not have one
-			// create temporary item
-			const tmpItem = new Zotero.Item();
-			tmpItem.fromJSON(item.item.toJSON());
-			tmpItem.libraryID = 1;
-			translation.setItems([tmpItem]);
-		}
-		translation.setTranslator("51e5355d-9974-484f-80b9-f84d2b55782e"); // QuickStatements translator
-		await translation.translate();
-		const qsCommands = translation.string;
+
+		const qsCommands = await this.zoteroItemToQuickstatements(item);
+
 		let qid;
 		if (qsCommands) {
-			const buttonFlags =
-				Services.prompt.BUTTON_POS_0! *
-					Services.prompt.BUTTON_TITLE_IS_STRING! +
-				Services.prompt.BUTTON_POS_1! *
-					Services.prompt.BUTTON_TITLE_IS_STRING! +
-				Services.prompt.BUTTON_POS_2! *
-					Services.prompt.BUTTON_TITLE_CANCEL!;
-			const response = Services.prompt.confirmEx(
-				window as mozIDOMWindowProxy,
+			const response = this.useWikidataOrQuickstatements(
 				Wikicite.getString("wikicite.wikidata.create.confirm.title"),
 				Wikicite.formatString(
 					"wikicite.wikidata.create.confirm.message",
 					item.title,
 				),
-				buttonFlags,
 				Wikicite.getString(
 					"wikicite.wikidata.create.confirm.button.create",
 				),
-				Wikicite.getString(
-					"wikicite.wikidata.create.confirm.button.qs",
-				),
-				"",
-				"",
-				{ value: false },
 			);
+
 			switch (response) {
-				case 0: {
+				case ResponseType.WIKIDATA: {
 					// create
 					const confirm = Services.prompt.confirm(
 						window as mozIDOMWindowProxy,
@@ -639,8 +684,7 @@ export default class {
 					progress.close();
 					break;
 				}
-				case 1: {
-					// quickstatements
+				case ResponseType.QUICK_STATEMENTS: {
 					const confirm = Services.prompt.confirm(
 						window as mozIDOMWindowProxy,
 						Wikicite.getString("wikicite.wikidata.create.qs.title"),
@@ -649,36 +693,15 @@ export default class {
 						),
 					);
 					if (confirm) {
-						let copied = false;
-						// copy commands to clipboard
-						try {
-							Zotero.Utilities.Internal.copyTextToClipboard(
-								qsCommands,
-							);
-							copied = true;
-						} catch {
-							throw new Error("Copy to clipboard failed!");
-						}
-						// launch QuickStatements
-						if (copied)
-							Zotero.launchURL(
-								"https://quickstatements.toolforge.org/#/batch",
-							);
-						// return undefined qid (because it can't be known)
-						qid = undefined;
+						this.copyQuickstatementsCommand(qsCommands);
+						return undefined; // because we can't know the QID
 					} else {
 						// return null qid (because user cancelled)
 						qid = null;
 					}
-					// // running QS through URL doesn't let edit the commands
-					// Zotero.launchURL(
-					//     'https://quickstatements.toolforge.org/#/v1=' +
-					//     qsCommands.replace(/\t/g, '|').replace(/\n/g, '||')
-					// );
-					// qid = undefined;
 					break;
 				}
-				case 2:
+				case ResponseType.CANCEL:
 					// cancel
 					qid = null;
 					break;
@@ -899,59 +922,120 @@ export default class {
 		[id: QID]: CitesWorkClaim[];
 	}) {
 		const login = new Login();
-		const results: { [id: QID]: string } = {};
+		const results: {
+			[id: QID]: string;
+		} = {};
 
-		for (const id of Object.keys(citesWorkClaims) as QID[]) {
-			const actionType = getActionType(citesWorkClaims[id]);
+		// Check here whether the user wants to use wikidata directly, or Quickstatements
+		const response = this.useWikidataOrQuickstatements(
+			Wikicite.getString("wikicite.wikidata.sync.confirm.title"),
+			Wikicite.getString("wikicite.wikidata.sync.confirm.body"),
+			Wikicite.getString("wikicite.wikidata.sync.confirm.button.create"),
+		);
 
-			do {
-				if (!login.cancelled && (!login.anonymous || login.error)) {
-					login.prompt();
+		switch (response) {
+			case ResponseType.WIKIDATA:
+				for (const id of Object.keys(citesWorkClaims) as QID[]) {
+					const actionType = getActionType(citesWorkClaims[id]);
+
+					let requestConfig: RequestConfig | undefined;
+					do {
+						// if we haven't successfully logged in yet - try again
+						if (typeof requestConfig === "undefined") {
+							if (
+								!login.cancelled &&
+								(!login.anonymous || login.error)
+							) {
+								login.prompt();
+							}
+							if (login.cancelled) {
+								results[id] = "cancelled";
+								break;
+							}
+							requestConfig = {
+								anonymous: login.anonymous,
+								credentials: login.credentials,
+								userAgent: `${Wikicite.getUserAgent()} wikibase-edit/v${wbEditVersion || "?"}`,
+							};
+						}
+
+						try {
+							resetCookies();
+							const res = await wdEdit.entity.edit(
+								{
+									id: id,
+									claims: {
+										[properties.citesWork]:
+											citesWorkClaims[id],
+									},
+									summary:
+										Wikicite.formatString(
+											"wikicite.wikidata.updateCitesWork." +
+												actionType,
+											`[[Property:${properties.citesWork}]]`,
+										) + " [[[Wikidata:Zotero/Cita|Cita]]]",
+								},
+								requestConfig,
+							);
+							if (res.success) {
+								login.onSuccess();
+								// res returned by wdEdit.entity.edit has an entity prop
+								results[id] = "ok";
+							} else {
+								// is it even possible to get here without an error being
+								// thrown by wdEdit.entity.edit above, and caught below?
+								results[id] = "unsuccessful";
+							}
+						} catch (error) {
+							login.onError(error as Error);
+							requestConfig = undefined;
+							if (!login.error) {
+								// if not login error, save error name and proceed with next id
+								results[id] = (error as Error).name;
+							}
+						}
+					} while (login.error);
 				}
-				if (login.cancelled) {
-					results[id] = "cancelled";
-					break;
-				}
-				const requestConfig = {
-					anonymous: login.anonymous,
-					credentials: login.credentials,
-					userAgent: `${Wikicite.getUserAgent()} wikibase-edit/v${wbEditVersion || "?"}`,
-				};
+				break;
+			case ResponseType.QUICK_STATEMENTS: {
+				const confirm = Services.prompt.confirm(
+					window as mozIDOMWindowProxy,
+					Wikicite.getString("wikicite.wikidata.sync.qs.title"),
+					Wikicite.getString("wikicite.wikidata.create.qs.message"),
+				);
+				if (confirm) {
+					// Convert claims to quickstatements
+					let quickstatementsCommands: string[] = [];
+					for (const qid of Object.keys(citesWorkClaims) as QID[]) {
+						if (!Object.hasOwn(citesWorkClaims, qid)) continue;
 
-				try {
-					resetCookies();
-					const res = await wdEdit.entity.edit(
-						{
-							id: id,
-							claims: {
-								[properties.citesWork]: citesWorkClaims[id],
-							},
-							summary:
-								Wikicite.formatString(
-									"wikicite.wikidata.updateCitesWork." +
-										actionType,
-									`[[Property:${properties.citesWork}]]`,
-								) + " [[[Wikidata:Zotero/Cita|Cita]]]",
-						},
-						requestConfig,
+						const element = citesWorkClaims[qid];
+
+						quickstatementsCommands =
+							quickstatementsCommands.concat(
+								element.map((citesWorkClaim) =>
+									citesWorkClaim.toQuickStatements(qid),
+								),
+							);
+					}
+					this.copyQuickstatementsCommand(
+						quickstatementsCommands.join("\n"),
 					);
-					if (res.success) {
-						login.onSuccess();
-						// res returned by wdEdit.entity.edit has an entity prop
-						results[id] = "ok";
-					} else {
-						// is it even possible to get here without an error being
-						// thrown by wdEdit.entity.edit above, and caught below?
-						results[id] = "unsuccessful";
+					for (const id of Object.keys(citesWorkClaims) as QID[]) {
+						results[id] = "quickstatements";
 					}
-				} catch (error) {
-					login.onError(error as Error);
-					if (!login.error) {
-						// if not login error, save error name and proceed with next id
-						results[id] = (error as Error).name;
+				} else {
+					for (const id of Object.keys(citesWorkClaims) as QID[]) {
+						results[id] = "cancelled";
 					}
 				}
-			} while (login.error);
+				break;
+			}
+			case ResponseType.CANCEL:
+				for (const id of Object.keys(citesWorkClaims) as QID[]) {
+					results[id] = "cancelled";
+				}
+				break;
 		}
 		return results;
 	}
@@ -1124,5 +1208,15 @@ export class CitesWorkClaim {
 		this.references = citesWorkClaimValue.references;
 		this.qualifiers = citesWorkClaimValue.qualifiers;
 		this.remove = false;
+	}
+
+	public toQuickStatements(citingQID: QID) {
+		const action = this.remove ? "-" : "";
+		const quickstatements = `${action}${citingQID} | ${properties.citesWork} | ${this.value}`;
+		console.log(
+			`${this.id} ${this.value} ${this.remove} ${this.references} ${this.qualifiers} => ${quickstatements}`,
+			1,
+		);
+		return quickstatements;
 	}
 }

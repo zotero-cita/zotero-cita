@@ -467,6 +467,15 @@ export default class {
 					),
 				);
 			} else if (
+				Object.values(results).every(
+					(result) => result === "quickstatements",
+				)
+			) {
+				progress.updateLine(
+					"done",
+					Wikicite.getString("wikicite.wikidata.progress.upload.qs"),
+				);
+			} else if (
 				Object.values(results).some((result) => result === "cancelled")
 			) {
 				// user cancelled login for at least one of the entities to be edited

@@ -141,9 +141,7 @@ class ZoteroOverlay {
 			pluginID: "",
 			dataProvider: (item: Zotero.Item, dataKey: string) => {
 				return item.isRegularItem()
-					? new SourceItemWrapper(item, prefs.getStorage()).getPID(
-							"QID",
-						)?.id || ""
+					? Wikicite.getExtraField(item, "QID").values[0] || ""
 					: "";
 			},
 		});

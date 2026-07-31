@@ -1107,7 +1107,7 @@ class Login {
 			Wikicite.getString("wikicite.wikidata.login.message.main") + "\n\n";
 		promptText += Wikicite.formatString(
 			"wikicite.wikidata.login.message.create-account",
-			"https://meta.wikimedia.org/wiki/Special:OAuthConsumerRegistration/propose?wpownerOnly=1",
+			"https://github.com/zotero-cita/zotero-cita/blob/master/README.md#wikidata-communication,",
 		);
 
 		const accessToken = { value: "" };

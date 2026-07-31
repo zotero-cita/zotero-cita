@@ -34,6 +34,13 @@ Citations metadata are currently saved as a note attachment.
 
 This module provides back and forth citation syncing with Wikidata, using property [P2860](https://www.Wikidata.org/wiki/Property:P2860) "cites work". This can be used to manually edit and improve Wikidata's citation data.
 
+Username and password login is now deprecated, so to enable this feature you will need to create a OAuth 2.0 consumer token for your account by following these steps:
+
+1. Go to this link [https://meta.wikimedia.org/wiki/Special:OAuthConsumerRegistration/propose/oauth2?wpownerOnly=1](https://meta.wikimedia.org/wiki/Special:OAuthConsumerRegistration/propose/oauth2?wpownerOnly=1)
+2. Set an application name, ensure that the "This consumer is for use only by" box is checked, and tick the boxes for the following permissions: Basic rights, Edit existing pages, Create, edit, and move pages
+3. After clicking "Propose consumer", you will be shown a long token - save this somewhere safe because **you won't be able to see this again**
+4. Whenever syncing citations with Wikidata or creating new items, paste this token in the Wikidata password box
+
 ### Local Citation Network visualization
 
 This module allows visualizing how items in a local library connect to each other through citations and co-authorships. Full networks can be downloaded as JSON, shared, and reopened by everyone using [Local Citation Network](https://LocalCitationNetwork.github.io/) - [see example](https://LocalCitationNetwork.github.io/?fromJSON=Zotero-Cita-Crossref-Example-Proteomics.json).

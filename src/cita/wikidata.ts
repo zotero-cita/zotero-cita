@@ -1060,7 +1060,7 @@ class Login {
 		return credentials;
 	}
 
-	onError(error: Error) {
+	onError(error: Error | any) {
 		this.error = "";
 		if (error.name == "badtoken") {
 			if (this.anonymous) {
@@ -1078,6 +1078,8 @@ class Login {
 				debug("Unexpected login error", error);
 				this.error = "unknown";
 			}
+		} else if (error?.context?.body?.httpCode == 401) {
+			this.error = "wrongCredentials";
 		}
 		// I don't want permissiondenied errors to be treated as
 		// login errors, because permission may have been denied

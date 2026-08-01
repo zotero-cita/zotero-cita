@@ -47,6 +47,7 @@ export default class Lookup {
 		"ISBN",
 		"OpenAlex",
 		"MAG",
+		"QID",
 	];
 
 	static async lookupIdentifiers(
@@ -342,7 +343,13 @@ export default class Lookup {
 	): Promise<ZoteroTranslators.Item[]> {
 		const translator =
 			new Zotero.Translate.Search() as ZoteroTranslators.Translate<ZoteroTranslators.SearchTranslator>;
-		translator.setSearch({ [pid.type]: pid.id } as any);
+		if (pid.type == "QID") {
+			// The Wikidata translator expects QIDs as {extra: "qid: Q...."}
+			// see Wikidata.getItems
+			translator.setSearch({ extra: `qid: ${pid.id}` } as any);
+		} else {
+			translator.setSearch({ [pid.type]: pid.id } as any);
+		}
 		const translators = await translator.getTranslators();
 
 		if (!translators.length) {

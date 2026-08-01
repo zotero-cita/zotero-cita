@@ -643,7 +643,7 @@ export abstract class IndexerBase<Ref> {
 		// TODO: implement fallback mechanism for failed identifiers
 		const lookupResult = await Lookup.lookupItems(
 			refsWithIds,
-			(failedPIDs) => (failCount += failedPIDs.length),
+			(failedItems) => (failCount += failedItems.length),
 		);
 		if (lookupResult) {
 			duplicateCount = lookupResult.duplicateCount;

@@ -88,7 +88,7 @@ export default class Lookup {
 	 */
 	static async lookupItems(
 		parsableItemsWithIDs: ParsableReference<any>[],
-		failedIdentifiersFallback?: (pids: PID[]) => void,
+		failedIdentifiersFallback?: (failedIDs: string[]) => void,
 	): Promise<
 		false | { parsedReferences: ParsedReference[]; duplicateCount: number }
 	> {
@@ -99,48 +99,7 @@ export default class Lookup {
 			return false;
 		}
 
-		// Extract the best identifiers for lookup
-		performance.mark("start-identifier-extraction");
-		ztoolkit.log("Extracting identifiers for lookup");
-		const bestIdentifiers = Lookup.getBestIdentifiers(parsableItemsWithIDs);
-
-		// Identifiers should be unique already since they were disambiguated by primaryID beforehand
-		// For large quantities of identifiers, the very few duplicates we might have are not worth the overhead of checking for them
-		// const uniqWith = <T>(arr: T[], fn: (a: T, b: T) => boolean) =>
-		// 	arr.filter(
-		// 		(element, index) =>
-		// 			arr.findIndex((step) => fn(element, step)) === index,
-		// 	);
-		// const uniqueIdentifiers = uniqWith(
-		// 	bestIdentifiers.map((entry) => {
-		// 		return {
-		// 			primaryID: entry.primaryID,
-		// 			pid: entry.pid,
-		// 			comparable: entry.pid.comparable,
-		// 		};
-		// 	}),
-		// 	(a, b) => a.comparable === b.comparable,
-		// );
-		// const duplicateCount =
-		// 	bestIdentifiers.length - uniqueIdentifiers.length;
-
-		// Group identifiers by type for batch processing
-		const groupedIdentifiers = _.groupBy(
-			bestIdentifiers,
-			(entry) => entry.pid.type,
-		);
-		const counts = Object.entries(groupedIdentifiers)
-			.map(([type, pids]) => `${pids.length} ${type} identifiers`)
-			.join(", ");
-		ztoolkit.log(`Looking up ${counts}`);
-		performance.mark("end-identifier-extraction");
-		performance.measure(
-			"identifier-extraction",
-			"start-identifier-extraction",
-			"end-identifier-extraction",
-		);
-
-		// Initialize rate limiter
+		// Initialize rate limiters for searching
 		const limiter = new Bottleneck({
 			maxConcurrent: 5,
 			minTime: 200, // Adjust as needed based on API rate limits
@@ -156,106 +115,71 @@ export default class Lookup {
 			saveAttachments: false,
 		};
 
-		// Array to hold promises for each group of identifiers
-		const translationPromises: Promise<{
-			translated: TranslatedReference[];
-			failed: PID[];
-		}>[] = [];
+		const translatedReferences: TranslatedReference[] = [];
 
-		// Process identifiers by type
-		performance.mark("start-translation");
-		ztoolkit.log("Translating identifiers");
-		for (const [type, entries] of Object.entries(groupedIdentifiers)) {
-			const pidType = type as PIDType;
+		let remainingItemsToLookup = parsableItemsWithIDs;
 
-			switch (pidType) {
-				// We can theoretically fetch thousands of items at once, but we can have at most 100 filters in a single request. In addition, the URL length is limited, so considering that the filter includes the entire OpenAlex URL, we can fetch around 90 items at once.
-				// We heavily favor the OpenAlex API for its speed.
-				case "OpenAlex":
-				case "MAG":
-				case "DOI":
-				case "PMID":
-				case "PMCID":
-				case "arXiv": // ArXiv identifiers are processed through OpenAlex by mapping their ids to DOIs. Consider using arXiv's API directly, but it might be slow.
-					translationPromises.push(
-						Lookup.processBatchIdentifiers(
-							pidType,
-							90,
-							entries,
-							options,
-							openAlexLimiter,
-							Lookup.fetchOpenAlexBatch,
-						),
-					);
-					break;
-
-				// We can lookup DOIs in batches with Crossref, but the requests are slow
-				/*case "DOI":
-					// Batch processing for DOIs
-					translationPromises.push(
-						Lookup.processBatchIdentifiers(
-							pidType,
-							50,
-							entries,
-							options,
-							limiter,
-							Lookup.fetchCrossrefBatch,
-						),
-					);
-					break;*/
-
-				default:
-					// Regular processing for other types
-					translationPromises.push(
-						Lookup.processStandardIdentifiers(
-							pidType,
-							entries,
-							options,
-							limiter,
-						),
-					);
-					break;
+		// lookup identifiers in order of preference (fastest first)
+		// if lookup fails and the item has other other valid identifiers, try those too
+		for (const pidType of Lookup.pidsSupportedForLookup) {
+			if (remainingItemsToLookup.length == 0) {
+				break;
 			}
-		}
-		performance.mark("end-translation-build");
-		performance.measure(
-			"translation-build",
-			"start-translation",
-			"end-translation-build",
-		);
+			const referencesWithPidType = remainingItemsToLookup
+				.filter((reference) =>
+					reference.externalIds
+						.map((pid) => pid.type)
+						.includes(pidType),
+				)
+				.map((reference) => ({
+					primaryID: reference.primaryID,
+					pid: reference.externalIds.filter(
+						(pid) => pid.type == pidType,
+					)[0],
+				}));
+			if (referencesWithPidType.length == 0) {
+				continue;
+			}
 
-		// Wait for all translations to complete
-		const allResults = await Promise.all(translationPromises);
-		ztoolkit.log("All translations completed");
-		performance.mark("end-translation");
-		performance.measure(
-			"translation",
-			"start-translation",
-			"end-translation",
-		);
+			let results: { translated: TranslatedReference[]; failed: PID[] };
+			if (
+				["OpenAlex", "MAG", "DOI", "PMID", "PMCID", "arXiv"].includes(
+					pidType,
+				)
+			) {
+				results = await Lookup.processBatchIdentifiers(
+					pidType,
+					90,
+					referencesWithPidType,
+					options,
+					openAlexLimiter,
+					Lookup.fetchOpenAlexBatch,
+				);
+			} else {
+				// Regular processing for other types
+				results = await Lookup.processStandardIdentifiers(
+					pidType,
+					referencesWithPidType,
+					options,
+					limiter,
+				);
+			}
 
-		// Collect translated references and failed PIDs
-		performance.mark("start-translation-processing");
-		ztoolkit.log("Processing translations");
-		const parsedReferences: ParsedReference[] = [];
-		const failedIdentifiers: PID[] = [];
-
-		for (const result of allResults) {
-			const { translated, failed } = result;
-			parsedReferences.push(
-				...translated.map((ref) => ({
-					primaryID: ref.primaryID,
-					item: Lookup.createZoteroItem(ref.item),
-				})),
+			// remove items to be looked up if we already found them
+			const successfullyLookedUpIds = results.translated.map(
+				(reference) => reference.primaryID,
 			);
-			failedIdentifiers.push(...failed);
+			remainingItemsToLookup = remainingItemsToLookup.filter(
+				(reference) =>
+					!successfullyLookedUpIds.includes(reference.primaryID),
+			);
+			translatedReferences.push(...results.translated);
 		}
 
-		// Handle failed identifiers
-		if (failedIdentifiers.length && failedIdentifiersFallback) {
-			failedIdentifiersFallback(failedIdentifiers);
-		}
-
+		const parsedReferences = translatedReferences.map((reference) => ({
+			primaryID: reference.primaryID,
+			item: Lookup.createZoteroItem(reference.item),
+		}));
 		if (!parsedReferences.length) {
 			Zotero.alert(
 				window,
@@ -264,13 +188,14 @@ export default class Lookup {
 			);
 			return false;
 		}
-		ztoolkit.log("Translations processed");
-		performance.mark("end-translation-processing");
-		performance.measure(
-			"translation-processing",
-			"start-translation-processing",
-			"end-translation-processing",
+
+		// Handle failed identifiers
+		const failedIdentifiers = remainingItemsToLookup.map(
+			(reference) => reference.primaryID,
 		);
+		if (failedIdentifiers.length && failedIdentifiersFallback) {
+			failedIdentifiersFallback(failedIdentifiers);
+		}
 
 		return { parsedReferences, duplicateCount: 0 };
 	}

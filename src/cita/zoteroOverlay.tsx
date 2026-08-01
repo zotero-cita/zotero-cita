@@ -601,11 +601,11 @@ class ZoteroOverlay {
 			paneID: "zotero-editpane-citations-tab",
 			pluginID: config.addonID,
 			header: {
-				l10nID: getLocaleID("wikicite_citations-pane_label"),
+				l10nID: getLocaleID("wikicite_citations-pane__label"),
 				icon: `chrome://${config.addonRef}/content/skin/default/cita-small.svg`,
 			},
 			sidenav: {
-				l10nID: getLocaleID("wikicite_citations-pane_tooltiptext"),
+				l10nID: getLocaleID("wikicite_citations-pane__tooltiptext"),
 				icon: `chrome://${config.addonRef}/content/skin/default/cita-small.svg`,
 			},
 			bodyXHTML: `<html:div id="citations-box-container" xmlns:html="http://www.w3.org/1999/xhtml"></html:div>`,
@@ -624,7 +624,7 @@ class ZoteroOverlay {
 				{
 					type: "import",
 					l10nID: getLocaleID(
-						"wikicite_citations-pane_import-button_tooltiptext",
+						"wikicite_citations-pane_import-button__tooltiptext",
 					),
 					icon: `chrome://${config.addonRef}/content/skin/default/import.svg`,
 					onClick: (props) => {
@@ -637,7 +637,7 @@ class ZoteroOverlay {
 				{
 					type: "export",
 					l10nID: getLocaleID(
-						"wikicite_citations-pane_export-button_tooltiptext",
+						"wikicite_citations-pane_export-button__tooltiptext",
 					),
 					icon: "chrome://zotero/skin/16/universal/export.svg",
 					onClick: (props) => {
@@ -737,11 +737,11 @@ class ZoteroOverlay {
 			paneID: "zotero-editpane-pid-tab",
 			pluginID: config.addonID,
 			header: {
-				l10nID: getLocaleID("wikicite_pid-pane_label"),
+				l10nID: getLocaleID("wikicite_pid-pane__label"),
 				icon: `chrome://${config.addonRef}/content/skin/default/pid-small.svg`,
 			},
 			sidenav: {
-				l10nID: getLocaleID("wikicite_pid-pane_tooltiptext"),
+				l10nID: getLocaleID("wikicite_pid-pane__tooltiptext"),
 				icon: `chrome://${config.addonRef}/content/skin/default/pid-small.svg`,
 			},
 			bodyXHTML: `<html:div id="pid-box-container" xmlns:html="http://www.w3.org/1999/xhtml"></html:div>`,

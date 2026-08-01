@@ -108,28 +108,16 @@ export default defineConfig({
 					from: /(?<!%)%\w/g,
 					to: "{ $$s1 }",
 				});
-				// add .label tags for preferences localisation
+				// add .label tag for any message whose key ends with (..label in .properties / __label in .ftl)
 				replaceInFileSync({
 					files: localePath + "/**/*.ftl",
-					from: /wikicite_prefs_citation-storage-(note|extra)=/g,
+					from: /(.+__label)\s*=/g,
 					to: "$&\n    .label=",
 				});
-				// add .label tag for citation pane label
+				// add .tooltiptext tag for any message whose key ends with (..tooltiptext in .properties / __tooltiptext in .ftl)
 				replaceInFileSync({
 					files: localePath + "/**/*.ftl",
-					from: /wikicite_(citations|pid)-pane_label\s*=/g,
-					to: "$&\n    .label =",
-				});
-				// add .label tag for show citation numbers label
-				replaceInFileSync({
-					files: localePath + "/**/*.ftl",
-					from: /wikicite_prefs_show-citation-numbers_label\s*=/g,
-					to: "$&\n    .label =",
-				});
-				// add .tooltiptext tags for citation pane buttons
-				replaceInFileSync({
-					files: localePath + "/**/*.ftl",
-					from: /wikicite_(citations|pid)-pane[a-zA-Z\-_]*_tooltiptext\s*=/g,
+					from: /(.+__tooltiptext)\s*=/g,
 					to: "$&\n    .tooltiptext =",
 				});
 

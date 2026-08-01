@@ -20,6 +20,7 @@ interface PIDBoxProps {
 			skipCitation?: Citation;
 		},
 	) => boolean;
+	isCitationEditor: boolean;
 }
 
 function PIDBox(props: PIDBoxProps) {
@@ -55,6 +56,7 @@ function PIDBox(props: PIDBoxProps) {
 									// parentWindow: window,
 								})
 							}
+							isCitationEditor={props.isCitationEditor}
 						/>
 					))
 				}

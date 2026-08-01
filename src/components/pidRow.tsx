@@ -13,6 +13,7 @@ interface PIDRowProps {
 	type: PIDType; // is used as a key
 	removePIDRow: (type: PIDType) => void;
 	validate: (type: PIDType, value: string) => boolean;
+	isCitationEditor: boolean;
 }
 
 function PIDRow(props: PIDRowProps) {
@@ -51,7 +52,12 @@ function PIDRow(props: PIDRowProps) {
 	}
 
 	async function onFetch(e: React.MouseEvent) {
-		await props.item.fetchPID(props.type, props.autosave);
+		console.log(`fetch ${e}`);
+		await props.item.fetchPID(
+			props.type,
+			props.autosave,
+			props.isCitationEditor,
+		);
 		// set new value immediately (see note in handleCommit)
 		setPIDValue(props.item.getPID(props.type));
 	}

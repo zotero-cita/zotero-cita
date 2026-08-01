@@ -153,8 +153,9 @@ export default class ItemWrapper {
 	 * Fetch a PID for the item.
 	 * @param type The PID type to fetch
 	 * @param autosave Whether to save the item after fetching the PID
+	 * @param fromCitationEditor Whether this is being called by the citation editor
 	 */
-	async fetchPID(type: PIDType, autosave = true) {
+	async fetchPID(type: PIDType, autosave = true, fromCitationEditor = false) {
 		if (!this.canFetchPid(type)) {
 			Services.prompt.alert(
 				window as mozIDOMWindowProxy,
@@ -203,7 +204,10 @@ export default class ItemWrapper {
 				break;
 			}
 			case "CorpusID": {
-				const _pids = await new Semantic().fetchPIDs(this);
+				const _pids = await new Semantic().fetchPIDs(
+					this,
+					fromCitationEditor,
+				);
 				if (_pids) pids = _pids;
 				break;
 			}

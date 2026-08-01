@@ -85,13 +85,22 @@ export default class Semantic extends IndexerBase<Reference> {
 		this.limiter.disconnect();
 	}
 
-	async fetchPIDs(item: ItemWrapper): Promise<PID[] | null> {
+	async fetchPIDs(
+		item: ItemWrapper,
+		withoutScheduler: boolean = false,
+	): Promise<PID[] | null> {
 		const identifier = item.getBestPID(this.supportedPIDs);
 		let work: IndexedWork<Reference> | null = null;
 
 		if (identifier) {
 			const url = `https://api.semanticscholar.org/graph/v1/paper/${Semantic.mapLookupIDToString(identifier)}?fields=externalIds`;
-			const response = await this.makeRequest("GET", url);
+			const response = await this.makeRequest(
+				"GET",
+				url,
+				undefined,
+				undefined,
+				withoutScheduler,
+			);
 			const paper = response?.response
 				? (response?.response as SemanticPaper)
 				: null;
@@ -207,6 +216,7 @@ export default class Semantic extends IndexerBase<Reference> {
 		url: string,
 		body?: string,
 		jobID?: string,
+		withoutScheduler: boolean = false,
 	): Promise<XMLHttpRequest> {
 		const apiKey = getPref("semantickey"); //prefs.getSemanticAPIKey();
 		const options = {
@@ -217,8 +227,8 @@ export default class Semantic extends IndexerBase<Reference> {
 			responseType: "json",
 			body: body,
 		};
-		return await this.limiter.schedule({ id: jobID }, () =>
-			Zotero.HTTP.request(method, url, options).catch((e) => {
+		const sendRequest = () => {
+			return Zotero.HTTP.request(method, url, options).catch((e) => {
 				// Note: a 400 (Bad Request) response is returned if none of the IDs are found
 				switch (e.status) {
 					case 403:
@@ -234,8 +244,19 @@ export default class Semantic extends IndexerBase<Reference> {
 					default:
 						throw e;
 				}
-			}),
-		);
+			});
+		};
+
+		// If running this from within the citation editor window
+		// Zotero crashes if we use the scheduler
+		// but we're only running one request so skipping the scheduler is fine
+		if (withoutScheduler) {
+			return sendRequest();
+		} else {
+			return await this.limiter.schedule({ id: jobID }, () =>
+				sendRequest(),
+			);
+		}
 	}
 
 	private static mapReferenceToParsableItem(

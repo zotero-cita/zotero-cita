@@ -134,6 +134,8 @@ function PIDBoxContainer(props: {
 				checkPID={(type, value, options) => {
 					return sourceItem.checkPID(type, value, options);
 				}}
+				// because we only create a PIDBoxContainer in the main item pane
+				isCitationEditor={false}
 			/>
 		</ErrorBoundary>
 	);

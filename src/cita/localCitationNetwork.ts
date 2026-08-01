@@ -312,6 +312,14 @@ async function saveFile(content: string, filename: string) {
 function parseWrappedItem(wrappedItem: ItemWrapper | SourceItemWrapper) {
 	const authors = wrappedItem.item
 		.getCreators()
+		// only keep the primary authors for the item (ie. not editors - #357)
+		.filter(
+			(creator) =>
+				creator.creatorTypeID ==
+				Zotero.CreatorTypes.getPrimaryIDForType(
+					wrappedItem.item.itemTypeID,
+				),
+		)
 		.map((creator) => ({ LN: creator.lastName, FN: creator.firstName }));
 	if (!authors.length) authors.push({ LN: "", FN: "" });
 	return {

@@ -257,7 +257,6 @@ export type FluentMessageId =
   | 'wikicite_wikidata_login_error_unknown'
   | 'wikicite_wikidata_login_error_unsupported-anonymous'
   | 'wikicite_wikidata_login_error_wrong-credentials'
-  | 'wikicite_wikidata_login_message_bot-pass'
   | 'wikicite_wikidata_login_message_create-account'
   | 'wikicite_wikidata_login_message_main'
   | 'wikicite_wikidata_login_title'

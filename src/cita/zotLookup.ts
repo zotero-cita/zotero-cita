@@ -527,8 +527,8 @@ export default class Lookup {
 					break;
 				case "arXiv":
 					filter = {
-						doi: entries.map(
-							(entry) => "10.48550/arXiv." + entry.pid.id,
+						doi: entries.map((entry) =>
+							Lookup.arXivToDOI(entry.pid.id),
 						),
 					};
 					break;
@@ -641,7 +641,13 @@ export default class Lookup {
 			case "MAG":
 				return item.extra?.match(/MAG:\s*(\S+)/)?.[1];
 			case "arXiv":
-				return item.extra?.match(/arXiv:\s*(\S+)/)?.[1];
+				// on OpenAlex the arXiv ID is stored as a DOI
+				return (
+					item.extra?.match(/arXiv:\s*(\S+)/)?.[1] ||
+					this.DOIToArXiv(
+						item.DOI || item.extra?.match(/DOI:\s*(\S+)/)?.[1],
+					)
+				);
 			case "ISBN":
 				return item.ISBN;
 			default:
@@ -665,5 +671,12 @@ export default class Lookup {
 		const newItem = new Zotero.Item(translatorItem.itemType);
 		newItem.fromJSON(translatorItem);
 		return newItem;
+	}
+
+	private static arXivToDOI(arXivID: string) {
+		return "10.48550/arXiv." + arXivID;
+	}
+	private static DOIToArXiv(DOI?: string) {
+		return DOI?.toLowerCase().replace("10.48550/arxiv.", "");
 	}
 }

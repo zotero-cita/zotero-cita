@@ -61,6 +61,7 @@ class ZoteroOverlay {
 	_sourceItem?: SourceItemWrapper;
 	_citationIndex?: number;
 	preferenceUpdateObservers?: symbol[];
+	itemChangeObserverID?: string;
 
 	/******************************************/
 	// Window load handling
@@ -74,6 +75,8 @@ class ZoteroOverlay {
 
 		this.addPreferenceUpdateObservers();
 
+		this.addItemChangeObserver();
+
 		this.installTranslators();
 
 		this.patchEnableAddingItemByIdenfitiferWithQID();
@@ -85,6 +88,8 @@ class ZoteroOverlay {
 		this.removeItemPaneColumns();
 
 		this.removePreferenceUpdateObservers();
+
+		this.removeItemChangeObserver();
 
 		this.uninstallTranslators();
 
@@ -129,6 +134,61 @@ class ZoteroOverlay {
 			}
 			this.preferenceUpdateObservers = undefined;
 		}
+	}
+
+	/******************************************/
+	// Item change observer
+	/******************************************/
+	addItemChangeObserver() {
+		const itemChangeHandler = async (
+			action: _ZoteroTypes.Notifier.Event,
+			type: _ZoteroTypes.Notifier.Type,
+			ids: string[] | number[],
+			extraData: _ZoteroTypes.anyObj,
+		) => {
+			if (type == "item" && action == "delete") {
+				ids.forEach(async (deletedItemID) => {
+					const deletedItem = Zotero.Items.get(deletedItemID);
+					const deletedItemLibrary =
+						extraData[deletedItemID].libraryID;
+					const deletedItemKey = extraData[deletedItemID].key;
+					const allItems =
+						await Zotero.Items.getAll(deletedItemLibrary);
+					// do this in a transaction so all items get edited at once
+					await Zotero.DB.executeTransaction(async function () {
+						allItems
+							.filter((item) => item.isRegularItem())
+							.forEach((item) => {
+								new SourceItemWrapper(
+									item,
+									prefs.getStorage(),
+								).citations.forEach((citation) => {
+									// if citation links to the item that's being deleted - remove the link
+									if (citation.target.key == deletedItemKey) {
+										citation.unlinkFromZoteroItem(true);
+									}
+								});
+							});
+					});
+				});
+			}
+		};
+
+		this.itemChangeObserverID = Zotero.Notifier.registerObserver(
+			{
+				notify(...args) {
+					// eslint-disable-next-line prefer-spread
+					itemChangeHandler.apply(null, args);
+				},
+			},
+			["item"],
+			config.addonID,
+			1,
+		);
+	}
+
+	removeItemChangeObserver() {
+		Zotero.Notifier.unregisterObserver(this.itemChangeObserverID!);
 	}
 
 	/******************************************/

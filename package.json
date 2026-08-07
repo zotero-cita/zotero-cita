@@ -18,7 +18,7 @@
 		"lint": "prettier --write . && eslint . --fix",
 		"release": "release-it --only-version --preReleaseId=beta",
 		"postinstall": "patch-package",
-		"test": "echo \"Error: no test specified\" && exit 1",
+		"test": "c8 --src src --all zotero-plugin test",
 		"update-deps": "npm update --save",
 		"prepare": "husky"
 	},
@@ -57,22 +57,27 @@
 		"zotero-plugin-toolkit": "^5.1.0-beta.13"
 	},
 	"devDependencies": {
+		"@types/chai": "^5.2.3",
 		"@types/core-js": "^2.5.8",
 		"@types/language-tags": "^1.0.4",
 		"@types/lodash": "^4.17.21",
+		"@types/mocha": "^10.0.10",
 		"@types/node": "^22.8.0",
 		"@types/react-dom": "^18.3.0",
+		"c8": "^12.0.0",
+		"chai": "^6.2.2",
 		"eslint": "^9.39.2",
 		"husky": "^9.1.7",
 		"language-tags": "^1.0.9",
 		"lint-staged": "^16.2.7",
+		"mocha": "^11.8.0",
 		"patch-package": "^8.0.1",
 		"prettier": "^3.7.4",
 		"release-it": "^17.6.0",
 		"replace-in-file": "^8.4.0",
 		"typescript": "^5.9.3",
 		"typescript-eslint": "^8.50.1",
-		"zotero-plugin-scaffold": "^0.8.2",
+		"zotero-plugin-scaffold": "^0.8.8",
 		"zotero-types": "^4.1.0-beta.4"
 	},
 	"prettier": {

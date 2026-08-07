@@ -138,23 +138,18 @@ export default defineConfig({
 				);
 			},
 		},
-		// If you want to checkout update.json into the repository, uncomment the following lines:
-		// makeUpdateJson: {
-		//   hash: false,
-		// },
-		// hooks: {
-		//   "build:makeUpdateJSON": (ctx) => {
-		//     copyFileSync("build/update.json", "update.json");
-		//     copyFileSync("build/update-beta.json", "update-beta.json");
-		//   },
-		// },
 	},
-	// release: {
-	//   bumpp: {
-	//     execute: "npm run build",
-	//   },
-	// },
 
-	// If you need to see a more detailed build log, uncomment the following line:
-	// logLevel: "trace",
+	test: {
+		entries: ["test"],
+		prefs: {},
+		mocha: {
+			timeout: 10000,
+		},
+		watch: false,
+		abortOnFail: false,
+		headless: false,
+		waitForPlugin: `() => Zotero.${pkg.config.addonInstance}.data.initialized`,
+		hooks: {},
+	},
 });

@@ -1,0 +1,9 @@
+{
+	"extends": "../tsconfig.json",
+	"compilerOptions": {
+		"types": ["zotero-types/entries/sandbox", "mocha"],
+		// Tests index fixture arrays constantly; the check is all friction here
+		"noUncheckedIndexedAccess": false
+	},
+	"include": [".", "../src", "../typings"]
+}

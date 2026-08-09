@@ -45,7 +45,7 @@ function cleanQID(x) {
 		throw new Error("cleanQID: argument must be a string");
 	}
 
-	var qid = x.match(/Q[0-9]+/);
+	var qid = x.match(/^Q[1-9][0-9]*$/);
 	return qid ? qid[0] : null;
 }
 

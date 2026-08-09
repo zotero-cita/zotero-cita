@@ -49,7 +49,10 @@ export default defineConfig({
 				target: "firefox115",
 				outdir: "build/addon/chrome/content/scripts",
 				sourcemap:
-					process.env.NODE_ENV == "development" ? "linked" : false,
+					process.env.NODE_ENV == "development" ||
+					process.env.NODE_ENV == "test"
+						? "linked"
+						: false,
 			},
 		],
 		hooks: {

@@ -18,7 +18,7 @@
 		"lint": "prettier --write . && eslint . --fix",
 		"release": "release-it --only-version --preReleaseId=beta",
 		"postinstall": "patch-package",
-		"test": "c8 --src src --all zotero-plugin test",
+		"test": "zotero-plugin test --exit-on-finish",
 		"update-deps": "npm update --save",
 		"prepare": "husky"
 	},
@@ -64,7 +64,6 @@
 		"@types/mocha": "^10.0.10",
 		"@types/node": "^22.8.0",
 		"@types/react-dom": "^18.3.0",
-		"c8": "^12.0.0",
 		"chai": "^6.2.2",
 		"eslint": "^9.39.2",
 		"husky": "^9.1.7",

@@ -422,10 +422,17 @@ export default class {
 		return qids;
 	}
 
-	// based on Zotero.Utilities.extractIdentifiers
+	/** Extract unique QIDs from text and return them as needed for
+	 * the Wikidata translator `[{extra: "qid: Q134"}]`.
+	 * 	(based on Zotero.Utilities.extractIdentifiers)
+	 *
+	 * @param text string from which to extract QIDs
+	 * @param strict whether to require that each QID begins with a Q
+	 * @returns list of QIDs as identifiers
+	 */
 	static extractQIDsFromText(text: string, strict: boolean = false) {
 		const foundIDs: Set<QID> = new Set(); // keep track of identifiers to avoid duplicates
-		const identifiers: { [idenifier: string]: string }[] = [];
+		const identifiers: { [identifier: string]: string }[] = [];
 
 		// Look for QIDs
 		const ids = text.split(/[\s\u00A0]+/); // whitespace + non-breaking space
@@ -441,7 +448,7 @@ export default class {
 		return identifiers;
 	}
 
-	/** Convert string to QID. If this fails, return empty string
+	/** Convert string to QID (eg. Q123). If this fails, return empty string
 	 *
 	 * @param qid string to convert to QID
 	 * @param strict whether to require that the QID begins with a Q
@@ -452,7 +459,8 @@ export default class {
 		if (!strict) {
 			if (qid[0] !== "Q") qid = "Q" + qid;
 		}
-		if (qid.match(/^Q\d+$/)) {
+		// see https://www.wikidata.org/wiki/Q43649390 P1793
+		if (qid.match(/^Q[1-9][0-9]*$/)) {
 			return qid as QID;
 		} else {
 			return "";

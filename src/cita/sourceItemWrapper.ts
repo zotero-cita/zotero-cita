@@ -336,11 +336,13 @@ class SourceItemWrapper extends ItemWrapper {
 		if (!noSave) this.saveCitations();
 	}
 
-	/*
+	/**
 	 * Return citations matching the id provided.
-	 * @param {String} id - ID must be matched.
-	 * @param {String} idType - One of: index, doi, isbn, occ, qid
-	 * @return {Array} citations - Array of matching citations.
+	 *
+	 * @param {number | string} id - ID must be matched.
+	 * @param {string} idType - One of: index, doi, isbn, occ, qid
+	 * @return {Citation[]} citations - Array of matching citations.
+	 * @return {number[]} indices - Array of citation indices into this.citations list.
 	 */
 	getCitations(
 		id: number | string,
@@ -364,8 +366,10 @@ class SourceItemWrapper extends ItemWrapper {
 		};
 	}
 
-	/*
-	 * @param {Boolean} batch - Do not update or save citations at the beginning and at the end.
+	/**
+	 * Add a single or list of citations to the current source item
+	 *
+	 * @param {Citation | Citation[]} citations - either single citation or list of citations
 	 */
 	addCitations(citations: Citation[] | Citation) {
 		// Fixme: apart from one day implementing possible duplicates

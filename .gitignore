@@ -7,3 +7,4 @@ logs
 *.tsbuildinfo
 
 .scaffold
+coverage

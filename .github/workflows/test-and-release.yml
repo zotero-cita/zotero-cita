@@ -38,6 +38,9 @@ jobs:
             - name: build
               run: npm run build
 
+            - name: test
+              run: npm run test
+
     release:
         runs-on: ubuntu-latest
         needs: test

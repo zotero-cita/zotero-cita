@@ -1179,10 +1179,6 @@ export class CitesWorkClaim {
 	public toQuickStatements(citingQID: QID) {
 		const action = this.remove ? "-" : "";
 		const quickstatements = `${action}${citingQID} | ${properties.citesWork} | ${this.value}`;
-		console.log(
-			`${this.id} ${this.value} ${this.remove} ${this.references} ${this.qualifiers} => ${quickstatements}`,
-			1,
-		);
 		return quickstatements;
 	}
 }

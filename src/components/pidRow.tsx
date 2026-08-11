@@ -66,7 +66,6 @@ function PIDRow(props: PIDRowProps) {
 	}
 
 	async function onFetch(e: React.MouseEvent) {
-		console.log(`fetch ${e}`);
 		await props.item.fetchPID(
 			props.type,
 			props.autosave,

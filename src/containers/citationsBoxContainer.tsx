@@ -44,7 +44,6 @@ function CitationsBoxContainer(props: {
 	// https://github.com/facebook/react/issues/14387#issuecomment-503616820
 	// Con: Doesn't seem to work as expected - the ref lacks a `current` property.
 	// const sourceItem = useCallback((sourceItem) => {
-	//   console.log('Running callback...');
 	//   setCitations(sourceItem.citations);
 	// }, []);
 	// sourceItem.current = new SourceItemWrapper(props.item, window.Wikicite.Prefs.get('storage'));

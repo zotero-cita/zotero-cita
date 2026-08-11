@@ -217,7 +217,6 @@ function doImport() {
 	for (const entity of entities) {
 		const types = getEntityTypes(entity);
 		if (types.length > 0) {
-			// console.log(`Creating new item for ${entity.id}`);
 			let hasTitle = false;
 			const item = new Zotero.Item(types[0]);
 			if (entity.labels && entity.labels[LOCALE]) {
@@ -279,7 +278,6 @@ function updateItems(items, claims, labels={}) {
 		const itemClaims = claims[id];
 		pendingClaims[id] = [];
 		if (itemClaims.length) {
-			// console.log(`Updating item for ${id}`);
 			for (const claim of itemClaims) {
 				const datavalue = claim.mainsnak.datavalue;
 				const valuetype = datavalue.type;
@@ -330,12 +328,10 @@ function updateItems(items, claims, labels={}) {
 					}
 				}
 				if (value) {
-					// console.log(`${id} - ${property}: ${value}`)
 					updateItem(item, claim, value);
 				}
 			}
 			if (!pendingClaims[id].length) {
-				// console.log(`Completing item for ${id}`);
 				if (item.title && item.subtitle) {
 					item.title += ': ' + item.subtitle;
 					delete item.subtitle;
@@ -399,7 +395,6 @@ function updateItems(items, claims, labels={}) {
 			props: ['labels'],
 			languages: [lang]
 		})
-		// console.log(url);
 		ZU.doGet(
 			url,
 			(data) => updateItems(items, pendingClaims, parseLabels(data, lang)),

@@ -2,7 +2,7 @@
 import * as React from "react";
 import { useEffect, useRef, useState } from "react";
 import ItemWrapper from "../cita/itemWrapper";
-import Wikicite, { debug } from "../cita/wikicite";
+import Wikicite from "../cita/wikicite";
 import PID from "../cita/PID";
 import ToolbarButton from "./itemPane/toolbarButton";
 
@@ -18,8 +18,10 @@ interface PIDRowProps {
 
 function PIDRow(props: PIDRowProps) {
 	const [pidValue, setPIDValue] = useState(props.item.getPID(props.type));
+
 	const url = pidValue?.url;
 	const inputRef = useRef<HTMLInputElement>(null);
+	const [invalidValue, setInvalidValue] = useState<string | null>(null);
 
 	useEffect(() => {
 		setPIDValue(props.item.getPID(props.type));
@@ -36,6 +38,7 @@ function PIDRow(props: PIDRowProps) {
 	function handleCommit(newPid: string) {
 		if (newPid !== pidValue?.id) {
 			if (props.validate && !props.validate(props.type, newPid)) {
+				setInvalidValue(newPid);
 				return;
 			}
 			props.item.setPID(props.type, newPid, props.autosave);
@@ -43,6 +46,17 @@ function PIDRow(props: PIDRowProps) {
 			// if autosave is true, it will be updated twice
 			// but second time (via props.item) might take some time
 			setPIDValue(props.item.getPID(props.type));
+			setInvalidValue(null);
+		}
+	}
+
+	function handleChange(newPid: string) {
+		// If the user previously entered an invalid value - it will be red
+		// check if they've made it valid, then don't show it red anymore
+		if (invalidValue !== null) {
+			if (props.validate && props.validate(props.type, newPid)) {
+				setInvalidValue(null);
+			}
 		}
 	}
 
@@ -58,13 +72,16 @@ function PIDRow(props: PIDRowProps) {
 			props.autosave,
 			props.isCitationEditor,
 		);
-		// set new value immediately (see note in handleCommit)
 		setPIDValue(props.item.getPID(props.type));
+		setInvalidValue(null);
 	}
 
 	async function onOpenLink(url: string, e: React.MouseEvent) {
 		Zotero.launchURL(url);
 	}
+
+	const displayText =
+		invalidValue !== null ? invalidValue : (pidValue?.cleanID ?? "");
 
 	return (
 		<div className={`meta-row`} id={`pid-row-${props.type}`}>
@@ -86,10 +103,21 @@ function PIDRow(props: PIDRowProps) {
 						id={`pid-row-input-${props.item.key}-${props.type}`}
 						className={props.editable ? "input" : ""}
 						readOnly={!props.editable}
-						// Show cleaned ID when available; show empty string for null
-						defaultValue={pidValue?.cleanID ?? ""}
+						defaultValue={displayText}
+						style={{
+							color:
+								invalidValue !== null
+									? "var(--accent-red)"
+									: undefined,
+						}}
 						// when the input loses focus, update the item's PID
-						onBlur={(event) => handleCommit(event.target.value)}
+						onBlur={(event) => {
+							handleCommit(event.target.value);
+						}}
+						// check if PID was invalid but becomes valid
+						onChange={(event) => {
+							handleChange(event.target.value);
+						}}
 					/>,
 				)}
 				<ToolbarButton

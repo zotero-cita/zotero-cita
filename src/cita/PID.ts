@@ -1,3 +1,5 @@
+import wikidata from "./wikidata";
+
 export default class PID {
 	type: PIDType;
 	id: string;
@@ -55,10 +57,11 @@ export default class PID {
 			case "ISBN":
 				return Zotero.Utilities.cleanISBN(this.id) || null;
 			case "QID": {
-				let qid = this.id.toUpperCase().trim();
-				if (qid[0] !== "Q") qid = "Q" + qid;
-				if (!qid.match(/^Q\d+$/)) return null;
-				return qid;
+				const cleanQID = wikidata.cleanQID(this.id);
+				if (cleanQID == "") {
+					return null;
+				}
+				return cleanQID;
 			}
 			case "OMID": {
 				let omid = this.id.toLowerCase().trim();

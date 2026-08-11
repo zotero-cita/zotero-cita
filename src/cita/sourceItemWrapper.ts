@@ -495,6 +495,18 @@ class SourceItemWrapper extends ItemWrapper {
 		return citedPIDs;
 	}
 
+	/**
+	 * Check whether the PID is valid as a citation for this source item.
+	 * ie. it's a valid PID, and it isn't the same as the source item
+	 * or a duplicate of an existed cited item.
+	 *
+	 * @param type the type of the PID
+	 * @param value the PID itself
+	 * @param options.alert whether to show an alert if a conflicting PID is detected
+	 * @param options.parentWindow window in which to show the alert
+	 * @param options.skipCitation citation to skip from the duplicate citation check
+	 * @returns
+	 */
 	checkPID(
 		type: PIDType,
 		value: string,
@@ -530,7 +542,9 @@ class SourceItemWrapper extends ItemWrapper {
 				),
 			);
 		}
-		return !conflict;
+		// if there's no conflict
+		// and the clean PID matches the original value
+		return !conflict && cleanPID?.id == value;
 	}
 
 	sync() {

@@ -1,4 +1,4 @@
-import Wikidata from "./wikidata";
+import PID from "./PID";
 
 import { getString as _getString } from "../utils/locale";
 
@@ -23,13 +23,13 @@ export default {
 			case "ISBN":
 				return Zotero.Utilities.cleanISBN(value);
 			case "QID":
-				return Wikidata.cleanQID(value);
+				return PID.cleanQID(value);
 			case "OMID":
-				return Wikidata.cleanOMID(value);
+				return PID.cleanOMID(value);
 			case "arXiv":
-				return Wikidata.cleanArXiv(value);
+				return PID.cleanArXiv(value);
 			case "OpenAlex":
-				return Wikidata.cleanOpenAlex(value);
+				return PID.cleanOpenAlex(value);
 			default:
 				return value;
 		}

@@ -10,6 +10,7 @@ import qs2wbEdit from "quickstatements-to-wikibase-edit";
 import wbEdit, { RequestConfig } from "wikibase-edit";
 import ItemWrapper from "./itemWrapper";
 import { config } from "../../package.json";
+import PID from "./PID";
 
 // this is ugly but it automatically pulls the external package versions for us
 import { version as wbSdkVersion } from "../../node_modules/wikibase-sdk/package.json";
@@ -438,7 +439,7 @@ export default class {
 		const ids = text.split(/[\s\u00A0]+/); // whitespace + non-breaking space
 		let qid;
 		for (const id of ids) {
-			if ((qid = this.cleanQID(id, strict)) && !foundIDs.has(qid)) {
+			if ((qid = PID.cleanQID(id, strict)) && !foundIDs.has(qid)) {
 				identifiers.push({
 					extra: `qid: ${qid}`,
 				});
@@ -446,51 +447,6 @@ export default class {
 			}
 		}
 		return identifiers;
-	}
-
-	/** Convert string to QID (eg. Q123). If this fails, return empty string
-	 *
-	 * @param qid string to convert to QID
-	 * @param strict whether to require that the QID begins with a Q
-	 * @returns QID or empty string
-	 */
-	static cleanQID(qid: string, strict: boolean = false): QID | "" {
-		qid = qid.toUpperCase().trim();
-		if (!strict) {
-			if (qid[0] !== "Q") qid = "Q" + qid;
-		}
-		// see https://www.wikidata.org/wiki/Q43649390 P1793
-		if (qid.match(/^Q[1-9][0-9]*$/)) {
-			return qid as QID;
-		} else {
-			return "";
-		}
-	}
-
-	static cleanOMID(omid: string) {
-		omid = omid.toLowerCase().trim();
-		if (omid.substring(0, 3) !== "br/") omid = "br/" + omid;
-		if (!omid.match(/^br\/\d+$/)) omid = "";
-		return omid;
-	}
-
-	static cleanArXiv(arXiv: string) {
-		const arXiv_RE =
-			/\b(([-A-Za-z.]+\/\d{7}|\d{4}\.\d{4,5})(?:v(\d+))?)(?!\d)/g; // 1: full ID, 2: ID without version, 3: version #
-		const m = arXiv_RE.exec(arXiv);
-		if (m) {
-			const cleanArXiv = m[2];
-			return cleanArXiv;
-		}
-
-		return "";
-	}
-
-	static cleanOpenAlex(openAlex: string) {
-		openAlex = openAlex.toUpperCase().trim();
-		if (openAlex[0] !== "W") openAlex = "W" + openAlex;
-		if (!openAlex.match(/^W\d+$/)) openAlex = "";
-		return openAlex;
 	}
 
 	static async zoteroItemToQuickstatements(

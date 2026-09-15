@@ -79,8 +79,8 @@ export default class {
 		items: ItemWrapper | ItemWrapper[],
 		options = {
 			overwrite: false,
-			partial: !Array.isArray(items) || items.length === 1,
-			create: !Array.isArray(items) || items.length === 1,
+			partial: true,
+			create: true,
 		},
 	) {
 		const progress = new Progress();

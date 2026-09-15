@@ -249,8 +249,6 @@ export type FluentMessageId =
   | 'wikicite_wikidata_create_confirm_button_qs'
   | 'wikicite_wikidata_create_confirm_message'
   | 'wikicite_wikidata_create_confirm_title'
-  | 'wikicite_wikidata_create_qs_message'
-  | 'wikicite_wikidata_create_qs_title'
   | 'wikicite_wikidata_deviations_unsupported-citations'
   | 'wikicite_wikidata_ignored_message'
   | 'wikicite_wikidata_ignored_title'

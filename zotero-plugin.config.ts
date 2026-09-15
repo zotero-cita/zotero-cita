@@ -76,6 +76,10 @@ export default defineConfig({
 					}
 				}
 
+				// Rename chinese locales to match Zotero #373
+				renameSync(localePath + "zh-Hans", localePath + "zh-CN");
+				renameSync(localePath + "zh-Hant", localePath + "zh-TW");
+
 				// rename wikicite.properties to addon.ftl
 				for (const path of readdirSync(localePath, {
 					encoding: "utf-8",

@@ -87,8 +87,8 @@ function initLocale() {
 			"tk",
 			"tr",
 			"uk",
-			"zh-hans",
-			"zh-hant",
+			"zh-cn",
+			"zh-tw",
 		],
 		rootURI + "locale/{locale}/",
 	);

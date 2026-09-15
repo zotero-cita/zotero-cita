@@ -164,8 +164,10 @@ function CitationsBoxContainer(props: {
 
 	// Keep citation count up to date
 	useEffect(() => {
-		props.onCountChange(sourceItem.citations.length);
-	}, [sourceItem.citations.length]);
+		props.onCountChange(
+			SourceItemWrapper.getCitationCount(sourceItem.item.id),
+		);
+	}, [SourceItemWrapper.getCitationCount(sourceItem.item.id)]);
 
 	/**
 	 * Display citing-item actions pop-up menu at the event's coordinates

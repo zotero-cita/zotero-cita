@@ -7,6 +7,7 @@ import Matcher from "./matcher";
 import Progress from "./progress";
 import Wikidata from "./wikidata";
 import { config } from "../../package.json";
+import * as prefs from "./preferences";
 import { StorageType } from "./preferences";
 import Lookup from "./zotLookup";
 import * as _ from "lodash";
@@ -24,10 +25,52 @@ function replacer(key: string, value: any) {
 }
 
 class SourceItemWrapper extends ItemWrapper {
+	static citationCountCache = new Map<number, number>();
+
+	/**
+	 * Get the cached citation count for an item.
+	 * Uses SourceItemWrapper.citations which loads from extra/note fields on construction.
+	 */
+	static getCitationCount(itemId: number): number {
+		const cached = SourceItemWrapper.citationCountCache.get(itemId);
+		if (cached) return cached;
+
+		const item = Zotero.Items.get(itemId);
+		const wrapper = new SourceItemWrapper(item, prefs.getStorage());
+		const count = wrapper.citations.length;
+		SourceItemWrapper.citationCountCache.set(itemId, count);
+		return count;
+	}
+
+	/**
+	 * Update citation count cache entry for a specific item.
+	 * Because we always know the list of citations if we're editing it.
+	 */
+	static updateCitationCache(itemId: number, citationCount: number) {
+		SourceItemWrapper.citationCountCache.set(itemId, citationCount);
+	}
+
 	newRelations: any;
-	_citations: Citation[];
-	_batch: boolean;
-	_storage: "extra" | "note";
+	private _citationsList: Citation[];
+	private _loadedCitations: boolean;
+	private set _citations(value: Citation[]) {
+		this._citationsList = value;
+		// invalidate the citation count cache when we change the citations
+		SourceItemWrapper.updateCitationCache(
+			this.item.id,
+			this._citationsList.length,
+		);
+	}
+	private get _citations() {
+		if (!this._loadedCitations) {
+			this.loadCitations();
+			this._loadedCitations = true;
+		}
+		return this._citationsList;
+	}
+
+	private _batch: boolean;
+	private _storage: "extra" | "note";
 	// When I thought of this originally, I wasn't giving the source item to the citation creator
 	// but then I understood it made sense I passed some reference to the source object
 	// given that the citation is a link between two objects (according to the OC model)
@@ -35,11 +78,12 @@ class SourceItemWrapper extends ItemWrapper {
 
 	constructor(item: Zotero.Item, storage: "extra" | "note") {
 		super(item, item.saveTx.bind(item));
-		this._citations = [];
+		this._citationsList = [];
+		// lazy load citations on first access - tracking status with this variable
+		this._loadedCitations = false;
 		this._batch = false;
 		this._storage = storage;
 		this.newRelations = false; // Whether new item relations have been queued
-		this.loadCitations(false);
 	}
 
 	get citations(): Citation[] {
@@ -199,9 +243,8 @@ class SourceItemWrapper extends ItemWrapper {
 	 * Constructs a Citation List by harvesting all Citation elements
 	 * in an item's extra field value.
 	 */
-	loadCitations(compare = true) {
+	loadCitations() {
 		if (this.batch) return;
-		// const t0 = performance.now();
 		const citations: Citation[] = [];
 		const corruptCitations: string[] = [];
 		if (this._storage === "extra") {
@@ -264,12 +307,7 @@ class SourceItemWrapper extends ItemWrapper {
 				}
 			}
 		}
-		if (compare) {
-			// Fixme: consider running further checks
-			if (this._citations.length !== citations.length) {
-				debug("Number of citations changed");
-			}
-		}
+
 		this._citations = citations;
 		if (corruptCitations.length) {
 			this.setCitations(this._citations);
@@ -417,16 +455,10 @@ class SourceItemWrapper extends ItemWrapper {
 			this._citations = this._citations.concat(citations);
 			this.saveCitations();
 		}
-		// this.updateCitationLabels();  //deprecated
 		// return if successful (index of new citation?)
 
 		// also check if we can link to an item in the Zotero library
 	}
-
-	// edit(index, citation) {
-	//     this.citations[index] = citation;
-	//     this.updateCitationLabels();
-	// }
 
 	async deleteCitation(index: number, sync: boolean = false) {
 		this.loadCitations();
@@ -466,7 +498,6 @@ class SourceItemWrapper extends ItemWrapper {
 		}
 		this._citations.splice(index, 1);
 		this.saveCitations();
-		// this.updateCitationLabels();  //deprecated
 	}
 
 	getCitedPIDs(

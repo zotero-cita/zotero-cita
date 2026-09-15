@@ -215,10 +215,8 @@ class ZoteroOverlay {
 			pluginID: "",
 			dataProvider: (item: Zotero.Item, dataKey: string) => {
 				return item.isRegularItem()
-					? new SourceItemWrapper(
-							item,
-							prefs.getStorage(),
-						).citations.length.toString() || ""
+					? SourceItemWrapper.getCitationCount(item.id).toString() ||
+							""
 					: "";
 			},
 		});
@@ -760,10 +758,9 @@ class ZoteroOverlay {
 					/>,
 				);
 
-				const citationCount = new SourceItemWrapper(
-					item,
-					prefs.getStorage(),
-				).citations.length;
+				const citationCount = SourceItemWrapper.getCitationCount(
+					item.id,
+				);
 
 				if (!item.isEditable()) {
 					setSectionButtonStatus("add", {

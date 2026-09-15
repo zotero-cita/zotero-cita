@@ -50,12 +50,10 @@ class SourceItemWrapper extends ItemWrapper {
 		return this._batch;
 	}
 
-	formatNoteWithString(note: Zotero.Item, data: string, index?: number) {
-		if (!note) {
-			note = new Zotero.Item("note");
-			note.libraryID = this.item.libraryID;
-			note.parentKey = this.item.key;
-		}
+	createCitationsNote(data: string, index?: number) {
+		const note = new Zotero.Item("note");
+		note.libraryID = this.item.libraryID;
+		note.parentKey = this.item.key;
 		note.setNote(
 			`<h1>Citations${index !== undefined ? index.toString().padStart(3, "0") : ""}</h1>\n` +
 				"<p>Do not edit this note manually!</p>" +
@@ -65,8 +63,6 @@ class SourceItemWrapper extends ItemWrapper {
 	}
 
 	async setCitations(citations: Citation[]) {
-		// fix performance was undefined, only accessible when building for node
-		// const t0 = performance.now();
 		if (this._storage === "extra") {
 			const jsonCitations = citations.map((citation) => {
 				let json = JSON.stringify(
@@ -79,19 +75,15 @@ class SourceItemWrapper extends ItemWrapper {
 				return json;
 			});
 			Wikicite.setExtraField(this.item, "citation", jsonCitations);
+			this._citations = citations;
 			this.saveHandler();
 		} else if (this._storage === "note") {
-			// delete citations
-			if (!citations.length) {
+			const eraseCitations = async () => {
 				const citationNotes = Wikicite.getCitationsNotes(this.item);
-				// do this in a transaction so all notes get erased at once and callbacks aren't triggered in the middle
-				await Zotero.DB.executeTransaction(async function () {
-					for (const note of citationNotes) {
-						await note.erase();
-					}
-				});
-				return;
-			}
+				for (const note of citationNotes) {
+					await note.erase();
+				}
+			};
 
 			// use Option to escape HTML characters here (eg. <), otherwise parsing the HTML will fail #178
 			// Option was undefined, but window.Option worked.
@@ -100,34 +92,40 @@ class SourceItemWrapper extends ItemWrapper {
 			).innerHTML;
 
 			const maxNoteLength = 100000; // https://forums.zotero.org/discussion/comment/402195/#Comment_402195
+			const citationNoteChunks = splitStringIntoChunks(
+				jsonCitations,
+				maxNoteLength,
+			);
 
-			if (jsonCitations.length <= maxNoteLength) {
-				this.formatNoteWithString(
-					Wikicite.getCitationsNote(this.item),
-					jsonCitations,
-				).saveTx();
-			} else {
-				const citationNotes = splitStringIntoChunks(
-					jsonCitations,
-					maxNoteLength,
-				).map((noteData, noteIndex) => {
-					const note = Wikicite.getCitationsNote(
-						this.item,
-						noteIndex,
-					);
-					return this.formatNoteWithString(note, noteData, noteIndex);
-				});
-				// do this in a transaction so all notes get saved at once and callbacks aren't triggered in the middle
-				await Zotero.DB.executeTransaction(async function () {
-					for (const note of citationNotes) {
-						await note.save();
-					}
-				});
-			}
+			const addNewCitations = async () => {
+				// If there's only one note - provide undefined index and it will be called "Citations"
+				// else if there's more than one note, provide indices and notes will be called "Citations001" and so on
+				const citationNotes = citationNoteChunks.map(
+					(noteData, noteIndex) => {
+						return this.createCitationsNote(
+							noteData,
+							citationNoteChunks.length == 1
+								? undefined
+								: noteIndex,
+						);
+					},
+				);
+				for (const note of citationNotes) {
+					await note.save();
+				}
+			};
+
+			// erase old citations before adding new ones to make sure data is always valid - #372
+			// do this in a transaction so all notes get updated at once and callbacks aren't triggered in the middle
+			await Zotero.DB.executeTransaction(async function () {
+				await eraseCitations();
+				if (citations.length > 0) {
+					await addNewCitations();
+				}
+			});
 			this._citations = citations;
-			this.item.saveTx();
+			this.saveHandler();
 		}
-		// debug(`Saving citations to source item took ${performance.now() - t0}`);
 	}
 
 	async deleteCitations() {

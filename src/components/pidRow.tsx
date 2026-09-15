@@ -38,6 +38,7 @@ function PIDRow(props: PIDRowProps) {
 	function handleCommit(newPid: string, checkValid: boolean = true) {
 		if (newPid !== pidValue?.id) {
 			if (
+				newPid != "" && // if clearing PID don't validate
 				checkValid &&
 				props.validate &&
 				!props.validate(props.type, newPid)

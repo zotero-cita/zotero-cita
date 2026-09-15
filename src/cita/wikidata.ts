@@ -344,6 +344,14 @@ export default class {
 							"wikicite.wikidata.reconcile.approx.message",
 							[
 								item.title,
+								item.item
+									.getCreators()
+									.map(
+										(creator) =>
+											`${creator.firstName} ${creator.lastName}`,
+									)
+									.join(", "),
+								item.item.getField("year"),
 								Zotero.ItemTypes.getLocalizedString(item.type),
 							],
 						),

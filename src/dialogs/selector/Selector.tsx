@@ -11,7 +11,7 @@ interface SelectorProps {
 const Selector = (props: SelectorProps) => (
 	<div>
 		<div id="selector-description">
-			<label>{props.message}</label>
+			<p>{props.message}</p>
 		</div>
 		<div id="selector-select">
 			<select

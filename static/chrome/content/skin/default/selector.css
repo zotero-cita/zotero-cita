@@ -17,6 +17,7 @@ window#selector {
 
 div#selector-description {
 	margin-bottom: 10px;
+	white-space: pre-wrap;
 }
 
 div#selector-select {

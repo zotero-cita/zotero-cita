@@ -289,7 +289,8 @@ export default class {
 			let cancelled = false;
 			for (const [queryID, query] of Object.entries(response)) {
 				if (cancelled) {
-					return;
+					// if the user cancels - stop reconciliation but return all the QIDs found so far
+					return qids;
 				}
 				const item = items[parseInt(queryID.slice(1), 10)];
 				const candidates = query.result;
@@ -365,7 +366,7 @@ export default class {
 						args,
 						selection,
 					);
-					if (selection.value) {
+					if (selection.value !== undefined) {
 						if (selection.value > 0) {
 							const index = selection.value - 1;
 							qids.set(item, candidates[index].id);

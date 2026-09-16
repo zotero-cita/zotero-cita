@@ -409,8 +409,7 @@ class ZoteroOverlay {
 		const items = await this.getSelectedItems(menuName, true);
 		const qidMap = await Wikidata.reconcile(items);
 		if (qidMap) {
-			for (const item of items) {
-				const qid = qidMap.get(item);
+			for (const [item, qid] of qidMap) {
 				if (qid) item.qid = qid;
 			}
 		}

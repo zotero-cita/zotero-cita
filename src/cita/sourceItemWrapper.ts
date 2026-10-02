@@ -244,7 +244,7 @@ class SourceItemWrapper extends ItemWrapper {
 	 * in an item's extra field value.
 	 */
 	loadCitations() {
-		if (this.batch) return;
+		if (this.batch && this._loadedCitations) return;
 		const citations: Citation[] = [];
 		const corruptCitations: string[] = [];
 		if (this._storage === "extra") {

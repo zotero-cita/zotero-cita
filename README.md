@@ -53,6 +53,10 @@ Download the [latest XPI](https://github.com/zotero-cita/zotero-cita/releases/la
 
 ## Quickstart guide
 
+This overview video shows how to install the plugin, add citation data, and check the local citations network of your items.
+
+https://github.com/user-attachments/assets/b313701d-883c-4bec-a95c-55b9bdaccc49
+
 A quickstart guide for an older version of Cita is available at [Wikidata's Cita page](https://www.Wikidata.org/wiki/Wikidata:Zotero/Cita). The interface will be slightly different but the same steps apply for newer Cita versions.
 
 ## Translation

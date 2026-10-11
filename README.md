@@ -1,5 +1,6 @@
 # Cita: Citations metadata in Zotero
 
+![GitHub Downloads - latest release](https://img.shields.io/github/downloads/zotero-cita/zotero-cita/latest/total?sort=semver)
 [![Using Zotero Plugin Template](https://img.shields.io/badge/Using-Zotero%20Plugin%20Template-blue?style=flat-square&logo=github)](https://github.com/windingwind/zotero-plugin-template)
 
 Cita is a [Zotero](http://www.zotero.org/) plugin adding support for citations metadata for your Zotero items, featuring:

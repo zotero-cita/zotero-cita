@@ -578,6 +578,7 @@ class ZoteroOverlay {
 	overlayZoteroPane(doc: Document) {
 		const prefOptions = {
 			pluginID: config.addonID,
+			id: config.addonID,
 			src: `chrome://${config.addonRef}/content/preferences.xhtml`,
 			label: Wikicite.getString("wikicite.global.name"),
 			image: `chrome://${config.addonRef}/content/skin/default/cita.svg`,

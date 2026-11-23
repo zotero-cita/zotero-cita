@@ -571,6 +571,11 @@ class ZoteroOverlay {
 	// XUL overlay functions
 	/******************************************/
 	fullOverlay() {
+		// Use Fluent for localization
+		// As mentioned in https://groups.google.com/g/zotero-dev/c/wirqnj_EQUQ/m/ud3k0SpMAAAJ
+		// As seen in https://github.com/zotero/make-it-red/blob/5a7ee1be2f147a327220c1e5a4129d6c6169999c/src-2.0/make-it-red.js#L33
+		window.MozXULElement.insertFTLIfNeeded(`${config.addonRef}-addon.ftl`);
+
 		// Add all Wikicite overlay elements to the window
 		this.overlayZoteroPane(document);
 	}
@@ -730,13 +735,6 @@ class ZoteroOverlay {
 			},
 			// onRender is called after onInit (once per tab) and, in the library tab only, every time the item changes
 			onRender: ({ body, item, setSectionButtonStatus, setL10nArgs }) => {
-				// Use Fluent for localization
-				// As mentioned in https://groups.google.com/g/zotero-dev/c/wirqnj_EQUQ/m/ud3k0SpMAAAJ
-				// As seen in https://github.com/zotero/make-it-red/blob/5a7ee1be2f147a327220c1e5a4129d6c6169999c/src-2.0/make-it-red.js#L33
-				window.MozXULElement.insertFTLIfNeeded(
-					`${config.addonRef}-addon.ftl`,
-				);
-
 				if (!item.isRegularItem()) {
 					return;
 				}
@@ -1230,54 +1228,49 @@ class ZoteroOverlay {
 	// // Item menu functions
 	// /******************************************/
 	/** Create XUL for Zotero menu elements */
-	zoteroPopup(menuName: MenuSelectionType, doc: Document) {
-		const showSubmenu = (menu: MenuSelectionType) => {
-			switch (menu) {
-				case "collection": {
+	zoteroPopup(menuName: MenuSelectionType) {
+		let shouldShowSubmenu: () => boolean;
+		switch (menuName) {
+			case "collection": {
+				shouldShowSubmenu = () => {
 					// Show collection submenu for collections, libraries, and groups only
 					const collectionTreeRow = ZoteroPane.getCollectionTreeRow();
-					if (
+					return !(
 						collectionTreeRow &&
 						!collectionTreeRow.isCollection() &&
 						!collectionTreeRow.isLibrary() &&
 						!collectionTreeRow.isGroup()
-					) {
-						return false;
-					}
-					break;
-				}
-				case "item":
-					// Show item submenu for regular items only
-					if (
-						!ZoteroPane.getSelectedItems().some((item) =>
-							item.isRegularItem(),
-						)
-					) {
-						return false;
-					}
-					break;
+					);
+				};
+				break;
 			}
-			return true;
-		};
+			case "item":
+				shouldShowSubmenu = () => {
+					// Show item submenu for regular items only
+					return ZoteroPane.getSelectedItems().some((item) =>
+						item.isRegularItem(),
+					);
+				};
+				break;
+		}
 
-		// Wikicite submenu
-		ztoolkit.Menu.register(menuName, {
-			tag: "menuseparator",
-			id: `wikicite-${menuName}submenu-separator`,
-			isHidden: () => !showSubmenu(menuName),
-		});
-
-		const menuItems = this.createMenuItems(
-			menuName,
-			`wikicite-${menuName}submenu-`,
-		);
-
-		ztoolkit.Menu.register(menuName, {
-			tag: "menu",
-			id: `wikicite-${menuName}submenu`,
-			label: Wikicite.getString(`wikicite.submenu.label`),
-			children: menuItems,
-			isHidden: () => !showSubmenu(menuName),
+		Zotero.MenuManager.registerMenu({
+			menuID: `wikicite-${menuName}submenu`,
+			pluginID: config.addonID,
+			target:
+				menuName == "item"
+					? "main/library/item"
+					: "main/library/collection",
+			menus: [
+				{
+					menuType: "submenu",
+					l10nID: getLocaleID("wikicite_submenu__label"),
+					menus: this.createMenuItems(menuName),
+					onShowing(event, context) {
+						context.setVisible(shouldShowSubmenu());
+					},
+				},
+			],
 		});
 	}
 
@@ -1299,114 +1292,90 @@ class ZoteroOverlay {
 	// Create Zotero item menu items as children of menuPopup
 	createMenuItems(
 		menuName: MenuSelectionType,
-		IDPrefix: string,
-	): MenuitemOptions[] {
-		const options: MenuitemOptions[] = [];
+	): _ZoteroTypes.MenuManager.MenuData<_ZoteroTypes.MenuManager.LibraryMenuContext>[] {
+		const options: _ZoteroTypes.MenuManager.MenuData<_ZoteroTypes.MenuManager.LibraryMenuContext>[] =
+			[];
 
 		// "Get identifiers" menu items
-		const fetchSubmenus: MenuitemOptions[] = [];
-		const fetchPIDs: Map<
-			MenuFunction,
-			(menuName: MenuSelectionType) => void
-		> = new Map([
-			["getIdentifiers.QID", () => this.fetchQIDs(menuName)],
-			[
-				"getIdentifiers.OpenAlex",
-				() => this.getPIDsFromIndexer(menuName, OpenAlex),
-			],
-			[
-				"getIdentifiers.CorpusID",
-				() => this.getPIDsFromIndexer(menuName, Semantic),
-			],
-		]);
-		for (const [functionName, func] of fetchPIDs) {
-			const menuFunc = this.zoteroMenuItem(
-				menuName,
-				functionName,
-				func,
-				IDPrefix,
-			);
-			fetchSubmenus.push(menuFunc);
-		}
 		options.push({
-			tag: "menu",
-			id: IDPrefix + "getIdentifiers",
-			label: Wikicite.getString(`wikicite.submenu.get-identifiers`),
-			children: fetchSubmenus,
+			menuType: "submenu",
+			l10nID: getLocaleID(`wikicite_submenu_get-identifiers__label`),
+			menus: [
+				this.zoteroMenuItem("get-identifiers-qid", () =>
+					this.fetchQIDs(menuName),
+				),
+				this.zoteroMenuItem("get-identifiers-open-alex", () =>
+					this.getPIDsFromIndexer(menuName, OpenAlex),
+				),
+				this.zoteroMenuItem("get-identifiers_corpus-id", () =>
+					this.getPIDsFromIndexer(menuName, Semantic),
+				),
+			],
 		});
 
 		// "Get citations" menu item
-		const citationsSubmenus: MenuitemOptions[] = [];
 		const indexers = [Crossref, OpenAlex, Semantic, OpenCitations];
-		for (const IndexerType of indexers) {
-			const indexer = new IndexerType();
-			const functionName =
-				`getCitations.${indexer.indexerName}` as MenuFunction;
-			const menuFunc = this.zoteroMenuItem(
-				menuName,
-				functionName,
-				() => this.getCitationsFromIndexer(menuName, indexer),
-				IDPrefix,
-			);
-			menuFunc.isDisabled = () =>
-				menuName === "item" &&
-				!this.enableIndexer(indexer, ZoteroPane.getSelectedItems());
-			citationsSubmenus.push(menuFunc);
-		}
 		options.push({
-			tag: "menu",
-			id: IDPrefix + "getCitations",
-			label: Wikicite.getString(`wikicite.submenu.get-citations`),
-			children: citationsSubmenus,
+			menuType: "submenu",
+			l10nID: getLocaleID(`wikicite_submenu_get-citations__label`),
+			menus: indexers.map((IndexerType) => {
+				const indexer = new IndexerType();
+				return {
+					menuType: "menuitem",
+					l10nID: getLocaleID(
+						"wikicite_submenu_get-citations-indexer-placeholder__label",
+					),
+					l10nArgs: { s1: indexer.indexerName },
+					onCommand: () =>
+						this.getCitationsFromIndexer(menuName, indexer),
+					onShowing: (event, context) => {
+						context.setEnabled(
+							menuName === "item" &&
+								this.enableIndexer(
+									indexer,
+									ZoteroPane.getSelectedItems(),
+								),
+						);
+					},
+				};
+			}),
 		});
 
 		// Regular items
-		const menuFunctions: Map<
-			MenuFunction,
-			(menuName: MenuSelectionType) => void
-		> = new Map([
-			["syncWithWikidata", () => this.syncWithWikidata(menuName)],
-			["getFromAttachments", () => this.getFromAttachments(menuName)],
-			["addAsCitations", () => this.addAsCitations(menuName)],
-			["localCitationNetwork", () => this.localCitationNetwork(menuName)],
-		]);
-		for (const [functionName, func] of menuFunctions) {
-			if (
-				menuName === "collection" &&
-				functionName === "addAsCitations"
-			) {
-				// Fixme: find better way to decide what actions belong to which menu
-				// Also consider merging zotero-item, zotero-collection, and wikicite-item
-				// menus
-				continue;
-			}
-			const menuFunc = this.zoteroMenuItem(
-				menuName,
-				functionName,
-				func,
-				IDPrefix,
+		options.push(
+			this.zoteroMenuItem("sync-with-wikidata", () =>
+				this.syncWithWikidata(menuName),
+			),
+		);
+		options.push(
+			this.zoteroMenuItem("get-from-attachments", () =>
+				this.getFromAttachments(menuName),
+			),
+		);
+		if (menuName != "collection") {
+			options.push(
+				this.zoteroMenuItem("add-as-citations", () =>
+					this.addAsCitations(menuName),
+				),
 			);
-			if (functionName === "localCitationNetwork") {
-				menuFunc.isDisabled = () =>
-					menuName === "item" &&
-					ZoteroPane.getSelectedItems().length < 1;
-			}
-			options.push(menuFunc);
 		}
+		const lcn = this.zoteroMenuItem("local-citations-network", () =>
+			this.localCitationNetwork(menuName),
+		);
+		lcn.onShowing = (event, context) => {
+			context.setEnabled(
+				menuName != "item" || ZoteroPane.getSelectedItems().length > 1,
+			);
+		};
+		options.push(lcn);
 
 		options.push({
-			tag: "menuseparator",
-			id: IDPrefix + "separator",
+			menuType: "separator",
 		});
 
 		options.push(
-			this.zoteroMenuItem(
-				menuName,
-				"deleteCitations",
-				() => {
-					this.deleteCitations(menuName);
-				},
-				IDPrefix,
+			this.zoteroMenuItem("delete-citations", () =>
+				this.deleteCitations(menuName),
 			),
 		);
 
@@ -1415,27 +1384,17 @@ class ZoteroOverlay {
 
 	// Create Zotero item menu item
 	zoteroMenuItem(
-		menuName: MenuSelectionType,
-		functionName: MenuFunction,
-		func: (menuName: MenuSelectionType) => void,
-		IDPrefix: string,
-	): MenuitemOptions {
-		let label: string;
-		if (functionName.includes("getCitations.")) {
-			label = functionName.split(".")[1];
-		} else {
-			label = Wikicite.getString(`wikicite.submenu.${functionName}`);
-		}
-		const menuOptions: MenuitemOptions = {
-			tag: "menuitem",
-			id: IDPrefix + functionName,
-			label: label,
-			commandListener: (event) => {
+		functionName: string,
+		func: () => void,
+	): _ZoteroTypes.MenuManager.MenuData<_ZoteroTypes.MenuManager.LibraryMenuContext> {
+		return {
+			menuType: "menuitem",
+			l10nID: getLocaleID(`wikicite_submenu_${functionName}__label`),
+			onCommand: (event, context) => {
 				event.stopPropagation();
-				func(menuName);
+				func();
 			},
 		};
-		return menuOptions;
 	}
 }
 
